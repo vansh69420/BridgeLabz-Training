@@ -101,6 +101,25 @@ Practiced basic C# programs in `c#-programming-elements/level1/` focusing on use
 
 ---
 
+### 📁 Level 2 Programming Elements
+Practiced intermediate C# programs in `c#-programming-elements/level2/` focusing on more complex calculations, conversions, and operations.
+
+#### 🔹 Programs Completed
+- 🍫 **DistributingChocolate.cs**: Program to distribute chocolates among people based on given criteria.
+- 🔄 **DoubleOperations.cs**: Performs various operations on double data types.
+- 🌡️ **FarhenheitToCelsius.cs**: Converts temperature from Fahrenheit to Celsius.
+- 💰 **FinalSalary.cs**: Calculates final salary including bonuses or deductions.
+- 🔢 **IntOperations.cs**: Demonstrates operations on integer values.
+- ➗ **QuotientRemainder.cs**: Calculates quotient and remainder from division operations.
+- 💸 **SimpleInterest.cs**: Computes simple interest based on principal, rate, and time.
+- 🔄 **Swap.cs**: Swaps the values of two variables.
+- 🌡️ **TemperatureConverter.cs**: Converts temperatures between different units.
+- ⏰ **TimeDetails.cs**: Handles time-related calculations and conversions.
+- 📐 **TriangularPark.cs**: Calculates area or perimeter of a triangular park.
+- ⚖️ **WeightConverter.cs**: Converts weight measurements between different units.
+
+---
+
 ### ✅ Key Learnings
 - Understood C# primitive data types
 - Learned implicit vs explicit type casting
