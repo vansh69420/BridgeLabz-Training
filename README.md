@@ -78,8 +78,32 @@ Practiced **operators in C#** with real examples.
 
 ---
 
+### 📁 Level 1 Programming Elements
+Practiced basic C# programs in `c#-programming-elements/level1/` focusing on user input, calculations, and conversions.
+
+#### 🔹 Programs Completed
+- 🧮 **BasicCalculator.cs**: A program that takes two numbers as input and performs basic arithmetic operations (addition, subtraction, multiplication, division).
+- 💰 **CourseFeeDiscount.cs**: Calculates the discount amount on a course fee based on given criteria.
+- 🌍 **VolumeOfEarth.cs**: Computes the volume of the Earth using mathematical formulas.
+- 🛤️ **InputKilometerToMiles.cs**: Converts distance from kilometers to miles with user input.
+- 📊 **SamPercentage.cs**: Calculates percentage values, possibly related to a scenario involving Sam.
+- 💹 **FindProfitPercentage.cs**: Determines the profit percentage from cost and selling price.
+- 🤝 **HandshakeCalculator.cs**: Solves the handshake problem, calculating the number of handshakes among a group of people.
+- 📏 **DistanceConverter.cs**: Converts distances between different units (e.g., meters to kilometers).
+- 🎓 **InputCourseFeeDiscount.cs**: Applies discount to course fees based on user-provided inputs.
+- 🔲 **SquareSide.cs**: Calculates the side length of a square given area or other parameters.
+- 📐 **AreaOfTriangle.cs**: Computes the area of a triangle with base and height, including unit conversions.
+- 👦 **HarryAge.cs**: Calculates or manipulates age-related data for a scenario involving Harry.
+- 📏 **HeightConverter.cs**: Converts height measurements between different units (e.g., feet to centimeters).
+- 🛤️ **KIlometerToMiles.cs**: Converts kilometers to miles (note: filename has a typo).
+- 🛒 **TotalPurchase.cs**: Calculates the total cost of purchases, possibly with taxes or discounts.
+- ✏️ **PenDistribution.cs**: Determines how pens are distributed among people or groups.
+
+---
+
 ### ✅ Key Learnings
 - Understood C# primitive data types
 - Learned implicit vs explicit type casting
 - Practiced operator usage for logical conditions
 - Improved confidence in writing clean C# console programs
+- Developed skills in user input handling and basic calculations
