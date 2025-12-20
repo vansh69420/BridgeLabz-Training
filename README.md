@@ -126,3 +126,33 @@ Practiced intermediate C# programs in `c#-programming-elements/level2/` focusing
 - Practiced operator usage for logical conditions
 - Improved confidence in writing clean C# console programs
 - Developed skills in user input handling and basic calculations
+
+## 📅 20 December 2025
+
+### 🔒 AccessModifier.cs
+Worked on **C# access modifiers** demonstrating different levels of accessibility in classes and inheritance.
+
+#### 🔹 Access Modifiers Covered
+- **public**: Accessible from anywhere
+- **private**: Accessible only within the same class
+- **protected**: Accessible within the same class and derived classes
+- **internal**: Accessible within the same assembly
+- **protected internal**: Accessible within the same assembly or derived classes
+- **private protected**: Accessible within the same class or derived classes in the same assembly
+
+#### 🔹 Code Demonstration
+- Created `PublicClass` with public members accessible from Main
+- Created `InternalClass` with internal members accessible within the same assembly
+- Created `BaseClass` with members using all access modifier types
+- Created `DerivedClass` inheriting from `BaseClass` to demonstrate inheritance access rules
+- In Main method, instantiated classes and accessed members based on their access levels
+
+#### 🔹 Key Points on Access Modifiers
+- **public**: No restrictions on access; can be accessed from any code
+- **private**: Highest level of restriction; only accessible within the declaring class
+- **protected**: Accessible within the declaring class and any derived classes
+- **internal**: Accessible within the same assembly but not from other assemblies
+- **protected internal**: Accessible within the same assembly or from derived classes in other assemblies
+- **private protected**: Accessible within the declaring class or derived classes, but only within the same assembly
+- Access modifiers are crucial for encapsulation and controlling the visibility of class members
+- Inheritance expands accessibility for protected and related modifiers to derived classes
