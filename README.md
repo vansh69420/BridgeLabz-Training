@@ -156,3 +156,35 @@ Worked on **C# access modifiers** demonstrating different levels of accessibilit
 - **private protected**: Accessible within the declaring class or derived classes, but only within the same assembly
 - Access modifiers are crucial for encapsulation and controlling the visibility of class members
 - Inheritance expands accessibility for protected and related modifiers to derived classes
+
+## 📅 22 December 2025
+
+### Control Flow Level 1 Programs
+
+Practiced control flow statements in C# with programs in `control-flow/Level1/` focusing on conditional statements, loops, and decision-making.
+
+#### 🔹 Programs Completed
+- 🔍 **CheckDivisibility.cs**: Checks if a number is divisible by 5.
+- 📏 **CheckLargest.cs**: Finds the largest among given numbers.
+- 🔢 **CheckNumber.cs**: Performs checks on numbers (e.g., positive, negative, zero).
+- 🔢 **Counter.cs**: Implements a counter using loops.
+- 🔄 **CounterByFor.cs**: Counter implementation using for loop.
+- 🗳️ **EligibleVoter.cs**: Determines if a person is eligible to vote based on age.
+- ❗ **FactorialUsingFor.cs**: Calculates factorial using for loop.
+- 🔁 **FactorialUsingWhile.cs**: Calculates factorial using while loop.
+- 💰 **FindBonus.cs**: Calculates bonus based on criteria.
+- 🔄 **FindOddEven.cs**: Identifies if a number is odd or even.
+- 📉 **FirstSmallest.cs**: Finds the smallest number in a set.
+- 🌿 **NaturalNumber.cs**: Works with natural numbers.
+- 🌸 **SpringSeason.cs**: Checks if a date falls in spring season.
+- ➕ **SumOfNatruralNum.cs**: Calculates sum of natural numbers.
+- 🔢 **SumOfNum2.cs**: Sums up numbers.
+- 🛑 **SumOfNumTillZero.cs**: Sums numbers until zero is encountered.
+- ➕ **SumUsingFor.cs**: Sum calculation using for loop.
+- 📊 **Table.cs**: Generates multiplication table.
+
+### ✅ Key Learnings
+- Mastered if-else statements for decision making
+- Practiced for and while loops for iteration
+- Learned to handle user input in control flow scenarios
+- Improved logic building for various conditions
