@@ -183,6 +183,36 @@ Practiced control flow statements in C# with programs in `control-flow/Level1/` 
 - ➕ **SumUsingFor.cs**: Sum calculation using for loop.
 - 📊 **Table.cs**: Generates multiplication table.
 
+### Control Flow Level 2 Programs
+
+Practiced intermediate control flow programs in `control-flow/Level2/` focusing on more complex logic, algorithms, and calculations.
+
+#### 🔹 Programs Completed
+- 🏋️ **BMI.cs**: Calculates Body Mass Index based on height and weight.
+- 🔢 **CheckPrime.cs**: Checks if a given number is prime.
+- 🔍 **Factor.cs**: Finds factors of a number.
+- 📅 **FindLeapYear.cs**: Determines if a year is a leap year.
+- 📅 **FindLeapYear2.cs**: Another implementation for leap year check.
+- ⚡ **FindPower.cs**: Calculates power of a number.
+- 🎉 **FizzBuzz.cs**: Implements the classic FizzBuzz problem.
+- 🎉 **FizzBuzz2.cs**: Alternative FizzBuzz implementation.
+- 📊 **GradeCalculate.cs**: Calculates grades based on scores.
+- 🔍 **GreatestFactor.cs**: Finds the greatest factor of a number.
+- ✖️ **Multiple.cs**: Works with multiples of numbers.
+- 👥 **YoungestTallest.cs**: Finds youngest and tallest among a group.
+
+### Control Flow Level 3 Programs
+
+Practiced advanced control flow programs in `control-flow/Level3/` focusing on number theory, algorithms, and complex calculations.
+
+#### 🔹 Programs Completed
+- 🌟 **Abundant.cs**: Checks if a number is abundant.
+- 💪 **Armstrong.cs**: Checks for Armstrong numbers.
+- 🧮 **Calculator.cs**: Implements a calculator with multiple operations.
+- 📅 **DayOfWeek.cs**: Determines the day of the week for a given date.
+- 🔢 **DigitCounter.cs**: Counts digits in a number.
+- 🔮 **Harshad.cs**: Checks for Harshad numbers.
+
 ### ✅ Key Learnings
 - Mastered if-else statements for decision making
 - Practiced for and while loops for iteration
