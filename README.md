@@ -218,3 +218,18 @@ Practiced advanced control flow programs in `control-flow/Level3/` focusing on n
 - Practiced for and while loops for iteration
 - Learned to handle user input in control flow scenarios
 - Improved logic building for various conditions
+
+## 📅 23 December 2025
+
+### Arrays Level 1 — Brief Summaries
+
+- `CanVote.cs`: Reads 10 ages into an array and prints whether each age is invalid, eligible (>=18), or not eligible.
+- `Factors.cs`: Reads a number and collects/prints all its factors, expanding the storage array dynamically if needed.
+- `FindPositive.cs`: Reads 5 numbers, labels each as positive-even, positive-odd, negative, or zero; compares first and last elements.
+- `FizzBuzz.cs`: Builds a FizzBuzz array up to N and prints Fizz/Buzz/FizzBuzz or the number for each index.
+- `MeanHeight.cs`: Reads 11 height values (cm), computes and prints the mean height.
+- `MultiDimensional.cs`: Reads a rows×cols matrix, flattens it into a single array, and prints the elements.
+- `Multiplication.cs`: Builds and prints the multiplication table (1–10) for a given number using an array.
+- `OddEven.cs`: Generates and prints lists of even and odd numbers from 0 up to a given number.
+- `SumOfAllNumbers.cs`: Reads positive numbers into an array until non-positive input or full, then prints their sum.
+- `Table.cs`: Computes and prints multiplication results for multipliers 6 through 9 for a given number.
