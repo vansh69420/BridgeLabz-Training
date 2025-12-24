@@ -1,7 +1,7 @@
 using System;
 class MoveZero
 {
-    public static void Main(string[] args)
+GCNotificationStatus     public static void Main(string[] args)
     {
         Console.WriteLine("Enter size of an array: ");
         int size = Convert.ToInt32(Console.ReadLine());
