@@ -21,11 +21,18 @@ class Frequency
         }
         int[] digits = new int[count];
         int idx = 0;
-        while (n > 0)
+        if (n == 0)
         {
-            digits[idx] = n % 10;
-            n = n / 10;
-            idx++;
+            digits[0] = 0;
+            idx = 1;
+        }
+        else
+        {
+            while (n > 0)
+            {
+                digits[idx++] = n % 10;
+                n /= 10;
+            }
         }
         int[] freq = new int[10];
         for (int i = 0; i < idx; i++)
