@@ -5,10 +5,19 @@ class Frequency
     {
         Console.WriteLine("Enter number : ");
         int n = Convert.ToInt32(Console.ReadLine());
+        int temp = n;
         int count = 0;
-        for (int i = 0; i <= n; i++)
+        if (temp == 0)
         {
-            count++;
+            count = 1;
+        }
+        else
+        {
+            while (temp > 0)
+            {
+                count++;
+                temp /= 10;
+            }
         }
         int[] digits = new int[count];
         int idx = 0;
