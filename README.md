@@ -233,3 +233,27 @@ Practiced advanced control flow programs in `control-flow/Level3/` focusing on n
 - `OddEven.cs`: Generates and prints lists of even and odd numbers from 0 up to a given number.
 - `SumOfAllNumbers.cs`: Reads positive numbers into an array until non-positive input or full, then prints their sum.
 - `Table.cs`: Computes and prints multiplication results for multipliers 6 through 9 for a given number.
+
+## 📅 24 December 2025
+
+### Arrays Level2
+
+- **BMI.cs**: Calculates BMI for multiple persons using separate arrays for weights, heights, BMI values, and weight status, categorizing each person as Underweight, Normal, Overweight, or Obese.
+- **BMI2.cs**: Similar to BMI.cs but uses a 2D array for person data (weight, height, BMI) and includes input validation for positive values.
+- **Frequency.cs**: Takes a number, extracts its digits into an array, and counts the frequency of each digit (0-9).
+- **Largest.cs**: Extracts digits of a number into an array and finds the largest and second largest digits.
+- **Largest2.cs**: Similar to Largest.cs but dynamically resizes the array if more than 10 digits.
+- **Result.cs**: Calculates percentages and grades for students based on marks in Physics, Chemistry, and Maths using separate arrays, with input validation.
+- **Result2.cs**: Similar to Result.cs but uses a 2D array for marks.
+- **ReverseNumber.cs**: Reverses the digits of a number by storing them in an array and printing in reverse order.
+- **Salary.cs**: Calculates bonuses and new salaries for 10 employees based on years of service, with totals for old salaries, bonuses, and new salaries.
+- **YoungestTallest.cs**: Finds the youngest and tallest person among 3 persons by comparing ages and heights.
+
+### Key Points
+- Learned to use 1D and 2D arrays for storing multiple data types (integers, doubles, strings).
+- Implemented input validation to handle invalid or negative inputs, ensuring data integrity.
+- Performed various calculations like BMI, percentages, and bonuses using array data.
+- Used loops for array traversal and conditional logic for categorization (weight status, grades).
+- Manipulated digits of numbers using arrays for frequency counting and finding largest/second largest digits.
+- Dynamically resized arrays when the number of digits exceeds initial capacity.
+- Calculated totals and aggregates across arrays for salaries, bonuses, and marks.
