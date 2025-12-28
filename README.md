@@ -364,3 +364,40 @@ Practiced advanced string manipulation techniques in C# with programs in `extras
 - Enhanced understanding of ASCII values and character transformations
 - Improved skills in parsing and validating string inputs
 - Gained experience with substring operations and word processing
+
+## 📅 27 December 2025
+
+### 🕒 C# Built-in DateTime Operations
+
+Practiced DateTime and TimeZone operations in C# with programs in `extras-c#-built-in/Level1/` focusing on date arithmetic, comparisons, formatting, and time zone conversions.
+
+#### 🔹 Programs Completed
+- 📅 **DateArithmetic.cs**: Performs date arithmetic operations (add days, months, years, subtract weeks) on user-input date.
+- 🔍 **DateComparison.cs**: Compares two dates using `DateTime.Compare()` to determine which is earlier, later, or same.
+- 📝 **DateFormatting.cs**: Displays current date in various formats (dd/MM/yyyy, yyyy-MM-dd, full date with day).
+- 🌍 **TimeZoneDemo.cs**: Converts current UTC time to IST (India Standard Time) and PST (Pacific Standard Time) using `TimeZoneInfo`.
+
+### 🧮 C# Built-in Mathematical Operations
+
+Practiced mathematical computations and algorithms in C# with programs in `extras-c#-built-in/Level2/` focusing on calculators, sequences, number theory, and conversions.
+
+#### 🔹 Programs Completed
+- 🧮 **BasicCalculator.cs**: Menu-driven calculator for addition, subtraction, multiplication, division with error handling for division by zero.
+- ❗ **Factorial.cs**: Calculates factorial of a number using recursion, with input validation for negative numbers.
+- 🔢 **FibonacciGenerator.cs**: Generates Fibonacci sequence up to N terms using iterative approach.
+- 🔗 **GcdLcm.cs**: Computes GCD using Euclidean algorithm and LCM using formula, handles zero inputs.
+- 📈 **MaximumOfThree.cs**: Finds maximum among three numbers using conditional logic.
+- 🎯 **NumberGuessing.cs**: Implements binary search algorithm for computer to guess user's number between 1-100.
+- 🔄 **PalindromeChecker.cs**: Checks if a string is palindrome using two-pointer technique, case-insensitive.
+- 🔍 **PrimeNumberChecker.cs**: Determines if a number is prime using trial division up to square root.
+- 🌡️ **TemperatureConverter.cs**: Converts between Fahrenheit and Celsius with menu selection.
+
+### ✅ Key Learnings
+- Mastered DateTime operations for date manipulation and formatting
+- Learned time zone conversions using built-in .NET classes
+- Implemented recursive algorithms for factorial and iterative for sequences
+- Developed menu-driven console applications with input validation
+- Practiced number theory algorithms (GCD, LCM, prime checking)
+- Enhanced skills in user interaction and feedback loops
+- Gained experience with mathematical conversions and error handling
+- Improved understanding of built-in .NET methods for common operations
