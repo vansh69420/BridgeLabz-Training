@@ -401,3 +401,70 @@ Practiced mathematical computations and algorithms in C# with programs in `extra
 - Enhanced skills in user interaction and feedback loops
 - Gained experience with mathematical conversions and error handling
 - Improved understanding of built-in .NET methods for common operations
+
+## 📅 28 December 2025
+
+### 🎲 SnakesAndLadder.cs
+Implemented a complete Snake and Ladder game in C# supporting 2-4 players with interactive gameplay, dice rolling, and win conditions.
+
+#### 🔹 Game Features
+- **Multiplayer Support**: Accepts 2-4 players with custom names
+- **Dice Rolling**: Random dice rolls (1-6) using `Random` class
+- **Snakes & Ladders**: Predefined positions for snakes (down) and ladders (up)
+- **Game Board**: 100-position board with win condition at position 100
+- **Turn-based Play**: Sequential player turns with dice roll prompts
+- **Position Tracking**: Displays movement from old to new position
+- **Win Detection**: Automatic win detection when reaching position 100
+
+#### 🔹 Technical Implementation
+- Used arrays to store snake and ladder start/end positions
+- Implemented helper methods: `RollDice()`, `ApplySnakeOrLadder()`, `CheckWin()`
+- Input validation for player count (2-4 players)
+- Game loop continues until a player wins
+- Console-based user interface with emojis for visual appeal
+
+#### 🔹 Key Learnings
+- Practiced array manipulation for game state management
+- Implemented game logic with conditional checks and loops
+- Learned random number generation for dice simulation
+- Developed turn-based multiplayer game mechanics
+- Enhanced user input handling and validation
+
+## 📅 29 December 2025
+
+### Scenario-Based Programs
+
+Practiced real-world scenario implementations in C# with programs in `scenario-based/` focusing on game development, text processing, data analysis, and temperature monitoring.
+
+#### 🔹 Programs Completed
+
+- 📝 **SentenceFormatter.cs**: A dual-purpose text processing program with sentence formatting and paragraph analysis capabilities.
+  - **Sentence Formatter**: Capitalizes first letters after punctuation, adds proper spacing, handles case conversion manually without built-in methods
+  - **Paragraph Analyzer**: Counts words, finds longest word, performs case-insensitive word replacement using custom string manipulation
+
+- 📊 **StudentScoreManager.cs**: A student performance analysis system that manages scores for multiple students.
+  - Reads scores for N students with input validation (no negative scores)
+  - Calculates average, highest, and lowest scores
+  - Displays all scores above the calculated average
+  - Uses array-based data storage and processing
+
+- 🌡️ **TemperatureAnalyzer.cs**: A weather data analysis program processing 7 days of hourly temperature readings.
+  - Analyzes 2D array of temperature data (7 days × 24 hours)
+  - Identifies hottest and coldest days with their temperatures
+  - Calculates and displays average temperature for each day
+  - Demonstrates 2D array traversal and statistical computations
+
+#### 🔹 Technical Highlights
+- **Custom String Manipulation**: Implemented character-level operations without relying on built-in string methods
+- **Array Processing**: Extensive use of 1D and 2D arrays for data storage and analysis
+- **Input Validation**: Robust error handling for invalid inputs (empty strings, negative scores)
+- **Statistical Calculations**: Average computation, min/max finding, frequency analysis
+- **Menu-Driven Interfaces**: User choice selection for different program functionalities
+
+#### 🔹 Key Learnings
+- Mastered manual string processing techniques using character arrays
+- Developed skills in multi-dimensional array operations
+- Implemented data validation and error handling patterns
+- Practiced statistical analysis on structured data
+- Enhanced understanding of real-world problem decomposition
+- Improved code organization with helper methods and modular design
