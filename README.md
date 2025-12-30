@@ -516,3 +516,55 @@ Developed a **comprehensive Library Management System** in `scenario-based/Libra
 - Dynamic data structure management
 - User interface design for console applications
 - Problem decomposition for complex scenarios
+
+### 🎓 Educational Quiz Grader
+
+Created an **interactive educational quiz system** in `scenario-based/EduQuizGrader.cs` with role-based access for teachers and students, featuring automated grading and detailed feedback.
+
+#### 🔹 System Features
+- **Role-Based Access**: Separate interfaces for Teachers (view answers) and Students (take quiz)
+- **Quiz Database**: 10 multiple-choice questions on C# fundamentals stored in 2D array
+- **Automated Grading**: Case-insensitive answer comparison with instant scoring
+- **Detailed Feedback**: Per-question correctness display with correct answers shown for wrong responses
+- **Performance Metrics**: Score calculation, percentage, and pass/fail determination (40% threshold)
+
+#### 🔹 User Roles & Functionality
+- **👨‍🏫 Teacher**:
+  - View all quiz questions with their correct answers
+  - Access complete question bank for review purposes
+
+- **👨‍🎓 Student**:
+  - Take the 10-question C# fundamentals quiz
+  - Receive immediate detailed feedback after completion
+  - View final score, percentage, and pass/fail status
+
+#### 🔹 Technical Implementation
+- **Data Structure**: 2D string array for question-answer pairs (`string[,]` with dimensions [10, 2])
+- **Answer Validation**: Case-insensitive string comparison using `StringComparison.OrdinalIgnoreCase`
+- **Score Calculation**: Percentage-based evaluation with ternary operator for pass/fail logic
+- **User Interface**: Menu-driven console application with clear navigation
+- **Feedback System**: Comprehensive per-question analysis with correct answer disclosure
+
+#### 🔹 Quiz Content Coverage
+- C# class definition (`class` keyword)
+- Data types (`int`, `bool`)
+- Control structures (`do-while`, `switch`)
+- Operators (`&&`, `?:`)
+- Program structure (`Main` method)
+- Array indexing (starts from `0`)
+- Object creation (`new` keyword)
+
+#### 🔹 Key Code Highlights
+- Role-based menu system with switch-case navigation
+- Array iteration for quiz administration and grading
+- String comparison techniques for answer validation
+- Percentage calculation and conditional result determination
+- Structured feedback display with question-by-question breakdown
+
+#### 🔹 Learning Outcomes
+- Educational software design principles
+- Automated assessment system implementation
+- Case-insensitive string handling techniques
+- Performance evaluation algorithms
+- User role management in applications
+- Interactive console-based quiz systems
