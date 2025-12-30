@@ -468,3 +468,51 @@ Practiced real-world scenario implementations in C# with programs in `scenario-b
 - Practiced statistical analysis on structured data
 - Enhanced understanding of real-world problem decomposition
 - Improved code organization with helper methods and modular design
+
+## 📅 30 December 2025
+
+### 📚 Library Management System
+
+Developed a **comprehensive Library Management System** in `scenario-based/LibraryManagementSystem.cs` implementing role-based access control and book inventory management.
+
+#### 🔹 System Features
+- **Role-Based Access**: Separate menus for Librarians and Members with different permissions
+- **Book Inventory**: Pre-loaded with 15 technical books stored in a 2D array (Title, Author, Status)
+- **Search Functionality**: Case-insensitive partial title search with custom string manipulation
+- **Book Operations**: Checkout, return, add, and remove books with status tracking
+- **Dynamic Array Management**: Manual array resizing for adding/removing books
+
+#### 🔹 User Roles & Permissions
+- **👨‍💼 Librarian**:
+  - View all books in the library
+  - Search for specific books
+  - Checkout books for members
+  - Return checked-out books
+  - Add new books to inventory
+  - Remove books from inventory
+
+- **👤 Member**:
+  - Search for available books
+  - Checkout books (if available)
+
+#### 🔹 Technical Implementation
+- **Data Structure**: 2D string array for book storage (`string[,]` with dimensions [books, 3])
+- **Custom String Functions**: Implemented `ToLower()` and `ContainIgnoreCase()` without built-in methods
+- **Array Manipulation**: Manual copying and resizing arrays for dynamic book management
+- **Menu-Driven Interface**: Console-based navigation with input validation
+- **Status Tracking**: Real-time book availability updates ("Available" / "Checked Out")
+
+#### 🔹 Key Code Highlights
+- Manual string case conversion using ASCII arithmetic
+- Partial string matching for search functionality
+- Array expansion/contraction for dynamic inventory
+- Switch-case menu systems for user interaction
+- Error handling for invalid inputs and not-found books
+
+#### 🔹 Learning Outcomes
+- Advanced array manipulation techniques
+- Custom string processing algorithms
+- Role-based system design principles
+- Dynamic data structure management
+- User interface design for console applications
+- Problem decomposition for complex scenarios
