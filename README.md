@@ -568,3 +568,52 @@ Created an **interactive educational quiz system** in `scenario-based/EduQuizGra
 - Performance evaluation algorithms
 - User role management in applications
 - Interactive console-based quiz systems
+
+## 📅 31 December 2025
+
+### 🏦 Bank Account Manager System
+
+Developed a comprehensive **Bank Account Management System** using **Object-Oriented Programming (OOP)** principles in C#. This scenario-based project demonstrates role-based access control, data management, and console-based user interfaces.
+
+#### 🔹 Project Structure
+- **Bank.cs**: Core banking operations class managing account data and transactions
+- **User.cs**: User model class with properties for user identification and roles
+- **BankManager.cs**: Main application class handling user authentication, menus, and program flow
+
+#### 🔹 Key Features Implemented
+- **Role-Based Access Control**
+  - Customer role: View account, deposit, withdraw
+  - Staff role: Add accounts, remove accounts, view any account
+
+- **Account Management Operations**
+  - Display account details (balance, minimum balance, creation date)
+  - Deposit funds with balance updates
+  - Withdraw funds with minimum balance validation
+  - Add new accounts with initial balance and minimum balance
+  - Remove existing accounts
+
+- **Data Storage**
+  - 2D string array for storing account information
+  - Dynamic array resizing for account additions/removals
+  - Account search functionality by account number
+
+#### 🔹 OOP Concepts Applied
+- **Encapsulation**: Private fields and public methods in Bank class
+- **Abstraction**: Hiding implementation details of account storage and operations
+- **Classes and Objects**: User and Bank classes with instantiation
+- **Static Members**: Global bank instance and current user in BankManager
+
+#### 🔹 Technical Highlights
+- 2D array manipulation for data storage and retrieval
+- String-to-numeric conversions for financial calculations
+- DateTime handling for account creation timestamps
+- Input validation and error handling for transactions
+- Menu-driven console interface with switch-case navigation
+- Minimum balance enforcement for withdrawals
+
+#### 🔹 Learning Outcomes
+- Implementing role-based systems in console applications
+- Managing dynamic data structures in C#
+- Applying OOP principles to real-world scenarios
+- Building interactive banking system interfaces
+- Handling financial data with precision and validation
