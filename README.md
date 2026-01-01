@@ -617,3 +617,77 @@ Developed a comprehensive **Bank Account Management System** using **Object-Orie
 - Applying OOP principles to real-world scenarios
 - Building interactive banking system interfaces
 - Handling financial data with precision and validation
+
+### 🔢 Math Utility Tool
+
+Developed a comprehensive **Mathematical Utility Tool** implementing fundamental algorithms and mathematical functions in C#. This console-based application provides a menu-driven interface for performing various mathematical calculations.
+
+#### 🔹 Features Implemented
+- **Factorial Calculation**: Computes factorial of a given number with input validation for negative numbers
+- **Prime Number Check**: Determines whether a number is prime using efficient divisibility testing
+- **Greatest Common Divisor (GCD)**: Implements Euclidean algorithm for finding GCD of two numbers
+- **Fibonacci Sequence**: Generates nth Fibonacci number using iterative approach
+
+#### 🔹 Technical Implementation
+- **Menu-Driven Interface**: Switch-case based navigation system for user interaction
+- **Input Validation**: Proper handling of edge cases (negative numbers, invalid inputs)
+- **Algorithmic Efficiency**: Optimized implementations for each mathematical function
+- **Error Handling**: Graceful handling of invalid inputs and edge cases
+
+#### 🔹 Mathematical Algorithms Covered
+- **Factorial**: Iterative multiplication from 1 to n
+- **Prime Check**: Division testing up to n/2 for efficiency
+- **Euclidean GCD**: Repeated modulo operations until remainder is zero
+- **Fibonacci**: Iterative addition of previous two numbers
+
+#### 🔹 Learning Outcomes
+- Implementing mathematical algorithms in programming
+- Input validation and error handling techniques
+- Menu-driven console application development
+- Understanding algorithmic complexity and efficiency
+- Applying mathematical concepts to practical programming problems
+
+## 📅 1 January 2026
+
+### 🧾 Invoice Generator System
+
+Developed a robust **Invoice Generation System** using Object-Oriented Programming principles in C#. This application parses user input to create invoices with multiple tasks and calculates total amounts.
+
+#### 🔹 Project Structure
+- **Invoice.cs**: Core invoice class handling task parsing, display, and total calculation
+- **InvoiceUtils.cs**: Utility class with static helper methods for input validation and amount extraction
+- **Program.cs**: Main entry point managing user interaction and invoice creation
+
+#### 🔹 Key Features Implemented
+- **Task Parsing**: Splits comma-separated input into individual invoice tasks
+- **Amount Extraction**: Parses task strings to extract names and monetary amounts
+- **Invoice Display**: Formatted output showing each task with its cost
+- **Total Calculation**: Sums all task amounts for invoice total
+- **Input Validation**: Checks for empty or invalid input strings
+
+#### 🔹 OOP Concepts Applied
+- **Encapsulation**: Private methods and fields within Invoice class
+- **Static Utility Methods**: Reusable helper functions in InvoiceUtils class
+- **Object Instantiation**: Creating Invoice objects from user input
+- **Method Overloading**: Using out parameters for multiple return values
+
+#### 🔹 Technical Highlights
+- **String Manipulation**: Splitting and trimming input strings
+- **Error-Safe Parsing**: TryParse for numeric conversion without exceptions
+- **Defensive Programming**: Null and empty string checks throughout
+- **Modular Design**: Separation of concerns between classes
+- **Console I/O**: User-friendly input prompts and formatted output
+
+#### 🔹 Data Processing Flow
+1. User enters comma-separated tasks (e.g., "Logo Design - 3000 INR, Web Page - 4500 INR")
+2. Input is validated for emptiness
+3. Invoice object parses tasks into name-amount pairs
+4. Each task is displayed with formatting
+5. Total amount is calculated and shown
+
+#### 🔹 Learning Outcomes
+- Building real-world business applications in C#
+- String parsing and manipulation techniques
+- Implementing utility classes for code reusability
+- Error handling and input validation strategies
+- Designing modular, maintainable object-oriented code
