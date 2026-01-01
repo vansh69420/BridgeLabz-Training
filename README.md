@@ -691,3 +691,54 @@ Developed a robust **Invoice Generation System** using Object-Oriented Programmi
 - Implementing utility classes for code reusability
 - Error handling and input validation strategies
 - Designing modular, maintainable object-oriented code
+
+### 🍽️ Cafeteria Menu Management System
+
+Developed a **Role-Based Cafeteria Menu System** using Object-Oriented Programming principles in C#. This application demonstrates separation of concerns with dedicated classes for data management and application flow.
+
+#### 🔹 Project Structure
+- **Cafeteria.cs**: Data management class handling menu items and display logic
+- **CafeteriaApp.cs**: Application controller managing user roles and menu interactions
+- **Program.cs**: Default entry point (main logic moved to CafeteriaApp for better organization)
+
+#### 🔹 Key Features Implemented
+- **Role-Based Access Control**
+  - Admin role: View-only access to menu items
+  - Student role: Full access to view menu and place orders
+
+- **Menu Management**
+  - Fixed array of 10 cafeteria items (sandwiches, burgers, beverages, etc.)
+  - Indexed display of menu items
+  - Item selection by index number
+
+- **User Interaction**
+  - Role selection at application startup
+  - Menu-driven interface with numbered options
+  - Input validation for menu selections
+
+#### 🔹 OOP Concepts Applied
+- **Encapsulation**: Private menu array and public accessor methods
+- **Separation of Concerns**: Cafeteria class for data, CafeteriaApp for logic
+- **Single Responsibility Principle**: Each class has one clear purpose
+- **Static Methods**: Utility functions for menu operations
+
+#### 🔹 Technical Highlights
+- **Array-Based Data Storage**: Fixed-size array for menu items
+- **Switch-Case Navigation**: Clean menu system implementation
+- **Input Validation**: Bounds checking for array access
+- **Loop-Based Menus**: Do-while loops for continuous user interaction
+- **Modular Code Structure**: Logical separation between data and presentation layers
+
+#### 🔹 Application Flow
+1. User selects role (Admin/Student) at startup
+2. Admin sees menu display only
+3. Student gets interactive menu with view/order options
+4. Order placement with index-based item selection
+5. Graceful exit with confirmation message
+
+#### 🔹 Learning Outcomes
+- Implementing role-based systems in console applications
+- Applying Single Responsibility Principle in class design
+- Managing fixed data structures (arrays) in OOP
+- Building interactive menu systems with validation
+- Separating data logic from user interface logic
