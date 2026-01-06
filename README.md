@@ -742,3 +742,204 @@ Developed a **Role-Based Cafeteria Menu System** using Object-Oriented Programmi
 - Managing fixed data structures (arrays) in OOP
 - Building interactive menu systems with validation
 - Separating data logic from user interface logic
+
+## 📅 5 January 2026
+
+### 🏥 Hospital Management System
+
+Practiced advanced Object-Oriented Programming (OOP) concepts in C# by implementing a comprehensive hospital management system in `oops-c#-practice/scenario-based/HospitalManagement/`.
+
+#### 🔹 System Overview
+A complete hospital billing and patient management system demonstrating real-world OOP principles including inheritance, polymorphism, abstraction, and encapsulation.
+
+#### 🔹 Classes and Interfaces Implemented
+
+- **IPayable.cs** 📄  
+  An interface defining the contract for payable items.  
+  - Properties: `Amount` (decimal), `IsPaid` (bool)  
+  - Methods: `ProcessPayment()`, `PrintReceipt()`  
+  *Purpose*: Ensures all bills follow a standard payment interface.
+
+- **Doctor.cs** 👨‍⚕️  
+  A sealed class representing medical doctors.  
+  - Properties: `Name`, `Specialization` (both with validation)  
+  - Constructor validates inputs to prevent empty values.  
+  *Purpose*: Encapsulates doctor information with data integrity.
+
+- **Patient.cs** 🏥  
+  An abstract base class for all patient types.  
+  - Properties: `Name`, `Age` (with range validation), `AssignedDoctor` (read-only)  
+  - Virtual method: `DisplayInfo()` for polymorphic behavior.  
+  *Purpose*: Common foundation for different patient categories.
+
+- **InPatient.cs** 🛏️  
+  Inherits from Patient for hospitalized patients.  
+  - Additional properties: `RoomNumber`, `DaysAdmitted`  
+  - Overrides `DisplayInfo()` to include inpatient-specific details.  
+  *Purpose*: Specialized patient type for those requiring admission.
+
+- **OutPatient.cs** 🚶‍♂️  
+  Inherits from Patient for clinic visitors.  
+  - Additional property: `VisitDate` (with future date validation)  
+  - Overrides `DisplayInfo()` to show visit information.  
+  *Purpose*: Specialized patient type for outpatient services.
+
+- **Bill.cs** 💰  
+  Implements IPayable for patient billing.  
+  - Properties: `BillNumber`, `Patient`, `Amount`, `IsPaid`  
+  - Methods: `ProcessPayment()`, `PrintReceipt()`  
+  - Features: Prevents duplicate payments, generates formatted receipts.  
+  *Purpose*: Handles financial transactions for patient services.
+
+- **Program.cs** 🚀  
+  Main application demonstrating the system functionality.  
+  - Creates doctors and patients (both inpatient and outpatient)  
+  - Generates bills and processes payments  
+  - Showcases polymorphism through `DisplayInfo()` calls  
+  *Purpose*: Integration and demonstration of all components.
+
+#### 🔹 OOP Concepts Demonstrated
+
+- **🔒 Encapsulation**: Private fields with public properties, input validation, and controlled access.
+- **📈 Inheritance**: Patient hierarchy with InPatient and OutPatient extending base functionality.
+- **🎭 Polymorphism**: Virtual and overridden methods for different patient types' information display.
+- **🎯 Abstraction**: IPayable interface hiding implementation details of payment processing.
+- **🔐 Sealed Classes**: Doctor, InPatient, OutPatient prevent unintended inheritance.
+- **✅ Data Integrity**: Comprehensive validation for all inputs (names, ages, amounts, dates).
+
+#### 🔹 Key Features
+
+- **Patient Management**: Support for both inpatient and outpatient categories
+- **Doctor Assignment**: Each patient assigned to a specialized doctor
+- **Billing System**: Automated bill generation with payment tracking
+- **Receipt Generation**: Professional formatted payment receipts
+- **Input Validation**: Robust error handling and data validation throughout
+- **Polymorphic Display**: Unified interface for displaying different patient types
+
+#### 🔹 Application Flow
+
+1. **Setup**: Create doctors with specializations
+2. **Patient Registration**: Instantiate patients (in/out) with assigned doctors
+3. **Information Display**: Show patient details using polymorphic methods
+4. **Bill Creation**: Generate bills for each patient service
+5. **Payment Processing**: Process payments through interface abstraction
+6. **Receipt Printing**: Generate and display payment confirmations
+
+#### 🔹 Technical Highlights
+
+- **Interface Implementation**: Clean abstraction for payment operations
+- **Inheritance Hierarchy**: Well-structured class relationships
+- **Method Overriding**: Runtime polymorphism for display methods
+- **Exception Handling**: Argument validation with meaningful error messages
+- **Read-Only Properties**: Immutable doctor assignments using private setters
+- **Sealed Classes**: Preventing further inheritance where not needed
+
+#### 🔹 Learning Outcomes
+
+- Mastering advanced OOP principles in a practical scenario
+- Implementing complex inheritance hierarchies
+- Using interfaces for abstraction and loose coupling
+- Applying encapsulation for data protection and validation
+- Demonstrating polymorphism in real-world applications
+- Building maintainable and extensible code structures
+- Understanding hospital management system requirements
+- Practicing professional coding standards and documentation
+
+### 🚗 Vehicle Rental System
+
+Extended OOP practice by implementing a comprehensive vehicle rental system in `oops-c#-practice/scenario-based/VehicleRent/`, demonstrating inheritance, polymorphism, and abstraction in a real-world rental scenario.
+
+#### 🔹 System Overview
+A menu-driven console application for renting different types of vehicles (bikes, cars, trucks) with hourly/daily rates, availability tracking, and bill generation.
+
+#### 🔹 Classes and Interfaces Implemented
+
+- **IRentable.cs** 📄  
+  An interface defining the contract for rentable vehicles.  
+  - Method: `CalculateRent(int duration, bool isHourly)`  
+  *Purpose*: Ensures all vehicle types implement rent calculation uniformly.
+
+- **Vehicle.cs** 🚙  
+  An abstract base class implementing IRentable for all vehicles.  
+  - Properties: `VehicleId`, `Brand`, `IsAvailable`, `RentPerDay`, `RentPerHour`  
+  - Method: `Rent()` to mark vehicle as unavailable  
+  - Abstract method: `CalculateRent()` for polymorphic implementation.  
+  *Purpose*: Common foundation for all vehicle types with shared functionality.
+
+- **Bike.cs** 🏍️  
+  Sealed class inheriting from Vehicle for two-wheeler rentals.  
+  - Rent rates: ₹300/day, ₹40/hour  
+  - Implements `CalculateRent()` for bike-specific calculations.  
+  *Purpose*: Specialized vehicle type for motorcycle rentals.
+
+- **Car.cs** 🚗  
+  Sealed class inheriting from Vehicle for four-wheeler rentals.  
+  - Rent rates: ₹1000/day, ₹150/hour  
+  - Implements `CalculateRent()` for car-specific calculations.  
+  *Purpose*: Specialized vehicle type for passenger car rentals.
+
+- **Truck.cs** 🚚  
+  Sealed class inheriting from Vehicle for heavy vehicle rentals.  
+  - Rent rates: ₹2000/day, ₹300/hour  
+  - Implements `CalculateRent()` for truck-specific calculations.  
+  *Purpose*: Specialized vehicle type for commercial truck rentals.
+
+- **Bill.cs** 💸  
+  Static utility class for generating rental bills.  
+  - Method: `Print()` displays formatted bill with vehicle details, rent type, duration, and total cost.  
+  *Purpose*: Handles bill presentation and formatting.
+
+- **Program.cs** 🚀  
+  Main application with menu-driven interface.  
+  - Arrays of Bike, Car, Truck instances  
+  - Menu system for vehicle type selection  
+  - Vehicle selection by ID with availability check  
+  - Rent calculation (hourly/daily) and bill generation.  
+  *Purpose*: User interface and system orchestration.
+
+#### 🔹 OOP Concepts Demonstrated
+
+- **🔒 Encapsulation**: Protected fields in Vehicle class with public read-only properties.
+- **📈 Inheritance**: Bike, Car, Truck extending Vehicle with specific rent rates.
+- **🎭 Polymorphism**: Abstract `CalculateRent()` method implemented differently per vehicle type.
+- **🎯 Abstraction**: IRentable interface decoupling rent calculation from implementation.
+- **🔐 Sealed Classes**: Bike, Car, Truck prevent further inheritance.
+- **🛡️ Data Protection**: Availability tracking and controlled access to vehicle state.
+
+#### 🔹 Key Features
+
+- **Multi-Vehicle Support**: Bikes, cars, and trucks with different pricing
+- **Flexible Renting**: Hourly or daily rental options
+- **Availability Management**: Real-time tracking of vehicle availability
+- **Menu-Driven Interface**: User-friendly console navigation
+- **Bill Generation**: Professional formatted rental receipts
+- **Input Validation**: ID validation and availability checks
+
+#### 🔹 Application Flow
+
+1. **Vehicle Selection**: Choose from Bike/Car/Truck categories
+2. **Availability Display**: Show available vehicles with rates
+3. **Vehicle Booking**: Select specific vehicle by ID
+4. **Rent Configuration**: Choose hourly/daily and specify duration
+5. **Cost Calculation**: Polymorphic rent calculation based on vehicle type
+6. **Bill Printing**: Generate and display formatted rental bill
+
+#### 🔹 Technical Highlights
+
+- **Abstract Base Class**: Vehicle providing common functionality
+- **Interface Segregation**: IRentable for clean abstraction
+- **Polymorphic Arrays**: Arrays of base type holding derived instances
+- **Static Utility Class**: Bill for stateless operations
+- **Menu System**: Switch-case navigation with input parsing
+- **Availability Logic**: Boolean flags for rental state management
+
+#### 🔹 Learning Outcomes
+
+- Implementing polymorphic systems with abstract classes and interfaces
+- Building menu-driven console applications
+- Managing collections of objects with inheritance
+- Applying encapsulation for data integrity
+- Creating extensible code structures for similar domains
+- Practicing real-world scenario implementation
+- Understanding vehicle rental business logic
+- Developing user-friendly console interfaces
