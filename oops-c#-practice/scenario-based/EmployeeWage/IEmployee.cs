@@ -1,8 +1,9 @@
 using System;
 public interface IEmployee
 {
-    void MarkPresent();
-    void MarkAbsent();
+    void CheckAttendance();
 
     void SetEmployee(Employee employee);
+
+    
 }

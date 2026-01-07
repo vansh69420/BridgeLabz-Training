@@ -7,6 +7,8 @@ public class Employee
 
     private bool IsPresent{get; set;}
 
+    private double DailyWage{get; set;}
+
     public void SetEmployeeID(int id)
     {
         EmployeeId = id;
@@ -23,7 +25,10 @@ public class Employee
         IsPresent = present;
     }
 
-    
+    public bool GetAttendance()
+        {
+            return IsPresent;
+        }
     public override string ToString()
     {
        string status = IsPresent ? "Present" : "Absent";

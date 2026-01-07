@@ -7,13 +7,14 @@ class EmployeeUtilityImpl : IEmployee
     {
         Employee = employee;
     }
-    public void MarkPresent()
+    public void CheckAttendance()
     {
-        Employee.SetAttendance(true);
-    }
+        Random random = new Random();
+        int attendance = random.Next(0, 2); // 0 or 1
 
-    public void MarkAbsent()
-    {
-        Employee.SetAttendance(false);
+        if (attendance == 1)
+            Employee.SetAttendance(true);
+        else
+            Employee.SetAttendance(false);
     }
 }

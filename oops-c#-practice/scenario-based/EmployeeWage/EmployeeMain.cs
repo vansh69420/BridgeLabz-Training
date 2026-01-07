@@ -5,8 +5,8 @@ class EmployeeMain
 
     public static void Main()
     {
-        EmployeeMenu Menu = new EmployeeMenu();
-        Menu.MainMenu();
+        EmployeeMenu menu = new EmployeeMenu();
+        menu.MainMenu();
         
     }
 }
