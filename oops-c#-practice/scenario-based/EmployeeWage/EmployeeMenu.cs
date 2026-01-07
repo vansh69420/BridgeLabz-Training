@@ -23,6 +23,7 @@ public sealed class EmployeeMenu
             {
                 EmployeeService.SetEmployee(emp);
                 EmployeeService.CheckAttendance();
+                EmployeeService.CalculateDailyWage();
             }
 
         foreach (Employee emp in employees)
