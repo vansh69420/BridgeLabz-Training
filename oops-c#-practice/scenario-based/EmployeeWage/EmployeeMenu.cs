@@ -39,7 +39,8 @@ public class EmployeeMenu
                 Console.WriteLine("1. Show Attendance Table");
                 Console.WriteLine("2. Show Daily Wage Table");
                 Console.WriteLine("3. Show Monthly Wage Table");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("4. Calculate Monthly Wage with Max Hours & Days");
+                Console.WriteLine("5. Exit");
                 Console.Write("Enter your choice: ");
 
                 bool isValid = int.TryParse(Console.ReadLine(), out choice);
@@ -62,8 +63,10 @@ public class EmployeeMenu
                     case 3:
                         ShowMonthlyWage();
                         break;
-
                     case 4:
+                        ShowMonthlyWageWithCondition();
+                        break;
+                    case 5:
                         Console.WriteLine("Exiting program...");
                         break;
 
@@ -133,6 +136,30 @@ public class EmployeeMenu
         }
         Console.WriteLine("--------------------------------------------------------------");
     }
+
+    private void ShowMonthlyWageWithCondition()
+{
+    Console.WriteLine("----------------------------------------------------------------------------");
+    Console.WriteLine($"{"ID",-6} {"Name",-10} {"Days",-8} {"Hours",-8} {"Monthly Wage",-15}");
+    Console.WriteLine("----------------------------------------------------------------------------");
+
+    foreach (var emp in employees)
+    {
+        EmployeeService.SetEmployee(emp);
+        EmployeeService.CalculateMonthlyWageWithCondition();
+
+        Console.WriteLine(
+            $"{emp.GetEmployeeId(),-6} " +
+            $"{emp.GetEmployeeName(),-10} " +
+            $"{emp.GetTotalWorkingDays(),-8} " +
+            $"{emp.GetTotalWorkingHours(),-8} " +
+            $"{emp.GetMonthlyWage(),-15}"
+        );
+    }
+
+    Console.WriteLine("----------------------------------------------------------------------------");
+}
+
 
 
 }

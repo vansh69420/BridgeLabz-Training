@@ -11,6 +11,10 @@ public class Employee
     private double DailyWage { get; set; }
     private string WorkType { get; set; }
 
+    private int TotalWorkingDays { get; set; }
+    private int TotalWorkingHours { get; set; }
+    private int MonthlyWage { get; set; }
+
     public void SetEmployeeId(int id)
     {
         EmployeeId = id;
@@ -65,6 +69,36 @@ public class Employee
     public string GetWorkType()
     {
         return WorkType;
+    }
+
+    public void SetTotalWorkingDays(int days)
+    {
+        TotalWorkingDays = days;
+    }
+
+    public void SetTotalWorkingHours(int hours)
+    {
+        TotalWorkingHours = hours;
+    }
+
+    public void SetMonthlyWage(int wage)
+    {
+        MonthlyWage = wage;
+    }
+
+    public int GetTotalWorkingDays()
+    {
+        return TotalWorkingDays;
+    }
+
+    public int GetTotalWorkingHours()
+    {
+        return TotalWorkingHours;
+    }
+
+    public int GetMonthlyWage()
+    {
+        return MonthlyWage;
     }
 
     public override string ToString()

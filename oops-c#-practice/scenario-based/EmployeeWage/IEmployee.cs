@@ -5,5 +5,7 @@ public interface IEmployee
     void SetEmployee(Employee employee);
     void CalculateDailyWage();
 
+    void CalculateMonthlyWageWithCondition();
+
     
 }
