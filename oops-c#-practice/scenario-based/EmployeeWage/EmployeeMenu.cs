@@ -22,14 +22,15 @@ public class EmployeeMenu
             employees[9] = CreateEmployee(110, "Sneha");
         }
 
-        public void ShowMenu() 
+        public void ShowMenu()
         {
             foreach (var emp in employees)
             {
                 EmployeeService.SetEmployee(emp);
-                EmployeeService.CheckAttendance();   
-                EmployeeService.CalculateDailyWage(); 
+                EmployeeService.CheckAttendance();        
+                EmployeeService.CalculateDailyWage();     
             }
+
             int choice = 0;
 
             do
@@ -37,7 +38,8 @@ public class EmployeeMenu
                 Console.WriteLine("\n==== Employee Wage Menu ====");
                 Console.WriteLine("1. Show Attendance Table");
                 Console.WriteLine("2. Show Daily Wage Table");
-                Console.WriteLine("3. Exit");
+                Console.WriteLine("3. Show Monthly Wage Table");
+                Console.WriteLine("4. Exit");
                 Console.Write("Enter your choice: ");
 
                 bool isValid = int.TryParse(Console.ReadLine(), out choice);
@@ -58,6 +60,10 @@ public class EmployeeMenu
                         break;
 
                     case 3:
+                        ShowMonthlyWage();
+                        break;
+
+                    case 4:
                         Console.WriteLine("Exiting program...");
                         break;
 
@@ -65,8 +71,9 @@ public class EmployeeMenu
                         Console.WriteLine("Invalid choice! Try again.");
                         break;
                 }
-            } while (choice != 3);
+            } while (choice != 4);
         }
+
 
         private Employee CreateEmployee(int id, string name)
         {
@@ -78,10 +85,11 @@ public class EmployeeMenu
 
         private void PrintHeader()
         {
-            Console.WriteLine("--------------------------------------------------------------");
-            Console.WriteLine($"{"ID",-6} {"Name",-10} {"Present",-10} {"Hours",-8} {"Wage",-8} {"Type",-10}");
-            Console.WriteLine("--------------------------------------------------------------");
+            Console.WriteLine("----------------------------------------------------------------------------");
+            Console.WriteLine($"{"ID",-6} {"Name",-10} {"Present",-10} {"Hours",-8} {"Wage",-8} {"Type",-10} {"MonthlyWage",-12}");
+            Console.WriteLine("----------------------------------------------------------------------------");
         }
+
 
         private void ShowAttendance()
         {
@@ -104,5 +112,27 @@ public class EmployeeMenu
             }
             Console.WriteLine("--------------------------------------------------------------");
         }
+
+        private void ShowMonthlyWage()
+    {
+        const int workingDays = 20;
+        PrintHeader();
+        foreach (var emp in employees)
+        {
+            double monthlyWage = 0;
+
+            if (emp.GetAttendance()) 
+            {
+                if (emp.GetWorkType() == "Full Time")
+                    monthlyWage = emp.GetWorkingHours() * 20 * workingDays; 
+                else if (emp.GetWorkType() == "Part Time")
+                    monthlyWage = emp.GetWorkingHours() * 20 * workingDays + emp.GetWorkingHours() * 20 * workingDays; 
+            }
+
+            Console.WriteLine($"{emp.GetEmployeeId(),-6} {emp.GetEmployeeName(),-10} {emp.GetAttendance(),-10} {emp.GetWorkingHours(),-8} {emp.GetDailyWage(),-8} {emp.GetWorkType(),-10} {monthlyWage,-10}");
+        }
+        Console.WriteLine("--------------------------------------------------------------");
+    }
+
 
 }
