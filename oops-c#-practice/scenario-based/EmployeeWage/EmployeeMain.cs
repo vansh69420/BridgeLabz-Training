@@ -6,7 +6,7 @@ class EmployeeMain
     public static void Main()
     {
         EmployeeMenu menu = new EmployeeMenu();
-        menu.MainMenu();
+        menu.ShowMenu();
         
     }
 }

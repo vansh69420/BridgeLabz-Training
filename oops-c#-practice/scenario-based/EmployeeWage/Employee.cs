@@ -11,15 +11,23 @@ public class Employee
     private double DailyWage { get; set; }
     private string WorkType { get; set; }
 
-    public void SetEmployeeID(int id)
+    public void SetEmployeeId(int id)
     {
         EmployeeId = id;
+    }
+    public int GetEmployeeId()
+    {
+        return EmployeeId;
     }
 
 
     public void SetEmployeeName(string name)
     {
         EmployeeName = name;
+    }
+    public string GetEmployeeName()
+    {
+        return EmployeeName;
     }
 
     public void SetAttendance(bool present)
@@ -36,15 +44,27 @@ public class Employee
     {
         WorkingHours = hours;
     }
+    public int GetWorkingHours()
+    {
+        return WorkingHours;
+    }
 
     public void SetDailyWage(double wage)
     {
         DailyWage = wage;
     }
+    public double GetDailyWage()
+    {
+        return DailyWage;
+    }
 
     public void SetWorkType(string type)
     {
         WorkType = type;
+    }
+    public string GetWorkType()
+    {
+        return WorkType;
     }
 
     public override string ToString()
