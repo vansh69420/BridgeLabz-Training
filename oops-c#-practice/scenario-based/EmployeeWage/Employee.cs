@@ -9,6 +9,7 @@ public class Employee
 
     private int WorkingHours { get; set; }
     private double DailyWage { get; set; }
+    private string WorkType { get; set; }
 
     public void SetEmployeeID(int id)
     {
@@ -41,12 +42,19 @@ public class Employee
         DailyWage = wage;
     }
 
+    public void SetWorkType(string type)
+    {
+        WorkType = type;
+    }
+
     public override string ToString()
     {
-        return "ID: " + EmployeeId +
-            ", Name: " + EmployeeName +
-            ", Present: " + IsPresent +
-            ", Hours: " + WorkingHours +
-            ", Wage: " + DailyWage;
+
+        return $"{EmployeeId,-6} " +
+               $"{EmployeeName,-10} " +
+               $"{IsPresent,-10} " +
+               $"{WorkingHours,-8} " +
+               $"{DailyWage,-8} " +
+               $"{WorkType,-10}";
     }
 }

@@ -18,12 +18,13 @@ public sealed class EmployeeMenu
             employees[7] = CreateEmployee(108, "Pooja");
             employees[8] = CreateEmployee(109, "Karan");
             employees[9] = CreateEmployee(110, "Sneha");
-
+        PrintHeader();
         foreach (Employee emp in employees)
             {
                 EmployeeService.SetEmployee(emp);
                 EmployeeService.CheckAttendance();
                 EmployeeService.CalculateDailyWage();
+                Console.WriteLine(emp);
             }
 
         foreach (Employee emp in employees)
@@ -41,6 +42,11 @@ public sealed class EmployeeMenu
             return emp;
         }
 
-    
+    private void PrintHeader()
+{
+    Console.WriteLine("--------------------------------------------------------------");
+    Console.WriteLine($"{"ID",-6} {"Name",-10} {"Present",-10} {"Hours",-8} {"Wage",-8} {"Type",-10}");
+    Console.WriteLine("--------------------------------------------------------------");
+}
 
 }

@@ -13,7 +13,7 @@ class EmployeeUtilityImpl : IEmployee
     public void CheckAttendance()
     {
         Random random = new Random();
-        int attendance = random.Next(0, 2); // 0 or 1
+        int attendance = random.Next(0, 2);
 
         if (attendance == 1)
             Employee.SetAttendance(true);
@@ -22,22 +22,39 @@ class EmployeeUtilityImpl : IEmployee
     }
 
     public void CalculateDailyWage()
+    {
+        const int WAGE_PER_HOUR = 20;
+        const int FULL_TIME_HOURS = 8;
+
+        if (!Employee.GetAttendance())
         {
-            Random random = new Random();
-            int empType = random.Next(0, 3); 
-
-            int workingHours = 0;
-
-            if (empType == 1)
-            {
-                workingHours = FULL_TIME_HOURS;
-            }
-            else if (empType == 2)
-            {
-                workingHours = random.Next(1, FULL_TIME_HOURS);
-            }
-
-            Employee.SetWorkingHours(workingHours);
-            Employee.SetDailyWage(workingHours * WAGE_PER_HOUR);
+            Employee.SetWorkingHours(0);
+            Employee.SetDailyWage(0);
+            Employee.SetWorkType("Absent");
+            return;
         }
+
+        Random random = new Random();
+        int workType = random.Next(0, 2);
+
+        if (workType == 0)
+        {
+
+            Employee.SetWorkType("Full Time");
+            Employee.SetWorkingHours(FULL_TIME_HOURS);
+            Employee.SetDailyWage(FULL_TIME_HOURS * WAGE_PER_HOUR);
+        }
+        else
+        {
+
+            int partTimeHours = random.Next(1, 8); 
+
+            Employee.SetWorkType("Part Time");
+            Employee.SetWorkingHours(partTimeHours);
+            Employee.SetDailyWage(partTimeHours * WAGE_PER_HOUR + FULL_TIME_HOURS * WAGE_PER_HOUR);
+        }
+    }
+
+    
+
 }
