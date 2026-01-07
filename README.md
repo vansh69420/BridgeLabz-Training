@@ -845,6 +845,27 @@ A complete hospital billing and patient management system demonstrating real-wor
 - Understanding hospital management system requirements
 - Practicing professional coding standards and documentation
 
+### **Bird Sanctuary System**
+
+A concise object-oriented demo showcasing inheritance, interfaces, and polymorphism using multiple bird types.
+
+- **Location:** [oops-c#-practice/scenario-based/BirdSantuarySystem](oops-c#-practice/scenario-based/BirdSantuarySystem)
+- **What I implemented (by 5 Jan):**
+  - `Bird.cs` — abstract base class with `Name` property and `ToString()` override.
+  - `IFlyable.cs` — interface declaring `void Fly()`.
+  - `ISwimmable.cs` — interface declaring `void Swim()`.
+  - Concrete types: `Eagle`, `Sparrow` (fly only), `Duck`, `Penguin` (swim only), and `Seagull` (both fly + swim).
+  - `Utility.cs` — `BirdUtility.ProcessBirds(Bird[] birds)` prints details and invokes behaviors via `is` checks and casting.
+  - `Program.cs` — demo entrypoint that constructs a bird array and exercises polymorphism.
+
+- **How to run:**
+  - From repo root run: `dotnet run --project oops-c#-practice/scenario-based/BirdSantuarySystem/BirdSantuarySystem.csproj`
+
+- **Highlights:**
+  - Separation of concerns: data in `Bird`, behaviors in `IFlyable` / `ISwimmable`.
+  - `Seagull` demonstrates multiple capability composition.
+  - `BirdUtility` centralizes runtime type-checking and behavior invocation.
+
 ### 🚗 Vehicle Rental System
 
 Extended OOP practice by implementing a comprehensive vehicle rental system in `oops-c#-practice/scenario-based/VehicleRent/`, demonstrating inheritance, polymorphism, and abstraction in a real-world rental scenario.
