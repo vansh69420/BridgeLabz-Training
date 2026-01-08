@@ -27,8 +27,8 @@ public class EmployeeMenu
             foreach (var emp in employees)
             {
                 EmployeeService.SetEmployee(emp);
-                EmployeeService.CheckAttendance();        
-                EmployeeService.CalculateDailyWage();     
+                EmployeeService.CheckAttendance();
+                EmployeeService.CalculateDailyWage();
             }
 
             int choice = 0;
