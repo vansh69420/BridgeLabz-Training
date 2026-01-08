@@ -1,7 +1,10 @@
+using System;
+
 class StockSpan
 {
-    public static void Calculate(int[] price)
+    static void Main()
     {
+        int[] price = { 100, 80, 60, 70, 60, 75, 85 };
         int n = price.Length;
         int[] span = new int[n];
         int[] st = new int[n];

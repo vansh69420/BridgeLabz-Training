@@ -1,28 +1,36 @@
+using System;
+
 class LongestConsecutive
 {
-    public static int Find(int[] arr)
+    static bool Contains(int[] arr, int n, int key)
     {
-        int max = 0;
-
-        for (int i = 0; i < arr.Length; i++)
-        {
-            int curr = arr[i];
-            int count = 1;
-
-            while (Contains(arr, curr + 1))
-            {
-                curr++;
-                count++;
-            }
-            if (count > max) max = count;
-        }
-        return max;
+        for (int i = 0; i < n; i++)
+            if (arr[i] == key)
+                return true;
+        return false;
     }
 
-    static bool Contains(int[] arr, int x)
+    static void Main()
     {
-        for (int i = 0; i < arr.Length; i++)
-            if (arr[i] == x) return true;
-        return false;
+        int[] arr = { 100, 4, 200, 1, 3, 2 };
+        int n = arr.Length;
+        int longest = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            int current = arr[i];
+            int count = 1;
+
+            while (Contains(arr, n, current + 1))
+            {
+                current++;
+                count++;
+            }
+
+            if (count > longest)
+                longest = count;
+        }
+
+        Console.WriteLine(longest);
     }
 }

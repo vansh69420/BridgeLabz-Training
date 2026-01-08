@@ -1,22 +1,25 @@
+using System;
+
 class ZeroSumSubarray
 {
-    public static bool Exists(int[] arr)
+    static void Main()
     {
-        int[] sumArr = new int[arr.Length];
+        int[] arr = { 4, 2, -3, 1, 6 };
+        int[] sums = new int[arr.Length];
         int size = 0, sum = 0;
+        bool found = false;
 
         for (int i = 0; i < arr.Length; i++)
         {
             sum += arr[i];
-
-            if (sum == 0) return true;
+            if (sum == 0) { found = true; break; }
 
             for (int j = 0; j < size; j++)
-                if (sumArr[j] == sum)
-                    return true;
+                if (sums[j] == sum) found = true;
 
-            sumArr[size++] = sum;
+            sums[size++] = sum;
         }
-        return false;
+
+        Console.WriteLine(found);
     }
 }

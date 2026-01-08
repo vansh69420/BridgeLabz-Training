@@ -1,6 +1,8 @@
+using System;
+
 class StackSort
 {
-    static int[] st = new int[100];
+    static int[] st = new int[50];
     static int top = -1;
 
     static void Push(int x) { st[++top] = x; }
@@ -13,7 +15,6 @@ class StackSort
             Push(x);
             return;
         }
-
         int temp = Pop();
         InsertSorted(x);
         Push(temp);
@@ -25,5 +26,17 @@ class StackSort
         int x = Pop();
         Sort();
         InsertSorted(x);
+    }
+
+    static void Main()
+    {
+        Push(30);
+        Push(10);
+        Push(20);
+
+        Sort();
+
+        while (top != -1)
+            Console.WriteLine(Pop());
     }
 }
