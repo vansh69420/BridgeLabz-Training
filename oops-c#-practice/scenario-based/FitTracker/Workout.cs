@@ -1,18 +1,41 @@
-using System;
-public abstract class Workout
+public class Workout
 {
-    protected int duration;
-    protected double calories;
+    private int duration;
+    private string workoutType;
+    private double calories;
 
     public void SetDuration(int minutes)
     {
         duration = minutes;
     }
 
-    public abstract double CalculateCalories();
+    public int GetDuration()
+    {
+        return duration;
+    }
+
+    public void SetWorkoutType(string type)
+    {
+        workoutType = type;
+    }
+
+    public string GetWorkoutType()
+    {
+        return workoutType;
+    }
+
+    public void SetCalories(double cal)
+    {
+        calories = cal;
+    }
+
+    public double GetCalories()
+    {
+        return calories;
+    }
 
     public override string ToString()
     {
-        return $"Workout Duration: {duration} minutes, Calories Burned: {calories}";
+        return $"Workout Type: {workoutType}, Duration: {duration} min, Calories Burned: {calories}";
     }
 }
