@@ -1,0 +1,15 @@
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/obj/Debug/net10.0/MetalFactory.GeneratedMSBuildEditorConfig.editorconfig
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/obj/Debug/net10.0/MetalFactory.AssemblyInfoInputs.cache
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/obj/Debug/net10.0/MetalFactory.AssemblyInfo.cs
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/obj/Debug/net10.0/MetalFactory.csproj.CoreCompileInputs.cache
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/obj/Debug/net10.0/MetalFactory.sourcelink.json
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/bin/Debug/net10.0/MetalFactory
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/bin/Debug/net10.0/MetalFactory.deps.json
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/bin/Debug/net10.0/MetalFactory.runtimeconfig.json
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/bin/Debug/net10.0/MetalFactory.dll
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/bin/Debug/net10.0/MetalFactory.pdb
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/obj/Debug/net10.0/MetalFactory.dll
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/obj/Debug/net10.0/refint/MetalFactory.dll
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/obj/Debug/net10.0/MetalFactory.pdb
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/obj/Debug/net10.0/MetalFactory.genruntimeconfig.cache
+/Users/phoenix/Desktop/BridgeLabz-Training/datastructure-c#-practice/scenario-based/MetalFactory/obj/Debug/net10.0/ref/MetalFactory.dll
