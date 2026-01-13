@@ -964,3 +964,203 @@ A menu-driven console application for renting different types of vehicles (bikes
 - Practicing real-world scenario implementation
 - Understanding vehicle rental business logic
 - Developing user-friendly console interfaces
+
+## 📅 6 January 2026
+
+### 📞 Customer Service Call Management System
+
+Developed a **comprehensive Customer Service Call Management System** implementing object-oriented programming principles with encapsulation, data management, and search functionality.
+
+#### 🔹 System Architecture
+
+**📋 CallLog.cs** - Core Data Model
+- **Encapsulation**: Private setters with public getters for data protection
+- **Properties**: `PhoneNumber`, `Message`, `Timestamp` with controlled access
+- **Constructor**: Parameterized constructor for object initialization
+- **String Representation**: Overridden `ToString()` method for formatted display
+- **Immutable Design**: Once created, call log data cannot be modified
+
+**🔧 CallManager.cs** - Business Logic Layer
+- **Array-Based Storage**: Dynamic call log management using fixed-size array
+- **Capacity Management**: Constructor accepts capacity parameter for flexible sizing
+- **Add Functionality**: `AddCallLog()` method with overflow protection
+- **Search Operations**: Keyword-based search with case-insensitive matching
+- **Time Filtering**: Date range filtering for temporal data analysis
+- **Error Handling**: Graceful handling of storage capacity limits
+
+**🚀 Program.cs** - Application Entry Point
+- **System Initialization**: Creates CallLogManager with specified capacity
+- **Sample Data**: Pre-populated with realistic customer service scenarios
+- **Demonstration**: Shows search and filtering capabilities in action
+- **Time Management**: Uses `DateTime.Now` with relative time calculations
+
+#### 🔹 Key Features Implemented
+
+**🔍 Advanced Search Capabilities**
+- **Keyword Search**: Case-insensitive partial matching in message content
+- **Time-Based Filtering**: Filter logs within specific date/time ranges
+- **Flexible Queries**: Support for various search patterns and criteria
+
+**📊 Data Management**
+- **Structured Storage**: Organized call logs with timestamp tracking
+- **Capacity Control**: Prevents array overflow with user feedback
+- **Real-Time Processing**: Immediate search results and filtering
+
+**🛡️ Robust Design Patterns**
+- **Encapsulation**: Private fields with controlled public access
+- **Single Responsibility**: Each class handles specific functionality
+- **Data Integrity**: Immutable call logs prevent accidental modifications
+
+#### 🔹 Sample Output Scenarios
+- **Network Issues**: Multiple logs showing problem reporting and resolution
+- **Billing Queries**: Customer service interactions for account-related questions
+- **Technical Support**: Internet connectivity and speed-related complaints
+- **Time Tracking**: Logs with realistic timestamps for temporal analysis
+
+#### 🔹 Learning Outcomes
+- **OOP Principles**: Mastered encapsulation, constructors, and method overriding
+- **Array Management**: Dynamic data storage with capacity constraints
+- **String Operations**: Case-insensitive searching and text processing
+- **DateTime Handling**: Time-based filtering and relative time calculations
+- **System Design**: Multi-class architecture with clear separation of concerns
+- **Error Handling**: Graceful degradation when storage limits are reached
+- **Real-World Modeling**: Practical customer service scenario implementation
+
+## 📅 7 January 2026
+
+### 🏥 Hospital Management System
+
+Developed a **comprehensive Hospital Management System** implementing advanced object-oriented programming principles including inheritance, polymorphism, abstraction, and encapsulation with interface-based design patterns.
+
+#### 🔹 System Architecture
+
+**👨‍⚕️ Doctor.cs** - Sealed Entity Class
+- **Sealed Class**: Prevents inheritance to maintain doctor entity integrity
+- **Encapsulation**: Private fields with validated public properties
+- **Input Validation**: Null/whitespace checks for name and specialization
+- **Immutable Design**: Read-only properties after construction
+
+**🏥 Patient.cs** - Abstract Base Class
+- **Abstract Class**: Cannot be instantiated directly, serves as base for patient types
+- **Protected Constructor**: Ensures proper initialization through derived classes
+- **Property Validation**: Age range validation (1-120), name null checks
+- **Doctor Association**: Readonly doctor assignment for data integrity
+- **Virtual Methods**: `DisplayInfo()` method for polymorphic behavior
+
+**🛏️ InPatient.cs** - Concrete Implementation
+- **Sealed Class**: Final implementation preventing further inheritance
+- **Inheritance**: Extends Patient abstract class with specific properties
+- **Additional Properties**: Room number and days admitted with validation
+- **Method Override**: Enhanced `DisplayInfo()` with in-patient specific details
+- **Base Method Calling**: Uses `base.DisplayInfo()` for code reuse
+
+**🚶 OutPatient.cs** - Concrete Implementation
+- **Sealed Class**: Final implementation for outpatient functionality
+- **DateTime Validation**: Prevents future visit dates with business logic
+- **Inheritance**: Extends Patient with visit-specific properties
+- **Polymorphic Behavior**: Different display implementation than InPatient
+
+**💰 IPayable.cs** - Interface Contract
+- **Interface Definition**: Defines payment-related behavior contract
+- **Property Contracts**: Amount and IsPaid status requirements
+- **Method Contracts**: ProcessPayment() and PrintReceipt() signatures
+- **Abstraction**: Separates payment behavior from implementation details
+
+**🧾 Bill.cs** - Interface Implementation
+- **Interface Implementation**: Implements IPayable contract fully
+- **Readonly Fields**: Immutable bill data after creation
+- **Patient Association**: Links bills to specific patients
+- **Payment State Management**: Tracks payment status with business rules
+- **Validation Logic**: Comprehensive input validation for all parameters
+
+**🚀 Program.cs** - Application Demonstration
+- **Polymorphism Demo**: Same method calls on different patient types
+- **Interface Usage**: Working with IPayable abstraction
+- **Object Creation**: Demonstrates proper constructor usage
+- **System Integration**: Shows all components working together
+
+#### 🔹 OOP Principles Implemented
+
+**🔒 Encapsulation**
+- Private fields with public property accessors
+- Input validation in property setters
+- Controlled access to internal state
+- Data integrity through validation rules
+
+**🧬 Inheritance**
+- Abstract Patient base class with concrete implementations
+- Code reuse through base class functionality
+- Specialized behavior in derived classes
+- Protected constructors for controlled instantiation
+
+**🎭 Polymorphism**
+- Virtual method overriding in DisplayInfo()
+- Interface-based polymorphism with IPayable
+- Same method calls producing different behaviors
+- Runtime method resolution based on object type
+
+**🎯 Abstraction**
+- Abstract Patient class defining common structure
+- IPayable interface hiding payment implementation details
+- Public interfaces hiding internal complexity
+- Clear separation of concerns between classes
+
+#### 🔹 Advanced Design Patterns
+
+**🔐 Sealed Classes**
+- Doctor, InPatient, OutPatient, and Bill are sealed
+- Prevents unintended inheritance and maintains design integrity
+- Ensures final implementation behavior
+- Optimizes performance by eliminating virtual method calls
+
+**📋 Interface Segregation**
+- IPayable interface focuses solely on payment operations
+- Clean contract definition for billing functionality
+- Enables multiple payment implementations if needed
+- Promotes loose coupling between components
+
+**✅ Input Validation**
+- Comprehensive validation in all property setters
+- Business rule enforcement (age ranges, futuates)
+- Exception throwing for invalid inputs
+- Data integrity maintenance throughout the system
+
+
+#### 🔹 System Features Demonstrated
+
+**👥 Patient Management**
+- Dual patient types (InPatient/OutPatient) with specialized properties
+- Polymorphic patient information display
+- Doctor assignment with validation
+- Age and name validation with business rules
+
+**💳 Billing System**
+- Interface-based payment processing
+- Bill generation with unique identifiers
+- Payment status tracking and validation
+- Receipt generation with formatted output
+
+**🏥 Hospital Operations**
+- Room assignment for in-patients
+- Visit date tracking for out-patients
+- Doctor specialization management
+- Comprehensive patient information display
+
+#### 🔹 Sample Output Scenarios
+- **Patient Registration**: Creating different patient types with validation
+- **Doctor Assignment**: Associating patients with specialized doctors
+- **Bill Processing**: Generating and processing payments through interface
+- **Information Display**: Polymorphic patient information presentation
+- **Receipt Generation**: Formatted payment receipts with status tracking
+
+#### 🔹 Learning Outcomes
+- **Advanced OOP Mastery**: Implemented all four pillars of OOP in a cohesive system
+- **Interface Design**: Created clean contracts for payment functionality
+- **Inheritance Hierarchies**: Built proper abstract-to-concrete class relationships
+- **Sealed Class Usage**: Applied sealed classes for design integrity
+- **Validation Patterns**: Implemented comprehensive input validation strategies
+- **Polymorphic Design**: Created flexible systems using method overriding
+- **Real-World Modeling**: Translated hospital operations into object-oriented design
+- **Exception Handling**: Proper error handling with meaningful exception messages
+- **Code Reusability**: Maximized code reuse through inheritance and base method calls
+- **System Integration**: Demonstrated how multiple OOP concepts work together
