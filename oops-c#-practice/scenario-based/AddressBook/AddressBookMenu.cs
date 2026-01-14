@@ -16,7 +16,8 @@ class AddressBookMenu
             Console.WriteLine("2. Display Contacts");
             Console.WriteLine("3. Edit Contact");
             Console.WriteLine("4. Delete Contact");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("5. Add Multiple Contacts");
+            Console.WriteLine("6. Exit");
             Console.Write("Enter choice: ");
 
             string choice = Console.ReadLine();
@@ -40,6 +41,10 @@ class AddressBookMenu
                     break;
 
                 case "5":
+                    utility.AddMultipleContacts();
+                    break;
+
+                case "6":
                     isRunning = false;
                     break;
 

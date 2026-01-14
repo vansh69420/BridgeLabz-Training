@@ -179,4 +179,31 @@ class AddressBookUtilityImpl : IAddressBook
         addressBook[count - 1] = null;
         count--;
     }
+
+    public void AddMultipleContacts()
+    {
+        int n;
+
+        while (true)
+        {
+            Console.Write("How many contacts you want to add: ");
+            string input = Console.ReadLine();
+
+            if (int.TryParse(input, out n) && n > 0)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number.");
+            }
+        }
+
+        for (int i = 0; i < n; i++)
+        {
+            AddBook(CreateContact());
+            Console.WriteLine("This contact is added to the Address Book successfully.");
+            Console.WriteLine();
+        }
+    }
 }
