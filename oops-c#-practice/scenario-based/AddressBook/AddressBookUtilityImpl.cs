@@ -57,10 +57,19 @@ class AddressBookUtilityImpl : IAddressBook
         Contact c = new Contact();
 
         Console.Write("Enter First Name: ");
-        c.SetFirstName(Console.ReadLine());
+        string firstName = Console.ReadLine();
+        c.SetFirstName(firstName);
 
         Console.Write("Enter Last Name: ");
-        c.SetLastName(Console.ReadLine());
+        string lastName = Console.ReadLine();
+        c.SetLastName(lastName);
+
+        // Check duplicate right after full name
+        if (IsNameAlreadyPresent(firstName, lastName))
+        {
+            Console.WriteLine("This contact is already in the Address Book");
+            return null;
+        }
 
         Console.Write("Enter Address: ");
         c.SetAddress(Console.ReadLine());
@@ -81,6 +90,20 @@ class AddressBookUtilityImpl : IAddressBook
         c.SetEmail(Console.ReadLine());
 
         return c;
+    }
+
+    private bool IsNameAlreadyPresent(string firstName, string lastName)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            if (addressBook[i] != null &&
+                addressBook[i].GetFirstName() == firstName &&
+                addressBook[i].GetLastName() == lastName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void DisplayContacts()
