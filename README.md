@@ -2126,3 +2126,120 @@ Developed a **comprehensive cinema scheduling system** using universal linked li
 - **Input Validation**: Robust error handling and data sanitization techniques
 - **System Architecture**: Multi-component system design with proper abstraction layers
 - **Real-World Applications**: Practical implementation of library and cinema management systems
+
+
+### 🔍 Searching Algorithms 
+
+Developed comprehensive **Searching Algorithms** implementations in C# covering linear search, binary search, and advanced search techniques with real-world problem-solving applications and algorithmic optimization.
+
+#### 🔹 Linear Search Algorithms
+
+**🔢 FirstNegative.cs** - First Negative Number Detection
+- **Algorithm Type**: Sequential linear search with early termination optimization
+- **Search Strategy**: Simple iteration with conditional checking and break statement
+- **Use Case**: Data analysis for finding first occurrence of negative values in datasets
+- **Performance**: Efficient stopping once target condition is met
+
+**📝 SearchWordSentence.cs** - Text Search in Sentence Collections
+- **Algorithm Type**: Linear search with string matching capabilities
+- **Search Strategy**: Array traversal with built-in string Contains method
+- **Use Case**: Text processing and content search in document collections
+- **String Matching**: Case-sensitive word detection within sentence arrays
+
+#### 🔹 Binary Search Algorithms
+
+**🎯 FirstLastOccurence.cs** - Boundary Search in Sorted Arrays
+- **Algorithm Type**: Modified binary search for finding element boundaries
+- **Search Strategy**: Two separate binary searches with boundary adjustment techniques
+- **Use Case**: Database range queries and duplicate element analysis
+- **Optimization**: Efficient boundary detection in sorted datasets
+
+**⛰️ PeakElement.cs** - Peak Detection Algorithm
+- **Algorithm Type**: Binary search variant for finding local maximum elements
+- **Search Strategy**: Comparison-based binary search with neighbor checking
+- **Use Case**: Signal processing and data analysis for peak identification
+- **Local Maximum**: Finding elements greater than their adjacent neighbors
+
+**🔄 RotationPoint.cs** - Rotation Point Detection
+- **Algorithm Type**: Binary search in rotated sorted arrays
+- **Search Strategy**: Modified binary search comparing with array endpoints
+- **Use Case**: Array manipulation and sorted data structure analysis
+- **Rotation Analysis**: Finding pivot point in circularly shifted arrays
+
+**🗂️ Search2DMatrix.cs** - 2D Matrix Search
+- **Algorithm Type**: Binary search in 2D sorted matrix structures
+- **Search Strategy**: Treating 2D matrix as flattened 1D array for binary search
+- **Use Case**: Database table searches and spreadsheet data analysis
+- **Matrix Indexing**: Efficient row-column conversion for 2D searching
+
+#### 🔹 Challenge Problem Solutions
+
+**🧩 LinearBinaryChallenge.cs** - Hybrid Search Approach
+- **First Missing Positive Algorithm**: Linear search with boolean array marking technique
+- **Binary Search Component**: Classic binary search implementation for sorted data
+- **Hybrid Strategy**: Combines linear marking technique with binary search methods
+- **Use Case**: Data validation and integrity checking in numerical datasets
+- **Problem Solving**: Demonstrates both linear and binary search in single solution
+
+#### 🔹 Search Strategy Applications
+
+**📊 Data Analysis Applications**
+- **Statistical Analysis**: Finding first negative values in financial datasets
+- **Signal Processing**: Peak detection in audio and sensor data streams
+- **Database Queries**: Range searches and boundary detection in large datasets
+
+**💼 Business Applications**
+- **Content Management**: Text search functionality in document collections
+- **Inventory Systems**: Product lookup capabilities in sorted catalogs
+- **Data Validation**: Missing value detection and integrity checking systems
+
+**🔬 Scientific Computing**
+- **Array Processing**: Rotation point detection in circular data structures
+- **Matrix Operations**: Efficient searching algorithms in 2D scientific datasets
+- **Algorithm Research**: Hybrid approaches combining multiple search techniques
+
+#### 🔹 Performance Characteristics
+
+**🚀 Linear Search Benefits**
+- **Simplicity**: Easy to implement and understand for small datasets
+- **Flexibility**: Works with unsorted data without preprocessing requirements
+- **Early Termination**: Efficient stopping when target condition is met
+- **Memory Efficiency**: Constant space complexity with minimal overhead
+
+**⚡ Binary Search Advantages**
+- **Logarithmic Performance**: Optimal time complexity for large sorted datasets
+- **Scalability**: Excellent performance scaling with increasing data size
+- **Predictable Performance**: Consistent search time regardless of target location
+- **Space Efficiency**: In-place searching with constant space requirements
+
+**🎯 Specialized Search Techniques**
+- **Boundary Detection**: Advanced techniques for finding element ranges and occurrences
+- **Peak Finding**: Specialized algorithms for local maximum identification
+- **Matrix Searching**: Coordinate conversion techniques for 2D data structures
+- **Hybrid Approaches**: Combining multiple algorithmic techniques for complex problems
+
+#### 🔹 Algorithm Selection Criteria
+
+**📈 Data Characteristics**
+- **Unsorted Data**: Linear search for guaranteed results without preprocessing
+- **Sorted Data**: Binary search for optimal logarithmic performance
+- **Small Datasets**: Linear search acceptable due to low computational overhead
+- **Large Datasets**: Binary search essential for maintaining performance standards
+
+**🎯 Problem Requirements**
+- **First Occurrence**: Modified binary search with left boundary adjustment
+- **Range Queries**: First/last occurrence search for comprehensive boundary detection
+- **Peak Detection**: Specialized binary search for local maximum finding
+- **2D Searching**: Matrix-specific binary search with coordinate conversion
+
+#### 🔹 Learning Outcomes
+- **Search Algorithm Mastery**: Comprehensive understanding of linear and binary search techniques
+- **Performance Analysis**: Algorithm selection based on data characteristics and requirements
+- **Problem-Solving Skills**: Adapting basic search algorithms for specialized requirements
+- **Optimization Techniques**: Choosing appropriate search strategy based on performance needs
+- **Real-World Applications**: Implementing search solutions for practical business scenarios
+- **Algorithm Adaptation**: Modifying standard algorithms for specific problem requirements
+- **Efficiency Considerations**: Understanding trade-offs between time and space complexity
+- **Data Structure Knowledge**: Working effectively with arrays, matrices, and sorted structures
+- **Boundary Detection**: Advanced techniques for finding element ranges and occurrences
+- **Hybrid Approaches**: Combining multiple algorithmic techniques for complex problem solving
