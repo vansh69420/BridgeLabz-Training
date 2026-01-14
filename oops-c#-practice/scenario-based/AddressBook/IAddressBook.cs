@@ -5,4 +5,5 @@ public interface IAddressBook
     void AddBook(Contact contact);
     void DisplayContacts();
     void EditContact();
+    void DeleteContact();
 }

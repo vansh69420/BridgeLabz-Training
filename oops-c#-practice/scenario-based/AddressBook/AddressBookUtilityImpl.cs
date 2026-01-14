@@ -8,42 +8,44 @@ class AddressBookUtilityImpl : IAddressBook
     private bool predefinedLoaded = false;
 
     public void LoadPredefinedContacts()
+{
+    if (predefinedLoaded == true)
     {
-        if (predefinedLoaded == true)
-        {
-            return;
-        }
-
-        Contact c1 = new Contact();
-        c1.SetFirstName("Samay");
-        c1.SetLastName("Raina");
-        c1.SetAddress("Street 1");
-        c1.SetCity("Chandigarh");
-        c1.SetState("Punjab");
-        c1.SetZip("54000");
-        c1.SetPhoneNumber("03001234567");
-        c1.SetEmail("samay@gmail.com");
-        AddBook(c1);
-
-        Contact c2 = new Contact();
-        c2.SetFirstName("Sara");
-        c2.SetLastName("David");
-        c2.SetAddress("Street 2");
-        c2.SetCity("Goa");
-        c2.SetState("Goa");
-        c2.SetZip("74000");
-        c2.SetPhoneNumber("03111234567");
-        c2.SetEmail("sara@gmail.com");
-        AddBook(c2);
-
-        predefinedLoaded = true;
+        return;
     }
+
+    // Predefined Contact 1
+    Contact c1 = new Contact();
+    c1.SetFirstName("Rahul");
+    c1.SetLastName("Sharma");
+    c1.SetAddress("12, MG Road");
+    c1.SetCity("Bengaluru");
+    c1.SetState("Karnataka");
+    c1.SetZip("560001"); 
+    c1.SetPhoneNumber("9876543210");
+    c1.SetEmail("rahul.sharma@gmail.com");
+    AddBook(c1);
+
+    // Predefined Contact 2 
+    Contact c2 = new Contact();
+    c2.SetFirstName("Priya");
+    c2.SetLastName("Iyer");
+    c2.SetAddress("45, T Nagar");
+    c2.SetCity("Chennai");
+    c2.SetState("Tamil Nadu");
+    c2.SetZip("600017"); 
+    c2.SetPhoneNumber("9123456780");
+    c2.SetEmail("priya.iyer@gmail.com");
+    AddBook(c2);
+
+    predefinedLoaded = true;
+}
 
     public void AddBook(Contact contact)
     {
         if (count >= addressBook.Length)
         {
-            return; // address book full -> do nothing
+            return;
         }
 
         addressBook[count] = contact;
@@ -85,7 +87,6 @@ class AddressBookUtilityImpl : IAddressBook
     {
         for (int i = 0; i < count; i++)
         {
-            Console.WriteLine();
             Console.WriteLine(addressBook[i].ToString());
             Console.WriteLine();
         }
@@ -113,7 +114,8 @@ class AddressBookUtilityImpl : IAddressBook
 
         if (index == -1)
         {
-            return; // not found -> do nothing
+            Console.WriteLine("Contact not Found");
+            return;
         }
 
         Console.Write("Enter New First Name: ");
@@ -139,5 +141,42 @@ class AddressBookUtilityImpl : IAddressBook
 
         Console.Write("Enter New Email: ");
         addressBook[index].SetEmail(Console.ReadLine());
+    }
+
+    // Version 4: Delete by name (First Name + Last Name)
+    public void DeleteContact()
+    {
+        Console.Write("Enter First Name to Delete: ");
+        string firstName = Console.ReadLine();
+
+        Console.Write("Enter Last Name to Delete: ");
+        string lastName = Console.ReadLine();
+
+        int index = -1;
+
+        for (int i = 0; i < count; i++)
+        {
+            if (addressBook[i].GetFirstName() == firstName &&
+                addressBook[i].GetLastName() == lastName)
+            {
+                index = i;
+                break;
+            }
+        }
+
+        if (index == -1)
+        {
+            Console.WriteLine("Name not Found");
+            return;
+        }
+
+        // shift left to remove the contact
+        for (int i = index; i < count - 1; i++)
+        {
+            addressBook[i] = addressBook[i + 1];
+        }
+
+        addressBook[count - 1] = null;
+        count--;
     }
 }
