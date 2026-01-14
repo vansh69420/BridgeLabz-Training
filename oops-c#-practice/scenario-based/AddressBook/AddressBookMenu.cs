@@ -6,13 +6,17 @@ class AddressBookMenu
 
     public void Start()
     {
+        // predefined contacts stored once when program starts (menu starts)
+        utility.LoadPredefinedContacts();
+
         bool isRunning = true;
 
         while (isRunning)
         {
             Console.WriteLine("1. Add Contact");
-            Console.WriteLine("2. Display Contact");
-            Console.WriteLine("3. Exit");
+            Console.WriteLine("2. Display Contacts");
+            Console.WriteLine("3. Edit Contact");
+            Console.WriteLine("4. Exit");
             Console.Write("Enter choice: ");
 
             string choice = Console.ReadLine();
@@ -28,6 +32,10 @@ class AddressBookMenu
                     break;
 
                 case "3":
+                    utility.EditContact();
+                    break;
+
+                case "4":
                     isRunning = false;
                     break;
 
