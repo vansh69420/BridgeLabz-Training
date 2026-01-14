@@ -1,6 +1,6 @@
 using System;
 
-class Contact
+public class Contact
 {
     private string FirstName;
     private string LastName;
