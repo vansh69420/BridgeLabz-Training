@@ -508,4 +508,44 @@ class AddressBookUtilityImpl : IAddressBook
 
         Console.WriteLine("Total contacts in state '" + state + "': " + countState);
     }
+    private int CompareContactsByName(Contact a, Contact b)
+    {
+        int firstCompare = string.Compare(a.GetFirstName(), b.GetFirstName(), StringComparison.Ordinal);
+        if (firstCompare != 0)
+        {
+            return firstCompare;
+        }
+
+        return string.Compare(a.GetLastName(), b.GetLastName(), StringComparison.Ordinal);
+    }
+    public void SortContactsByName()
+    {
+        Console.Write("Enter Address Book Name to Sort: ");
+        string bookName = Console.ReadLine();
+
+        int index = GetAddressBookIndexByName(bookName);
+
+        if (index == -1)
+        {
+            Console.WriteLine("Address Book not found.");
+            return;
+        }
+
+        int n = contactCount[index];
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = 0; j < n - 1 - i; j++)
+            {
+                if (CompareContactsByName(addressBooks[index][j], addressBooks[index][j + 1]) > 0)
+                {
+                    Contact temp = addressBooks[index][j];
+                    addressBooks[index][j] = addressBooks[index][j + 1];
+                    addressBooks[index][j + 1] = temp;
+                }
+            }
+        }
+
+        Console.WriteLine("Contacts sorted alphabetically by Person's name.");
+    }
 }

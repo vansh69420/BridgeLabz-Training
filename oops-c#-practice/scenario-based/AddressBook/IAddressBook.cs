@@ -11,4 +11,5 @@ public interface IAddressBook
     void SearchPersonByState();
     void CountContactsByCity();
     void CountContactsByState();
+    void SortContactsByName();
 }

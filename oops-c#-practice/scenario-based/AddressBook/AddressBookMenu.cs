@@ -21,7 +21,8 @@ class AddressBookMenu
             Console.WriteLine("7. Search Person By State");
             Console.WriteLine("8. Count Contacts By City");
             Console.WriteLine("9. Count Contacts By State");
-            Console.WriteLine("10. Exit");
+            Console.WriteLine("10. Sort Contacts By Name");
+            Console.WriteLine("11. Exit");
             Console.Write("Enter choice: ");
 
             string choice = Console.ReadLine();
@@ -63,8 +64,12 @@ class AddressBookMenu
                 case "9":
                     utility.CountContactsByState();
                     break;
-                    
+
                 case "10":
+                    utility.SortContactsByName();
+                    break;
+
+                case "11":
                     isRunning = false;
                     break;
 
