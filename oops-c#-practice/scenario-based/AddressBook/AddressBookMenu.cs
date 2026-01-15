@@ -17,7 +17,9 @@ class AddressBookMenu
             Console.WriteLine("3. Edit Contact");
             Console.WriteLine("4. Delete Contact");
             Console.WriteLine("5. Create New Address Book + Add Multiple Contacts");
-            Console.WriteLine("6. Exit");
+            Console.WriteLine("6. Search Person By City");
+            Console.WriteLine("7. Search Person By State");
+            Console.WriteLine("8. Exit");
             Console.Write("Enter choice: ");
 
             string choice = Console.ReadLine();
@@ -45,6 +47,14 @@ class AddressBookMenu
                     break;
 
                 case "6":
+                    utility.SearchPersonByCity();
+                    break;
+
+                case "7":
+                    utility.SearchPersonByState();
+                    break;
+
+                case "8":
                     isRunning = false;
                     break;
 

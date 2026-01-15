@@ -31,37 +31,77 @@ class AddressBookUtilityImpl : IAddressBook
             return;
         }
 
-        // Create Default Address Book on program start
-        addressBookNames[0] = "India";
+        // Create multiple predefined Address Books
+        addressBookNames[0] = "Default";
         addressBooks[0] = new Contact[100];
         contactCount[0] = 0;
 
-        addressBookCount = 1;
+        addressBookNames[1] = "Family";
+        addressBooks[1] = new Contact[100];
+        contactCount[1] = 0;
+
+        addressBookNames[2] = "Office";
+        addressBooks[2] = new Contact[100];
+        contactCount[2] = 0;
+
+        addressBookCount = 3;
         activeBookIndex = 0;
 
-        // Predefined Contact 1 (India)
-        Contact c1 = new Contact();
-        c1.SetFirstName("Rahul");
-        c1.SetLastName("Sharma");
-        c1.SetAddress("12, MG Road");
-        c1.SetCity("Bengaluru");
-        c1.SetState("Karnataka");
-        c1.SetZip("560001");
-        c1.SetPhoneNumber("9876543210");
-        c1.SetEmail("rahul.sharma@gmail.com");
-        AddBook(c1);
+        // ---- Add predefined contacts in "Default" ----
+        activeBookIndex = 0;
 
-        // Predefined Contact 2 (India)
-        Contact c2 = new Contact();
-        c2.SetFirstName("Priya");
-        c2.SetLastName("Iyer");
-        c2.SetAddress("45, T Nagar");
-        c2.SetCity("Chennai");
-        c2.SetState("Tamil Nadu");
-        c2.SetZip("600017");
-        c2.SetPhoneNumber("9123456780");
-        c2.SetEmail("priya.iyer@gmail.com");
-        AddBook(c2);
+        Contact d1 = new Contact();
+        d1.SetFirstName("Rahul");
+        d1.SetLastName("Sharma");
+        d1.SetAddress("12, MG Road");
+        d1.SetCity("Bengaluru");
+        d1.SetState("Karnataka");
+        d1.SetZip("560001");
+        d1.SetPhoneNumber("9876543210");
+        d1.SetEmail("rahul.sharma@gmail.com");
+        AddBook(d1);
+
+        Contact d2 = new Contact();
+        d2.SetFirstName("Priya");
+        d2.SetLastName("Iyer");
+        d2.SetAddress("45, T Nagar");
+        d2.SetCity("Chennai");
+        d2.SetState("Tamil Nadu");
+        d2.SetZip("600017");
+        d2.SetPhoneNumber("9123456780");
+        d2.SetEmail("priya.iyer@gmail.com");
+        AddBook(d2);
+
+        // ---- Add predefined contacts in "Family" ----
+        activeBookIndex = 1;
+
+        Contact f1 = new Contact();
+        f1.SetFirstName("Ananya");
+        f1.SetLastName("Verma");
+        f1.SetAddress("21, Rajpath");
+        f1.SetCity("New Delhi");
+        f1.SetState("Delhi");
+        f1.SetZip("110001");
+        f1.SetPhoneNumber("9988776655");
+        f1.SetEmail("ananya.verma@gmail.com");
+        AddBook(f1);
+
+        // ---- Add predefined contacts in "Office" ----
+        activeBookIndex = 2;
+
+        Contact o1 = new Contact();
+        o1.SetFirstName("Arjun");
+        o1.SetLastName("Nair");
+        o1.SetAddress("8, Bandra West");
+        o1.SetCity("Mumbai");
+        o1.SetState("Maharashtra");
+        o1.SetZip("400050");
+        o1.SetPhoneNumber("9012345678");
+        o1.SetEmail("arjun.nair@company.com");
+        AddBook(o1);
+
+        // Reset active book back to Default
+        activeBookIndex = 0;
 
         predefinedLoaded = true;
     }
@@ -128,17 +168,80 @@ class AddressBookUtilityImpl : IAddressBook
         return c;
     }
 
+    private int GetAddressBookIndexByName(string bookName)
+    {
+        for (int i = 0; i < addressBookCount; i++)
+        {
+            if (addressBookNames[i] == bookName)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void DisplayContacts()
     {
-        if (addressBooks[activeBookIndex] == null)
+        string choice;
+
+        while (true)
         {
-            return;
+            Console.WriteLine("1. Display All Address Books Contacts");
+            Console.WriteLine("2. Display Particular Address Book Contacts");
+            Console.Write("Enter choice: ");
+            choice = Console.ReadLine();
+
+            if (choice == "1" || choice == "2")
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input.");
+            }
         }
 
-        for (int i = 0; i < contactCount[activeBookIndex]; i++)
+        if (choice == "1")
         {
-            Console.WriteLine(addressBooks[activeBookIndex][i].ToString());
-            Console.WriteLine();
+            for (int b = 0; b < addressBookCount; b++)
+            {
+                Console.WriteLine("Address Book: " + addressBookNames[b]);
+
+                for (int i = 0; i < contactCount[b]; i++)
+                {
+                    if (addressBooks[b][i] != null)
+                    {
+                        Console.WriteLine(addressBooks[b][i].ToString());
+                        Console.WriteLine();
+                    }
+                }
+
+                Console.WriteLine();
+            }
+        }
+        else if (choice == "2")
+        {
+            Console.Write("Enter Address Book Name: ");
+            string bookName = Console.ReadLine();
+
+            int index = GetAddressBookIndexByName(bookName);
+
+            if (index == -1)
+            {
+                Console.WriteLine("Address Book not found.");
+                return; // goes back to menu loop
+            }
+
+            Console.WriteLine("Address Book: " + addressBookNames[index]);
+
+            for (int i = 0; i < contactCount[index]; i++)
+            {
+                if (addressBooks[index][i] != null)
+                {
+                    Console.WriteLine(addressBooks[index][i].ToString());
+                    Console.WriteLine();
+                }
+            }
         }
     }
 
@@ -310,5 +413,58 @@ class AddressBookUtilityImpl : IAddressBook
             }
         }
         return false;
+    }
+    public void SearchPersonByCity()
+    {
+        Console.Write("Enter City: ");
+        string city = Console.ReadLine();
+
+        bool found = false;
+
+        for (int b = 0; b < addressBookCount; b++)
+        {
+            for (int i = 0; i < contactCount[b]; i++)
+            {
+                if (addressBooks[b][i] != null && addressBooks[b][i].GetCity() == city)
+                {
+                    Console.WriteLine("Address Book: " + addressBookNames[b]);
+                    Console.WriteLine(addressBooks[b][i].ToString());
+                    Console.WriteLine();
+                    found = true;
+                }
+            }
+        }
+
+        if (found == false)
+        {
+            Console.WriteLine("No contact found in this city.");
+        }
+    }
+
+    public void SearchPersonByState()
+    {
+        Console.Write("Enter State: ");
+        string state = Console.ReadLine();
+
+        bool found = false;
+
+        for (int b = 0; b < addressBookCount; b++)
+        {
+            for (int i = 0; i < contactCount[b]; i++)
+            {
+                if (addressBooks[b][i] != null && addressBooks[b][i].GetState() == state)
+                {
+                    Console.WriteLine("Address Book: " + addressBookNames[b]);
+                    Console.WriteLine(addressBooks[b][i].ToString());
+                    Console.WriteLine();
+                    found = true;
+                }
+            }
+        }
+
+        if (found == false)
+        {
+            Console.WriteLine("No contact found in this state.");
+        }
     }
 }
