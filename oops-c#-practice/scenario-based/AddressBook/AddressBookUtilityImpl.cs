@@ -467,4 +467,45 @@ class AddressBookUtilityImpl : IAddressBook
             Console.WriteLine("No contact found in this state.");
         }
     }
+    public void CountContactsByCity()
+    {
+        Console.Write("Enter City: ");
+        string city = Console.ReadLine();
+
+        int countCity = 0;
+
+        for (int b = 0; b < addressBookCount; b++)
+        {
+            for (int i = 0; i < contactCount[b]; i++)
+            {
+                if (addressBooks[b][i] != null && addressBooks[b][i].GetCity() == city)
+                {
+                    countCity++;
+                }
+            }
+        }
+
+        Console.WriteLine("Total contacts in city '" + city + "': " + countCity);
+    }
+
+    public void CountContactsByState()
+    {
+        Console.Write("Enter State: ");
+        string state = Console.ReadLine();
+
+        int countState = 0;
+
+        for (int b = 0; b < addressBookCount; b++)
+        {
+            for (int i = 0; i < contactCount[b]; i++)
+            {
+                if (addressBooks[b][i] != null && addressBooks[b][i].GetState() == state)
+                {
+                    countState++;
+                }
+            }
+        }
+
+        Console.WriteLine("Total contacts in state '" + state + "': " + countState);
+    }
 }

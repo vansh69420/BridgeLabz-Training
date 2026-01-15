@@ -19,7 +19,9 @@ class AddressBookMenu
             Console.WriteLine("5. Create New Address Book + Add Multiple Contacts");
             Console.WriteLine("6. Search Person By City");
             Console.WriteLine("7. Search Person By State");
-            Console.WriteLine("8. Exit");
+            Console.WriteLine("8. Count Contacts By City");
+            Console.WriteLine("9. Count Contacts By State");
+            Console.WriteLine("10. Exit");
             Console.Write("Enter choice: ");
 
             string choice = Console.ReadLine();
@@ -55,6 +57,14 @@ class AddressBookMenu
                     break;
 
                 case "8":
+                    utility.CountContactsByCity();
+                    break;
+
+                case "9":
+                    utility.CountContactsByState();
+                    break;
+                    
+                case "10":
                     isRunning = false;
                     break;
 

@@ -9,4 +9,6 @@ public interface IAddressBook
     void AddMultipleContacts();
     void SearchPersonByCity();
     void SearchPersonByState();
+    void CountContactsByCity();
+    void CountContactsByState();
 }
