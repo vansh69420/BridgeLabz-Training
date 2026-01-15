@@ -2482,3 +2482,76 @@ Uses arrays for:
 Address Book names
 Contact storage per Address Book
 Contact count tracking
+
+### 📒 Address Book System — Version 10
+
+Enhanced the multi–Address Book console system by adding the ability to count the number of contact persons by City or State across all Address Books. This version continues to use arrays only (no collections) and keeps the menu logic separated from core business logic.
+
+🔹 System Architecture
+
+👤 Contact.cs — Contact Model Class
+Encapsulation: Private fields with separate getter/setter methods
+Attributes Managed: FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email
+Data Representation: ToString() provides formatted contact details for display/search output
+🎯 IAddressBook.cs — Service Contract Interface
+Purpose: Defines a standard contract for Address Book operations
+Version 10 Additions:
+CountContactsByCity()
+CountContactsByState()
+Design Benefit: Ensures counting functionality is part of the formal system capabilities
+⚙️ AddressBookUtilityImpl.cs — Core Business Logic
+Multi-Address Book Storage (Arrays Only):
+addressBookNames[] → stores unique Address Book names
+addressBooks[][] → stores contacts for each Address Book separately
+contactCount[] → tracks the number of contacts in each Address Book
+addressBookCount → tracks how many Address Books exist in the system
+Counting Engine (Version 10):
+CountContactsByCity():
+Takes city input from user
+Uses nested loops to scan all Address Books and count contacts matching that city
+Prints total count for the entered city
+CountContactsByState():
+Takes state input from user
+Uses nested loops to scan all Address Books and count contacts matching that state
+Prints total count for the entered state
+Implementation Style:
+Uses simple loops and integer counters
+No collections (List, Dictionary, etc.)
+No constructor used for initialization
+📋 Menu.cs — Interactive Menu System
+Menu-Driven Console UI: Provides navigation to all features
+Version 10 Options Added:
+Count Contacts By City
+Count Contacts By State
+Control Flow: Uses while loop (continuous menu) + switch case selection
+Separation of Concerns: Menu only triggers utility methods; all counting logic stays in utility
+🚀 MainClass.cs — Application Entry Point
+Responsibility: Starts the application by calling Menu
+Startup Integration: Ensures system runs through a clean initialization and menu workflow
+🔹 Business Scenarios Implemented (Version 10)
+
+🏙️ Count Contacts By City
+User enters a city name
+System counts contacts across all address books
+Output:
+Total contacts in city 'CITY_NAME': X
+🗺️ Count Contacts By State
+User enters a state name
+System counts contacts across all address books
+Output:
+Total contacts in state 'STATE_NAME': X
+🔹 Key Features (Version 10)
+
+🔢 Contact Counting Analytics
+City-wise contact count across multiple Address Books
+State-wise contact count across multiple Address Books
+Useful for analyzing distribution of contacts geographically
+🧠 Efficient Array-Based Processing
+Nested loop scanning:
+Address Books loop
+Contacts loop
+Integer counter accumulation for total matches
+No additional data structures or collections used
+🧩 Scalable Multi-Book Support
+Counting works even when new Address Books and contacts are added
+Maintains compatibility with previous versions’ features like Add/Edit/Delete/Search
