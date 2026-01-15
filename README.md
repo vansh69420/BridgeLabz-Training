@@ -2555,3 +2555,60 @@ No additional data structures or collections used
 🧩 Scalable Multi-Book Support
 Counting works even when new Address Books and contacts are added
 Maintains compatibility with previous versions’ features like Add/Edit/Delete/Search
+
+### 📒 Address Book System — Version 11
+
+Implemented the ability to sort contact entries alphabetically by Person’s name within a selected Address Book. This version continues the multi–Address Book architecture using arrays only (no collections) and keeps all sorting logic inside the utility layer.
+
+🔹 System Architecture
+
+👤 Contact.cs — Contact Model Class
+Encapsulation: Private fields with separate getter/setter methods
+Attributes: FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email
+Display Support: ToString() provides formatted output for display/search features
+Sorting Fields Used: FirstName and LastName are used as sorting keys
+🎯 IAddressBook.cs — Service Contract Interface
+Contract-Based Design: Interface defines all supported Address Book operations
+Version 11 Addition:
+SortContactsByName()
+Benefit: Sorting behavior is exposed through interface while implemented in utility class
+⚙️ AddressBookUtilityImpl.cs — Core Business Logic
+Multi Address Book Storage (Arrays Only):
+addressBookNames[] → stores names of Address Books
+addressBooks[][] → stores contacts per Address Book
+contactCount[] → maintains contact count for each Address Book
+Sorting Engine (Version 11):
+SortContactsByName():
+asks user for the Address Book name
+finds the correct Address Book using name lookup
+sorts contacts from index 0 to contactCount[bookIndex] - 1
+CompareContactsByName(Contact a, Contact b) (private helper):
+compares FirstName first
+if FirstName is same, compares LastName
+Algorithm Used: Bubble Sort (array-based swapping, no collection sorting)
+📋 Menu.cs — Interactive Menu System
+Menu-Based Navigation: Added a new option to sort contacts
+Version 11 Menu Option:
+Sort Contacts By Name
+Separation of Concerns: Menu only calls utility.SortContactsByName() and contains no sorting logic
+🚀 MainClass.cs — Application Entry Point
+Single Responsibility: Starts the system by calling the menu
+🔹 Business Scenario Implemented (Version 11)
+
+🔤 Sort Entries Alphabetically by Person’s Name
+User enters the Address Book name to sort
+System sorts all contacts inside that Address Book in alphabetical order:
+First Name (A → Z)
+If first name matches, Last Name (A → Z)
+Result: Display and other operations now work on sorted data order
+🔹 Key Features (Version 11)
+
+✅ Name-Based Sorting
+Alphabetical sorting by FirstName and LastName
+Sorting is performed on a particular Address Book selected by name
+📦 Array-Only Implementation
+No use of List, Dictionary, or any collection frameworks
+Sorting done with manual swapping inside arrays
+🧠 Clean Utility-Layer Logic
+Sorting logic contained entirely in AddressBookUtilityImpl
+Menu remains only responsible for UI options and method calls
