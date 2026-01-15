@@ -2243,6 +2243,7 @@ Developed comprehensive **Searching Algorithms** implementations in C# covering 
 - **Data Structure Knowledge**: Working effectively with arrays, matrices, and sorted structures
 - **Boundary Detection**: Advanced techniques for finding element ranges and occurrences
 - **Hybrid Approaches**: Combining multiple algorithmic techniques for complex problem solving
+
 ## 📅 14 January 2026
 
 ### ⏱️ Runtime Analysis & Performance Comparison
@@ -2349,3 +2350,63 @@ Developed comprehensive **Runtime Analysis** implementations in C# for comparing
 - **Efficiency Awareness**: Recognition of performance trade-offs in algorithm design
 - **Testing Methodology**: Structured approach to performance measurement and analysis
 - **Production Readiness**: Preparing algorithms for real-world deployment considerations
+
+### 📒 Address Book System — Version 6
+
+Refactored the Address Book console system to support multiple Address Books in one application. Each Address Book has a unique name and stores contacts using arrays only (no collections).
+
+🔹 System Architecture
+👤 Contact.cs — Contact Model Class
+
+Encapsulation: Private fields with separate getter/setter methods
+Attributes: FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email
+String Representation: ToString() returns formatted contact details
+🎯 IAddressBook.cs — Service Contract Interface
+
+Interface Definition: Defines operations like Add, Display, Edit, Delete, Add Multiple
+Abstraction: Clean separation between menu and utility logic
+⚙️ AddressBookUtilityImpl.cs — Core Business Logic
+
+Multiple Address Book Storage:
+addressBookNames[] for book names
+addressBooks[][] for contacts per book
+contactCount[] for tracking contacts in each book
+Unique Name Validation: Checks name before creating a new Address Book
+Predefined Contacts: Loads India-based contacts into the Default book at startup
+No Constructors Used in utility (as required)
+📋 Menu.cs — Interactive Menu System
+
+Menu-Only Responsibility: Shows menu and calls utility methods
+Loop System: Runs until Exit is selected
+Switch Case Navigation: Structured console menu
+🚀 MainClass.cs — Application Entry Point
+
+Single Responsibility: Only calls Menu.Start()
+🔹 Key Features (Version 6)
+✅ Supports multiple Address Books in one system
+✅ Each Address Book has a unique name
+✅ Can create a new Address Book and add multiple contacts using existing CreateContact()
+✅ Uses arrays only, no collections
+✅ Menu runs continuously until Exit
+
+### 📒 Address Book System — Version 7
+
+Enhanced the system to ensure no duplicate entry of the same person inside a particular Address Book.
+
+🔹 What’s New in Version 7 (Compared to Version 6)
+✅ Duplicate Prevention Inside an Address Book
+
+Private Validation Method: Checks if a person already exists in the active book
+Match Rule: Duplicate means same FirstName + LastName
+Behavior:
+If duplicate found: prints
+"This contact is already in the Address Book"
+Then stops contact creation and returns to menu
+✅ Works per Address Book (Not Global)
+
+Same person name can exist in a different Address Book, but not twice in the same one.
+🔹 Key Features (Version 7)
+✅ All Version 6 features
+✅ Prevents duplicates inside the active Address Book
+✅ Duplicate check happens immediately after entering full name
+✅ Returns back to menu after showing duplicate message
