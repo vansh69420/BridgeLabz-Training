@@ -2,54 +2,89 @@ using System;
 
 class AddressBookUtilityImpl : IAddressBook
 {
-    private Contact[] addressBook = new Contact[100];
-    private int count = 0;
+    // Multiple Address Books (arrays only)
+    private string[] addressBookNames = new string[10];
+    private Contact[][] addressBooks = new Contact[10][];
+    private int[] contactCount = new int[10];
+
+    private int addressBookCount = 0;
+    private int activeBookIndex = 0;
 
     private bool predefinedLoaded = false;
 
-    public void LoadPredefinedContacts()
-{
-    if (predefinedLoaded == true)
+    private bool IsAddressBookNameExists(string bookName)
     {
-        return;
+        for (int i = 0; i < addressBookCount; i++)
+        {
+            if (addressBookNames[i] == bookName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
-    // Predefined Contact 1
-    Contact c1 = new Contact();
-    c1.SetFirstName("Rahul");
-    c1.SetLastName("Sharma");
-    c1.SetAddress("12, MG Road");
-    c1.SetCity("Bengaluru");
-    c1.SetState("Karnataka");
-    c1.SetZip("560001"); 
-    c1.SetPhoneNumber("9876543210");
-    c1.SetEmail("rahul.sharma@gmail.com");
-    AddBook(c1);
-
-    // Predefined Contact 2 
-    Contact c2 = new Contact();
-    c2.SetFirstName("Priya");
-    c2.SetLastName("Iyer");
-    c2.SetAddress("45, T Nagar");
-    c2.SetCity("Chennai");
-    c2.SetState("Tamil Nadu");
-    c2.SetZip("600017"); 
-    c2.SetPhoneNumber("9123456780");
-    c2.SetEmail("priya.iyer@gmail.com");
-    AddBook(c2);
-
-    predefinedLoaded = true;
-}
-
-    public void AddBook(Contact contact)
+    public void LoadPredefinedContacts()
     {
-        if (count >= addressBook.Length)
+        if (predefinedLoaded == true)
         {
             return;
         }
 
-        addressBook[count] = contact;
-        count++;
+        // Create Default Address Book on program start
+        addressBookNames[0] = "India";
+        addressBooks[0] = new Contact[100];
+        contactCount[0] = 0;
+
+        addressBookCount = 1;
+        activeBookIndex = 0;
+
+        // Predefined Contact 1 (India)
+        Contact c1 = new Contact();
+        c1.SetFirstName("Rahul");
+        c1.SetLastName("Sharma");
+        c1.SetAddress("12, MG Road");
+        c1.SetCity("Bengaluru");
+        c1.SetState("Karnataka");
+        c1.SetZip("560001");
+        c1.SetPhoneNumber("9876543210");
+        c1.SetEmail("rahul.sharma@gmail.com");
+        AddBook(c1);
+
+        // Predefined Contact 2 (India)
+        Contact c2 = new Contact();
+        c2.SetFirstName("Priya");
+        c2.SetLastName("Iyer");
+        c2.SetAddress("45, T Nagar");
+        c2.SetCity("Chennai");
+        c2.SetState("Tamil Nadu");
+        c2.SetZip("600017");
+        c2.SetPhoneNumber("9123456780");
+        c2.SetEmail("priya.iyer@gmail.com");
+        AddBook(c2);
+
+        predefinedLoaded = true;
+    }
+
+    public void AddBook(Contact contact)
+    {
+        if (contact == null)
+        {
+            return;
+        }
+
+        if (addressBooks[activeBookIndex] == null)
+        {
+            return;
+        }
+
+        if (contactCount[activeBookIndex] >= addressBooks[activeBookIndex].Length)
+        {
+            return;
+        }
+
+        addressBooks[activeBookIndex][contactCount[activeBookIndex]] = contact;
+        contactCount[activeBookIndex]++;
     }
 
     public Contact CreateContact()
@@ -58,18 +93,19 @@ class AddressBookUtilityImpl : IAddressBook
 
         Console.Write("Enter First Name: ");
         string firstName = Console.ReadLine();
-        c.SetFirstName(firstName);
 
         Console.Write("Enter Last Name: ");
         string lastName = Console.ReadLine();
-        c.SetLastName(lastName);
 
-        // Check duplicate right after full name
-        if (IsNameAlreadyPresent(firstName, lastName))
+        // Version 7: Duplicate check inside the active address book
+        if (IsDuplicatePersonInActiveBook(firstName, lastName))
         {
             Console.WriteLine("This contact is already in the Address Book");
-            return null;
+            return null; // stops and menu shows again
         }
+
+        c.SetFirstName(firstName);
+        c.SetLastName(lastName);
 
         Console.Write("Enter Address: ");
         c.SetAddress(Console.ReadLine());
@@ -92,31 +128,27 @@ class AddressBookUtilityImpl : IAddressBook
         return c;
     }
 
-    private bool IsNameAlreadyPresent(string firstName, string lastName)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            if (addressBook[i] != null &&
-                addressBook[i].GetFirstName() == firstName &&
-                addressBook[i].GetLastName() == lastName)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void DisplayContacts()
     {
-        for (int i = 0; i < count; i++)
+        if (addressBooks[activeBookIndex] == null)
         {
-            Console.WriteLine(addressBook[i].ToString());
+            return;
+        }
+
+        for (int i = 0; i < contactCount[activeBookIndex]; i++)
+        {
+            Console.WriteLine(addressBooks[activeBookIndex][i].ToString());
             Console.WriteLine();
         }
     }
 
     public void EditContact()
     {
+        if (addressBooks[activeBookIndex] == null)
+        {
+            return;
+        }
+
         Console.Write("Enter First Name to Edit: ");
         string firstName = Console.ReadLine();
 
@@ -125,10 +157,10 @@ class AddressBookUtilityImpl : IAddressBook
 
         int index = -1;
 
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < contactCount[activeBookIndex]; i++)
         {
-            if (addressBook[i].GetFirstName() == firstName &&
-                addressBook[i].GetLastName() == lastName)
+            if (addressBooks[activeBookIndex][i].GetFirstName() == firstName &&
+                addressBooks[activeBookIndex][i].GetLastName() == lastName)
             {
                 index = i;
                 break;
@@ -137,38 +169,41 @@ class AddressBookUtilityImpl : IAddressBook
 
         if (index == -1)
         {
-            Console.WriteLine("Contact not Found");
             return;
         }
 
         Console.Write("Enter New First Name: ");
-        addressBook[index].SetFirstName(Console.ReadLine());
+        addressBooks[activeBookIndex][index].SetFirstName(Console.ReadLine());
 
         Console.Write("Enter New Last Name: ");
-        addressBook[index].SetLastName(Console.ReadLine());
+        addressBooks[activeBookIndex][index].SetLastName(Console.ReadLine());
 
         Console.Write("Enter New Address: ");
-        addressBook[index].SetAddress(Console.ReadLine());
+        addressBooks[activeBookIndex][index].SetAddress(Console.ReadLine());
 
         Console.Write("Enter New City: ");
-        addressBook[index].SetCity(Console.ReadLine());
+        addressBooks[activeBookIndex][index].SetCity(Console.ReadLine());
 
         Console.Write("Enter New State: ");
-        addressBook[index].SetState(Console.ReadLine());
+        addressBooks[activeBookIndex][index].SetState(Console.ReadLine());
 
         Console.Write("Enter New Zip: ");
-        addressBook[index].SetZip(Console.ReadLine());
+        addressBooks[activeBookIndex][index].SetZip(Console.ReadLine());
 
         Console.Write("Enter New Phone Number: ");
-        addressBook[index].SetPhoneNumber(Console.ReadLine());
+        addressBooks[activeBookIndex][index].SetPhoneNumber(Console.ReadLine());
 
         Console.Write("Enter New Email: ");
-        addressBook[index].SetEmail(Console.ReadLine());
+        addressBooks[activeBookIndex][index].SetEmail(Console.ReadLine());
     }
 
-    // Version 4: Delete by name (First Name + Last Name)
     public void DeleteContact()
     {
+        if (addressBooks[activeBookIndex] == null)
+        {
+            return;
+        }
+
         Console.Write("Enter First Name to Delete: ");
         string firstName = Console.ReadLine();
 
@@ -177,10 +212,10 @@ class AddressBookUtilityImpl : IAddressBook
 
         int index = -1;
 
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < contactCount[activeBookIndex]; i++)
         {
-            if (addressBook[i].GetFirstName() == firstName &&
-                addressBook[i].GetLastName() == lastName)
+            if (addressBooks[activeBookIndex][i].GetFirstName() == firstName &&
+                addressBooks[activeBookIndex][i].GetLastName() == lastName)
             {
                 index = i;
                 break;
@@ -189,22 +224,50 @@ class AddressBookUtilityImpl : IAddressBook
 
         if (index == -1)
         {
-            Console.WriteLine("Name not Found");
             return;
         }
 
-        // shift left to remove the contact
-        for (int i = index; i < count - 1; i++)
+        for (int i = index; i < contactCount[activeBookIndex] - 1; i++)
         {
-            addressBook[i] = addressBook[i + 1];
+            addressBooks[activeBookIndex][i] = addressBooks[activeBookIndex][i + 1];
         }
 
-        addressBook[count - 1] = null;
-        count--;
+        addressBooks[activeBookIndex][contactCount[activeBookIndex] - 1] = null;
+        contactCount[activeBookIndex]--;
     }
 
+    // Version 6: Creates NEW Address Book (unique name) + adds multiple contacts using CreateContact()
     public void AddMultipleContacts()
     {
+        string bookName;
+
+        while (true)
+        {
+            Console.Write("Enter Address Book Name (must be unique): ");
+            bookName = Console.ReadLine();
+
+            if (IsAddressBookNameExists(bookName))
+            {
+                Console.WriteLine("Address Book name already exists. Please enter a unique name.");
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        if (addressBookCount >= addressBookNames.Length)
+        {
+            return;
+        }
+
+        addressBookNames[addressBookCount] = bookName;
+        addressBooks[addressBookCount] = new Contact[100];
+        contactCount[addressBookCount] = 0;
+
+        activeBookIndex = addressBookCount;
+        addressBookCount++;
+
         int n;
 
         while (true)
@@ -224,9 +287,28 @@ class AddressBookUtilityImpl : IAddressBook
 
         for (int i = 0; i < n; i++)
         {
-            AddBook(CreateContact());
+            Contact c = CreateContact();
+            if (c == null)
+            {
+                return; // duplicate -> back to menu
+            }
+
+            AddBook(c);
             Console.WriteLine("This contact is added to the Address Book successfully.");
             Console.WriteLine();
         }
+    }
+    private bool IsDuplicatePersonInActiveBook(string firstName, string lastName)
+    {
+        for (int i = 0; i < contactCount[activeBookIndex]; i++)
+        {
+            if (addressBooks[activeBookIndex][i] != null &&
+                addressBooks[activeBookIndex][i].GetFirstName() == firstName &&
+                addressBooks[activeBookIndex][i].GetLastName() == lastName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

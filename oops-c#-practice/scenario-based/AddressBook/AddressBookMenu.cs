@@ -16,7 +16,7 @@ class AddressBookMenu
             Console.WriteLine("2. Display Contacts");
             Console.WriteLine("3. Edit Contact");
             Console.WriteLine("4. Delete Contact");
-            Console.WriteLine("5. Add Multiple Contacts");
+            Console.WriteLine("5. Create New Address Book + Add Multiple Contacts");
             Console.WriteLine("6. Exit");
             Console.Write("Enter choice: ");
 
@@ -49,7 +49,6 @@ class AddressBookMenu
                     break;
 
                 default:
-                    // do nothing for now
                     break;
             }
 
