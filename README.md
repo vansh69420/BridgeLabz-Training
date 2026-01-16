@@ -2410,3 +2410,509 @@ Same person name can exist in a different Address Book, but not twice in the sam
 ✅ Prevents duplicates inside the active Address Book
 ✅ Duplicate check happens immediately after entering full name
 ✅ Returns back to menu after showing duplicate message
+
+### 📒 Address Book System — Version 8
+
+Extended the Address Book console application to support searching contacts across multiple Address Books by City and State. Also enhanced startup data by creating multiple predefined Address Books with predefined contacts (India-based), using arrays only (no collections).
+
+🔹 System Architecture
+
+👤 Contact.cs — Contact Model Class
+Encapsulation: All fields are private with separate getter/setter methods
+Contact Attributes:
+First Name, Last Name
+Address, City, State, Zip
+Phone Number, Email
+Display Support: ToString() returns a formatted contact profile for printing
+🎯 IAddressBook.cs — Service Contract Interface
+Interface Definition: Defines the contract for Address Book operations
+New Methods Added in Version 8:
+SearchPersonByCity()
+SearchPersonByState()
+Abstraction Layer: Menu only calls interface/utility methods; business logic stays in utility
+⚙️ AddressBookUtilityImpl.cs — Core Business Logic
+Multi-Book Storage (Arrays Only):
+addressBookNames[] → stores unique Address Book names
+addressBooks[][] → stores contacts separately for each Address Book
+contactCount[] → tracks number of contacts in each Address Book
+addressBookCount → tracks number of Address Books created
+Multiple Predefined Address Books:
+Creates multiple books at system startup (example: Default, Family, Office)
+Inserts predefined India-based contacts in each book
+Cross Address Book Search:
+SearchPersonByCity() searches through all address books and prints matching contacts
+SearchPersonByState() searches through all address books and prints matching contacts
+Implementation Detail: Search is performed using nested loops:
+outer loop → address books
+inner loop → contacts inside that book
+📋 Menu.cs — Interactive Menu System
+Menu-Driven Console UI: Provides options to interact with Address Book features
+New Options Added in Version 8:
+Search Person By City
+Search Person By State
+Continuous Execution: Runs repeatedly until user selects Exit
+No Business Logic in Menu: Menu only displays options and calls utility methods
+🚀 MainClass.cs — Application Entry Point
+Single Responsibility: Initializes the program and calls Menu
+Startup Initialization: Ensures predefined address books and contacts are loaded before operations
+🔹 Business Scenarios Implemented (Version 8)
+
+🏙️ Search Person By City (Across Multiple Address Books)
+User inputs a city name
+System searches every Address Book in the system
+Prints:
+the Address Book name where the contact exists
+the full contact details using ToString()
+🗺️ Search Person By State (Across Multiple Address Books)
+User inputs a state name
+System searches every Address Book in the system
+Displays all contacts that match the state across all books
+🔹 Key Features (Version 8)
+
+🏷️ Multiple Predefined Address Books
+System now starts with multiple predefined address books (India-based)
+Each book contains its own predefined contacts
+🔍 Cross-Book Search Engine
+Search by City across all Address Books
+Search by State across all Address Books
+Displays which Address Book contains each matching contact
+📦 Array-Based Data Handling
+No collections used (List, Dictionary, etc.)
+Uses arrays for:
+Address Book names
+Contact storage per Address Book
+Contact count tracking
+
+### 📒 Address Book System — Version 10
+
+Enhanced the multi–Address Book console system by adding the ability to count the number of contact persons by City or State across all Address Books. This version continues to use arrays only (no collections) and keeps the menu logic separated from core business logic.
+
+🔹 System Architecture
+
+👤 Contact.cs — Contact Model Class
+Encapsulation: Private fields with separate getter/setter methods
+Attributes Managed: FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email
+Data Representation: ToString() provides formatted contact details for display/search output
+🎯 IAddressBook.cs — Service Contract Interface
+Purpose: Defines a standard contract for Address Book operations
+Version 10 Additions:
+CountContactsByCity()
+CountContactsByState()
+Design Benefit: Ensures counting functionality is part of the formal system capabilities
+⚙️ AddressBookUtilityImpl.cs — Core Business Logic
+Multi-Address Book Storage (Arrays Only):
+addressBookNames[] → stores unique Address Book names
+addressBooks[][] → stores contacts for each Address Book separately
+contactCount[] → tracks the number of contacts in each Address Book
+addressBookCount → tracks how many Address Books exist in the system
+Counting Engine (Version 10):
+CountContactsByCity():
+Takes city input from user
+Uses nested loops to scan all Address Books and count contacts matching that city
+Prints total count for the entered city
+CountContactsByState():
+Takes state input from user
+Uses nested loops to scan all Address Books and count contacts matching that state
+Prints total count for the entered state
+Implementation Style:
+Uses simple loops and integer counters
+No collections (List, Dictionary, etc.)
+No constructor used for initialization
+📋 Menu.cs — Interactive Menu System
+Menu-Driven Console UI: Provides navigation to all features
+Version 10 Options Added:
+Count Contacts By City
+Count Contacts By State
+Control Flow: Uses while loop (continuous menu) + switch case selection
+Separation of Concerns: Menu only triggers utility methods; all counting logic stays in utility
+🚀 MainClass.cs — Application Entry Point
+Responsibility: Starts the application by calling Menu
+Startup Integration: Ensures system runs through a clean initialization and menu workflow
+🔹 Business Scenarios Implemented (Version 10)
+
+🏙️ Count Contacts By City
+User enters a city name
+System counts contacts across all address books
+Output:
+Total contacts in city 'CITY_NAME': X
+🗺️ Count Contacts By State
+User enters a state name
+System counts contacts across all address books
+Output:
+Total contacts in state 'STATE_NAME': X
+🔹 Key Features (Version 10)
+
+🔢 Contact Counting Analytics
+City-wise contact count across multiple Address Books
+State-wise contact count across multiple Address Books
+Useful for analyzing distribution of contacts geographically
+🧠 Efficient Array-Based Processing
+Nested loop scanning:
+Address Books loop
+Contacts loop
+Integer counter accumulation for total matches
+No additional data structures or collections used
+🧩 Scalable Multi-Book Support
+Counting works even when new Address Books and contacts are added
+Maintains compatibility with previous versions’ features like Add/Edit/Delete/Search
+
+### 📒 Address Book System — Version 11
+
+Implemented the ability to sort contact entries alphabetically by Person’s name within a selected Address Book. This version continues the multi–Address Book architecture using arrays only (no collections) and keeps all sorting logic inside the utility layer.
+
+🔹 System Architecture
+
+👤 Contact.cs — Contact Model Class
+Encapsulation: Private fields with separate getter/setter methods
+Attributes: FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email
+Display Support: ToString() provides formatted output for display/search features
+Sorting Fields Used: FirstName and LastName are used as sorting keys
+🎯 IAddressBook.cs — Service Contract Interface
+Contract-Based Design: Interface defines all supported Address Book operations
+Version 11 Addition:
+SortContactsByName()
+Benefit: Sorting behavior is exposed through interface while implemented in utility class
+⚙️ AddressBookUtilityImpl.cs — Core Business Logic
+Multi Address Book Storage (Arrays Only):
+addressBookNames[] → stores names of Address Books
+addressBooks[][] → stores contacts per Address Book
+contactCount[] → maintains contact count for each Address Book
+Sorting Engine (Version 11):
+SortContactsByName():
+asks user for the Address Book name
+finds the correct Address Book using name lookup
+sorts contacts from index 0 to contactCount[bookIndex] - 1
+CompareContactsByName(Contact a, Contact b) (private helper):
+compares FirstName first
+if FirstName is same, compares LastName
+Algorithm Used: Bubble Sort (array-based swapping, no collection sorting)
+📋 Menu.cs — Interactive Menu System
+Menu-Based Navigation: Added a new option to sort contacts
+Version 11 Menu Option:
+Sort Contacts By Name
+Separation of Concerns: Menu only calls utility.SortContactsByName() and contains no sorting logic
+🚀 MainClass.cs — Application Entry Point
+Single Responsibility: Starts the system by calling the menu
+🔹 Business Scenario Implemented (Version 11)
+
+🔤 Sort Entries Alphabetically by Person’s Name
+User enters the Address Book name to sort
+System sorts all contacts inside that Address Book in alphabetical order:
+First Name (A → Z)
+If first name matches, Last Name (A → Z)
+Result: Display and other operations now work on sorted data order
+🔹 Key Features (Version 11)
+
+✅ Name-Based Sorting
+Alphabetical sorting by FirstName and LastName
+Sorting is performed on a particular Address Book selected by name
+📦 Array-Only Implementation
+No use of List, Dictionary, or any collection frameworks
+Sorting done with manual swapping inside arrays
+🧠 Clean Utility-Layer Logic
+Sorting logic contained entirely in AddressBookUtilityImpl
+Menu remains only responsible for UI options and method calls
+
+## 📅 15 January 2026
+
+### 🌐 BrowserBuddy Navigation System
+
+Developed a **comprehensive browser navigation system** implementing browser history management, tab operations, and navigation controls using doubly linked list data structures for efficient forward/backward traversal.
+
+#### 🔹 System Architecture
+
+**🌐 BrowserPage.cs** - Web Page Data Model
+- **Encapsulation**: Private URL field with controlled access methods
+- **Data Management**: Simple page representation with URL storage
+- **Clean Interface**: Getter and setter methods for URL manipulation
+- **String Representation**: Formatted display for browser page information
+
+**🎯 IBrowserOperations.cs** - Browser Service Interface
+- **Service Contract**: Interface defining core browser navigation operations
+- **Method Standards**: Standardized approach for page visits, navigation, and tab management
+- **Abstraction Layer**: Clean separation between interface and implementation logic
+
+**🔗 UniversalLinkedList.cs** - Generic Navigation Structure
+- **Universal Design**: Generic doubly linked list supporting any object type
+- **Bidirectional Navigation**: Forward and backward traversal capabilities for browser history
+- **Flexible Operations**: Add/remove from both ends supporting stack and queue behaviors
+- **Memory Management**: Efficient dynamic node allocation and pointer manipulation
+
+**⚙️ BrowserUtilityImpl.cs** - Core Browser Logic
+- **History Management**: Doubly linked list for maintaining browsing history
+- **Closed Tabs Stack**: Separate linked list for recently closed tabs storage
+- **Current Page Tracking**: Node pointer for active page navigation
+- **Navigation Controls**: Back, forward, and page visit functionality implementation
+
+#### 🔹 Browser Features
+
+**🌐 Page Navigation System**
+- **Visit Page**: Add new URLs to browsing history with sequential tracking
+- **Back Navigation**: Move to previous page in browsing history
+- **Forward Navigation**: Move to next page when available in history
+- **Current Page Display**: Show currently active page URL
+
+**📑 Tab Management**
+- **Close Tab**: Remove current tab and store in closed tabs history
+- **Restore Tab**: Recover most recently closed tab from closed tabs stack
+- **Tab History**: Maintain separate history for closed tabs recovery
+- **Pointer Management**: Proper current page pointer updates during tab operations
+
+**🔄 History Navigation**
+- **Bidirectional Traversal**: Navigate forward and backward through browsing history
+- **History Preservation**: Maintain complete browsing session history
+- **Edge Case Handling**: Graceful messaging when no previous/forward pages exist
+- **Session Management**: Continuous history tracking throughout browser session
+
+#### 🔹 User Interface System
+
+**📋 BrowserMenu.cs** - Interactive Browser Interface
+- **Comprehensive Menu**: Seven main options covering all browser operations
+- **Navigation Controls**: Easy access to back, forward, and page visit functions
+- **Tab Operations**: Close and restore tab functionality
+- **Current Page Display**: Quick view of active page information
+
+**🚀 BrowserMain.cs** - Application Entry Point
+- **System Initialization**: Clean application startup with menu activation
+- **Service Integration**: Seamless coordination of all browser components
+
+#### 🔹 Browser Operations
+
+**🌐 Navigation Features**
+- **Visit New Pages**: Interactive URL entry with history tracking
+- **Back/Forward Controls**: Intuitive navigation through browsing history
+- **Current Page View**: Display active page URL at any time
+- **History Traversal**: Complete forward and backward navigation support
+
+**📑 Tab Management Features**
+- **Close Active Tab**: Remove current tab with history preservation
+- **Restore Closed Tabs**: Recover recently closed tabs in reverse order
+- **Tab History Stack**: LIFO structure for closed tabs management
+- **Seamless Recovery**: Restore tabs with proper history integration
+
+#### 🔹 Data Structure Applications
+
+**🔗 Doubly Linked List Benefits**
+- **Bidirectional Navigation**: Efficient forward and backward traversal for browser history
+- **Dynamic Memory**: Flexible history size without predefined limits
+- **Pointer Efficiency**: Direct access to previous and next pages
+- **Memory Management**: Efficient node allocation and deallocation
+
+**📚 Stack-Based Tab Management**
+- **LIFO Recovery**: Most recently closed tabs restored first
+- **Separate History**: Independent closed tabs tracking from main history
+- **Efficient Storage**: Minimal memory overhead for closed tab management
+- **Quick Access**: Fast restoration of recently closed tabs
+
+#### 🔹 Real-World Browser Applications
+
+**🌐 Web Browser Features**
+- **History Management**: Complete browsing session tracking and navigation
+- **Tab Operations**: Modern browser tab management functionality
+- **Navigation Controls**: Standard back/forward browser controls
+- **Session Persistence**: Maintaining browsing context throughout session
+
+**💼 User Experience Design**
+- **Intuitive Navigation**: Familiar browser-like navigation patterns
+- **Error Handling**: Graceful messaging for invalid navigation attempts
+- **State Management**: Proper tracking of current page and history state
+- **Recovery Features**: User-friendly tab restoration capabilities
+
+**📱 Application Development**
+- **Navigation Patterns**: Implementing browser-like navigation in applications
+- **History Tracking**: Session history management for user workflows
+- **Undo/Redo Functionality**: Stack-based operation recovery patterns
+- **State Preservation**: Maintaining application state across operations
+
+#### 🔹 Learning Outcomes
+- **Data Structure Mastery**: Advanced doubly linked list implementation for navigation
+- **Browser Architecture**: Understanding core browser navigation mechanisms
+- **State Management**: Tracking and managing application state effectively
+- **Navigation Patterns**: Implementing forward/backward navigation systems
+- **Stack Applications**: Using stack data structure for undo/restore operations
+- **Pointer Management**: Efficient node pointer manipulation in linked structures
+- **User Experience Design**: Creating intuitive navigation interfaces
+- **Memory Efficiency**: Dynamic memory management for variable-size histories
+- **Error Handling**: Graceful handling of edge cases in navigation
+- **Real-World Modeling**: Translating browser functionality into data structures
+## 📅 16 January 2026
+
+### 🚦 TrafficManager Roundabout System
+
+Developed a **comprehensive traffic management system** implementing queue-based vehicle flow control for roundabout traffic simulation using linked list data structures for efficient FIFO operations.
+
+#### 🔹 System Architecture
+
+**🚗 Vehicle.cs** - Vehicle Data Model
+- **Encapsulation**: Private vehicle number field with controlled access methods
+- **Data Management**: Simple vehicle representation with registration number storage
+- **Clean Interface**: Getter and setter methods for vehicle number manipulation
+- **String Representation**: Formatted display for vehicle identification
+
+**🎯 ITrafficManager.cs** - Traffic Service Interface
+- **Service Contract**: Interface defining core traffic management operations
+- **Method Standards**: Standardized approach for queue management and roundabout control
+- **Abstraction Layer**: Clean separation between interface and implementation logic
+
+**🔗 UniversalLinkedList.cs** - Generic Queue Structure
+- **Universal Design**: Generic linked list supporting any object type
+- **Queue Operations**: FIFO behavior for waiting queue and roundabout management
+- **Flexible Operations**: Add/remove from both ends for efficient traffic flow
+- **Memory Management**: Dynamic node allocation for variable traffic volumes
+
+**⚙️ TrafficUtilityImpl.cs** - Core Traffic Logic
+- **Waiting Queue**: Linked list for vehicles waiting to enter roundabout
+- **Roundabout Management**: Separate linked list for vehicles currently in roundabout
+- **FIFO Operations**: First-in-first-out processing for fair traffic flow
+- **State Tracking**: Real-time monitoring of roundabout and queue status
+
+#### 🔹 Traffic Management Features
+
+**🚦 Queue Management System**
+- **Add to Queue**: Register vehicles in waiting queue with vehicle number entry
+- **Queue Processing**: FIFO removal from waiting queue for roundabout entry
+- **Fair Flow Control**: Sequential processing ensuring orderly traffic movement
+- **Queue Status**: Real-time tracking of vehicles waiting for roundabout access
+
+**🔄 Roundabout Operations**
+- **Entry Control**: Allow vehicles from waiting queue into roundabout
+- **Exit Management**: Remove vehicles from roundabout in FIFO order
+- **Capacity Tracking**: Monitor current vehicles in roundabout
+- **Flow Visualization**: Display current roundabout state with vehicle sequence
+
+**📊 Traffic Monitoring**
+- **Roundabout State Display**: Visual representation of vehicles in roundabout
+- **Sequential Flow**: Show vehicle order and movement through roundabout
+- **Empty State Handling**: Graceful messaging when no vehicles present
+- **Real-Time Updates**: Immediate feedback on traffic operations
+
+#### 🔹 User Interface System
+
+**📋 TrafficMenu.cs** - Interactive Traffic Interface
+- **Comprehensive Menu**: Five main options covering all traffic operations
+- **Queue Controls**: Easy access to vehicle addition and queue management
+- **Roundabout Operations**: Entry and exit control for traffic flow
+- **Status Display**: Real-time roundabout state visualization
+
+#### 🔹 Traffic Flow Operations
+
+**🚗 Vehicle Management**
+- **Registration Entry**: Interactive vehicle number input with validation
+- **Queue Addition**: Add vehicles to waiting queue for roundabout access
+- **Entry Processing**: Move vehicles from queue to roundabout
+- **Exit Processing**: Remove vehicles from roundabout completing their journey
+
+**🔄 Flow Control Features**
+- **FIFO Processing**: Fair first-in-first-out traffic management
+- **State Monitoring**: Track vehicles in both queue and roundabout
+- **Visual Feedback**: Clear display of current traffic state
+- **Error Handling**: Graceful messaging for empty queue/roundabout scenarios
+
+### 📚 BookShelf Library Management System
+
+Developed a **comprehensive library management system** implementing hash table data structures with genre-based book organization, borrowing functionality, and efficient book retrieval using separate chaining collision resolution.
+
+#### 🔹 System Architecture
+
+**📖 Book.cs** - Literature Data Model
+- **Encapsulation**: Private title and author fields with controlled access
+- **Data Management**: Complete book information storage and retrieval
+- **Clean Interface**: Getter and setter methods for book properties
+- **String Representation**: Formatted display for book listings
+
+**🏷️ GenreEntry.cs** - Genre Container Class
+- **Genre Management**: Container for genre name and associated books
+- **Book Collection**: Linked list of books within specific genre
+- **Encapsulation**: Private genre field with public accessor methods
+- **Collection Access**: Getter method for accessing genre's book list
+
+**🎯 IBookShelf.cs** - Library Service Interface
+- **Service Contract**: Interface defining core library operations
+- **Method Standards**: Standardized approach for book management and borrowing
+- **Abstraction Layer**: Clean separation between interface and implementation
+
+**🔗 UniversalLinkedList.cs** - Generic Collection Structure
+- **Universal Design**: Generic linked list for flexible data storage
+- **Dynamic Collections**: Variable-size book collections per genre
+- **Efficient Operations**: Add/remove operations for book management
+- **Memory Efficiency**: Dynamic allocation based on collection size
+
+**⚙️ BookShelfUtilityImpl.cs** - Core Library Logic
+- **Hash Table Implementation**: Array of linked lists for genre-based organization
+- **Collision Resolution**: Separate chaining using linked lists
+- **Hash Function**: Character sum modulo for genre distribution
+- **Genre Management**: Dynamic genre creation and book organization
+
+#### 🔹 Library Features
+
+**📚 Book Management System**
+- **Add Books**: Interactive book entry with title, author, and genre
+- **Genre Organization**: Automatic genre creation and book categorization
+- **Dynamic Storage**: Hash table with separate chaining for efficient storage
+- **Collision Handling**: Multiple genres mapping to same hash index
+
+**📖 Borrowing System**
+- **Borrow Books**: Remove books from genre collection for borrowing
+- **FIFO Borrowing**: First book in genre collection borrowed first
+- **Availability Check**: Verify book availability before borrowing
+- **Return Processing**: Add returned books back to genre collections
+
+**🔍 Search and Retrieval**
+- **Genre-Based Search**: Find all books within specific genre
+- **Hash-Based Lookup**: Efficient genre location using hash function
+- **Collection Display**: Show all books in requested genre
+- **Empty Handling**: Graceful messaging for non-existent genres
+
+#### 🔹 User Interface System
+
+**📋 BookShelfMenu.cs** - Interactive Library Interface
+- **Comprehensive Menu**: Five main options covering all library operations
+- **Book Operations**: Add, borrow, and return book functionality
+- **Search Features**: Genre-based book viewing and discovery
+- **Input Validation**: Robust error handling for user inputs
+
+#### 🔹 Hash Table Implementation
+
+**🔐 Hashing Strategy**
+- **Hash Function**: Character sum modulo for genre key distribution
+- **Collision Resolution**: Separate chaining with linked lists
+- **Dynamic Buckets**: Array of linked lists for flexible storage
+- **Load Distribution**: Even distribution across hash table buckets
+
+**📊 Performance Characteristics**
+- **Average Case**: O(1) for add, search, and borrow operations
+- **Collision Handling**: Linked list traversal for same-hash genres
+- **Space Efficiency**: Dynamic memory allocation per genre
+- **Scalability**: Handles variable number of genres and books
+
+#### 🔹 Real-World Applications
+
+**🚦 Traffic Management Systems**
+- **Roundabout Control**: Real-world traffic flow simulation and management
+- **Queue Management**: Fair vehicle processing with FIFO operations
+- **Flow Optimization**: Efficient traffic movement through controlled access
+- **Monitoring Systems**: Real-time traffic state visualization
+
+**📚 Library Management**
+- **Book Organization**: Genre-based categorization for easy discovery
+- **Borrowing Systems**: Automated lending and return processing
+- **Inventory Management**: Track book availability and location
+- **Search Functionality**: Quick book retrieval by genre
+
+**💼 Queue-Based Systems**
+- **Service Queues**: Customer service and ticketing systems
+- **Resource Allocation**: Fair resource distribution using FIFO
+- **Process Scheduling**: Task queue management in applications
+- **Event Processing**: Sequential event handling systems
+
+#### 🔹 Learning Outcomes
+- **Queue Implementation**: FIFO data structure for fair processing
+- **Hash Table Mastery**: Implementing hash tables with collision resolution
+- **Separate Chaining**: Using linked lists for collision handling
+- **Traffic Simulation**: Modeling real-world traffic flow systems
+- **Genre Organization**: Efficient categorization using hash functions
+- **State Management**: Tracking system state across multiple data structures
+- **Interface Design**: Clean separation between contracts and implementations
+- **Real-World Modeling**: Translating practical scenarios into data structures
+- **Performance Optimization**: Choosing appropriate data structures for operations
+- **System Integration**: Coordinating multiple components for cohesive functionality
