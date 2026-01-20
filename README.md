@@ -2916,3 +2916,179 @@ Developed a **comprehensive library management system** implementing hash table 
 - **Real-World Modeling**: Translating practical scenarios into data structures
 - **Performance Optimization**: Choosing appropriate data structures for operations
 - **System Integration**: Coordinating multiple components for cohesive functionality
+
+## 📅 19 January 2026
+
+### 📝 ExamProctor Examination Management System
+
+Developed a **comprehensive examination proctoring system** implementing stack-based navigation for question traversal, answer recording, and automated scoring using linked list data structures for efficient answer management.
+
+#### 🔹 System Architecture
+
+**❓ Question.cs** - Question Data Model
+- **Encapsulation**: Private question text, correct answer, and marks with controlled access
+- **Data Management**: Complete question information storage and retrieval
+- **Clean Interface**: Getter methods for question properties and formatted display
+- **Scoring System**: Integrated marks allocation for correct answers
+
+**📋 AnswerRecord.cs** - Answer Tracking Model
+- **Answer Storage**: Records student answers with question ID mapping
+- **Data Association**: Links answers to specific questions for evaluation
+- **Encapsulation**: Private fields with accessor methods for answer data
+- **Evaluation Ready**: Structured for automated scoring comparison
+
+**🎯 IExamProctor.cs** - Proctor Service Interface
+- **Service Contract**: Interface defining core examination operations
+- **Navigation Methods**: Standardized approach for question traversal and submission
+- **Abstraction Layer**: Clean separation between interface and implementation logic
+
+**🔗 UniversalLinkedList.cs** - Generic Stack Structure
+- **Stack Operations**: LIFO behavior for question navigation history
+- **Answer Management**: Linked list for storing answer records sequentially
+- **Flexible Operations**: Add/remove operations for dynamic question flow
+- **Memory Efficiency**: Dynamic allocation for variable answer collections
+
+**⚙️ ExamUtilityImpl.cs** - Core Proctor Logic
+- **Question Bank**: Pre-loaded array of C# programming questions
+- **Stack Navigation**: Question stack for forward/backward movement
+- **Answer Recording**: Linked list storage of student responses
+- **Automated Scoring**: Comparison of answers with correct solutions
+
+#### 🔹 Examination Features
+
+**📝 Question Management System**
+- **Sequential Display**: Show questions one at a time with clear formatting
+- **Navigation Control**: Move forward through questions with answer submission
+- **Back Navigation**: Stack-based return to previous questions
+- **Progress Tracking**: Current question index management
+
+**✅ Answer Processing**
+- **Answer Submission**: Record student answers with question association
+- **Validation Ready**: Structured for future answer validation features
+- **Sequential Storage**: Linked list maintenance of answer history
+- **Data Persistence**: Maintain answers throughout examination session
+
+**📊 Scoring and Evaluation**
+- **Automated Grading**: Compare student answers with correct solutions
+- **Score Calculation**: Accumulate marks for correct responses
+- **Final Results**: Display total score out of maximum possible
+- **Case-Insensitive**: Flexible answer matching for text responses
+
+#### 🔹 User Interface System
+
+**📋 ExamMenu.cs** - Interactive Examination Interface
+- **Comprehensive Menu**: Four main options covering all examination operations
+- **Question Navigation**: Forward movement and answer submission
+- **Navigation Controls**: Back functionality for question review
+- **Submission Process**: Final exam completion and scoring
+
+#### 🔹 Stack-Based Navigation
+
+**🔄 Navigation Operations**
+- **Forward Movement**: Progress through questions with answer recording
+- **Backward Movement**: Stack-based return to previous questions
+- **History Management**: Maintain question sequence for navigation
+- **State Preservation**: Keep answers intact during navigation
+
+**📚 Question Bank Features**
+- **C# Programming Focus**: Questions covering core C# concepts
+- **Diverse Topics**: Data types, OOP, data structures, control flow
+- **Standardized Format**: Consistent question structure and marking
+- **Educational Value**: Comprehensive coverage of programming fundamentals
+
+### 📦 ParcelTracker Package Delivery System
+
+Developed a **comprehensive parcel tracking system** implementing linked list data structures for stage-based delivery tracking, intermediate stage insertion, and forward traversal with loss management capabilities.
+
+#### 🔹 System Architecture
+
+**📦 ParcelStage.cs** - Delivery Stage Model
+- **Stage Representation**: Simple stage name storage with string formatting
+- **Encapsulation**: Private stage field with controlled access methods
+- **Clean Interface**: Getter methods for stage information display
+- **Chain Ready**: Structured for linked list integration
+
+**🎯 IParcelService.cs** - Tracking Service Interface
+- **Service Contract**: Interface defining core parcel tracking operations
+- **Stage Management**: Standardized approach for delivery chain manipulation
+- **Abstraction Layer**: Clean separation between interface and implementation logic
+
+**🔗 UniversalLinkedList.cs** - Generic Chain Structure
+- **Chain Operations**: Sequential stage management for delivery tracking
+- **Dynamic Insertion**: Support for intermediate stage addition
+- **Traversal Support**: Forward iteration through delivery stages
+- **Flexible Operations**: Add/remove operations for stage management
+
+**⚙️ ParcelUtilityImpl.cs** - Core Tracking Logic
+- **Default Chain Creation**: Standard delivery stages (Packed → Shipped → In Transit → Delivered)
+- **Intermediate Insertion**: Add stages between existing delivery points
+- **Forward Tracking**: Complete chain traversal for status display
+- **Loss Management**: Complete chain removal for lost parcel handling
+
+#### 🔹 Tracking Features
+
+**📦 Delivery Chain Management**
+- **Default Stages**: Pre-defined standard delivery progression
+- **Intermediate Addition**: Insert custom stages between existing points
+- **Chain Integrity**: Maintain proper sequence during insertions
+- **Dynamic Updates**: Real-time chain modification capabilities
+
+**🔍 Tracking Operations**
+- **Forward Traversal**: Display complete delivery chain from start to end
+- **Status Visualization**: Clear representation of current parcel location
+- **Progress Monitoring**: Sequential stage display for delivery tracking
+- **Real-Time Updates**: Immediate feedback on chain modifications
+
+**🚫 Loss Management**
+- **Parcel Loss Declaration**: Complete chain removal for lost packages
+- **State Reset**: Clear all tracking information upon loss marking
+- **Clean Termination**: Proper cleanup of delivery chain data
+- **Status Communication**: Clear messaging for loss scenarios
+
+#### 🔹 User Interface System
+
+**📋 ParcelMenu.cs** - Interactive Tracking Interface
+- **Comprehensive Menu**: Four main options covering all tracking operations
+- **Chain Management**: Default chain creation and intermediate stage addition
+- **Tracking Controls**: Forward tracking display functionality
+- **Loss Handling**: Parcel loss declaration and cleanup
+
+#### 🔹 Linked List Implementation
+
+**🔗 Chain Operations**
+- **Sequential Storage**: Linked list for ordered stage management
+- **Insertion Logic**: Add-after functionality for intermediate stages
+- **Traversal Methods**: Forward iteration for complete chain display
+- **Removal Operations**: Node deletion for loss management
+
+**📊 Delivery Stages**
+- **Standard Flow**: Packed → Shipped → In Transit → Delivered
+- **Custom Stages**: Support for additional delivery points
+- **Flexible Sequencing**: Dynamic stage insertion at any point
+- **Progress Tracking**: Visual representation of delivery status
+
+#### 🔹 Real-World Applications
+
+**📝 Examination Systems**
+- **Question Navigation**: Stack-based movement through test questions
+- **Answer Management**: Linked list storage of student responses
+- **Automated Grading**: Computer-based scoring and evaluation
+- **Progress Tracking**: Sequential question advancement
+
+**📦 Delivery Tracking**
+- **Package Monitoring**: Real-time delivery stage updates
+- **Status Communication**: Clear progress information for customers
+- **Exception Handling**: Loss management and recovery procedures
+- **Chain Modification**: Dynamic route adjustments during delivery
+
+#### 🔹 Learning Outcomes
+- **Stack Implementation**: LIFO data structure for navigation history
+- **Linked List Mastery**: Sequential data management for tracking
+- **Navigation Patterns**: Forward/backward movement in data structures
+- **Answer Processing**: Automated evaluation and scoring systems
+- **Stage Management**: Dynamic insertion in linked chains
+- **Loss Handling**: State management for exception scenarios
+- **Interface Design**: Clean contracts for service implementations
+- **Real-World Modeling**: Translating practical systems into code
+- **Data Persistence**: Maintaining state across operations
+- **User Experience**: Intuitive interfaces for complex operations
