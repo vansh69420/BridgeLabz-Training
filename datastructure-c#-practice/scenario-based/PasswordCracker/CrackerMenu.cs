@@ -2,12 +2,8 @@ using System;
 
 public class CrackerMenu
 {
-    private CrackerUtilityImpl utility;
+    private CrackerUtilityImpl utility = new CrackerUtilityImpl();
 
-    public CrackerMenu(CrackerUtilityImpl utility)
-    {
-        this.utility = utility;
-    }
 
     public void ShowMenu()
     {
@@ -16,7 +12,7 @@ public class CrackerMenu
             Console.WriteLine("\n1. Crack user given password");
             Console.WriteLine("2. Generate random password and crack");
             Console.WriteLine("3. Exit");
-
+            Console.Write("Enter Choice: ");
             int choice = int.Parse(Console.ReadLine());
 
             switch (choice)
