@@ -3330,3 +3330,282 @@ Developed a **comprehensive Aadhar number management system** implementing radix
 - **Search Techniques**: Implementing fast retrieval methods for numerical data
 - **Sorting Algorithms**: Advanced sorting techniques for fixed-digit numbers
 - **System Design**: Building scalable solutions for identity management scenarios
+
+### 🔧 C# Generics Practice
+
+Practiced advanced **C# generics** concepts implementing type-safe, reusable code with constraints, inheritance, and generic collections for real-world business scenarios.
+
+#### 🔹 AIDrivenResumeScreeningSystem
+
+Developed an **AI-driven resume screening system** using generics to evaluate candidates based on job roles, implementing inheritance hierarchies and polymorphic evaluation.
+
+##### 🔹 System Features
+
+- **Generic Resume Processor**: `ResumeProcessor<T>` class managing collections of resumes with type safety
+- **Role-Based Evaluation**: Base `JobRole` class with `SoftwareEngineer` and `DataScientist` derived classes
+- **Polymorphic Assessment**: Virtual `Evaluate()` method overridden in derived classes for specialized screening
+- **Collection Management**: `List<T>` for dynamic resume storage and processing
+
+##### 🔹 Technical Implementation
+
+- **Generic Constraints**: `where T : JobRole` ensuring type safety in resume processing
+- **Inheritance Hierarchy**: Base class with virtual methods, derived classes with specialized logic
+- **Polymorphic Processing**: Single `Process()` method handling different resume types uniformly
+- **Dynamic Collections**: Generic lists for flexible resume management
+
+##### 🔹 Key Code Highlights
+
+- `ResumeProcessor<T>.Process()`: Iterates through `List<T>` calling `Evaluate()` on each resume
+- `SoftwareEngineer.Evaluate()`: Assesses technical skills, experience, and programming languages
+- `DataScientist.Evaluate()`: Evaluates statistical knowledge, ML experience, and data analysis skills
+
+#### 🔹 DynamicOnlineMarketplace
+
+Implemented a **dynamic online marketplace** with generic discount management, demonstrating static generic methods and type-safe product handling.
+
+##### 🔹 System Features
+
+- **Generic Discount Engine**: Static `DiscountManager.ApplyDiscount<T>()` method for flexible pricing
+- **Product Catalog**: `Product<T>` class supporting different product categories with type safety
+- **Unified Discount Logic**: Single method handling discounts across various product types
+- **Type-Safe Operations**: Generic constraints ensuring proper product category handling
+
+##### 🔹 Technical Implementation
+
+- **Static Generic Methods**: `ApplyDiscount<T>()` providing reusable discount functionality
+- **Generic Product Classes**: `Product<T>` enabling category-specific product management
+- **Method Overloading**: Different discount strategies based on product type parameters
+- **Collection Processing**: Generic lists for marketplace inventory management
+
+##### 🔹 Key Code Highlights
+
+- `DiscountManager.ApplyDiscount<T>(List<T> products)`: Applies discounts to entire product collections
+- `Product<T>.CalculateDiscountedPrice()`: Type-specific discount calculations
+- Generic method calls: `ApplyDiscount<Electronics>()`, `ApplyDiscount<Clothing>()`
+
+#### 🔹 PersonalizedMealPlan
+
+Created a **personalized meal planning system** using generics with interface constraints, implementing meal generation for different dietary preferences.
+
+##### 🔹 System Features
+
+- **Generic Meal Generator**: `MealGenerator<T>` class creating personalized meal plans
+- **Dietary Interface**: `IMealPlan` interface defining meal planning contracts
+- **Specialized Meals**: `VeganMeal` and `VegetarianMeal` implementations with unique requirements
+- **Type-Safe Planning**: Generic constraints ensuring proper meal type handling
+
+##### 🔹 Technical Implementation
+
+- **Interface Constraints**: `where T : IMealPlan` ensuring meal classes implement required methods
+- **Polymorphic Generation**: Single `Generate()` method producing different meal types
+- **Factory Pattern**: Generic class instantiation for different dietary preferences
+- **Collection Management**: Lists for storing generated meal plans
+
+##### 🔹 Key Code Highlights
+
+- `MealGenerator<T>.Generate()`: Creates meal plans based on generic type parameters
+- `VeganMeal.DisplayPlan()`: Shows plant-based meal options with nutritional information
+- `VegetarianMeal.DisplayPlan()`: Presents vegetarian meals with dairy/egg options
+
+#### 🔹 SmartWarehouseManagement
+
+Built a **smart warehouse management system** with generic storage containers, implementing inheritance hierarchies for different item types.
+
+##### 🔹 System Features
+
+- **Generic Storage System**: `Storage<T>` class managing warehouse inventory with type safety
+- **Item Hierarchy**: Base `WarehouseItem` class with `ElectronicsItem`, `FurnitureItem`, `GroceryItem` derived classes
+- **Inventory Operations**: Add, display, and manage items with generic collection handling
+- **Type-Safe Storage**: Constraints ensuring only valid item types in storage containers
+
+##### 🔹 Technical Implementation
+
+- **Generic Storage Class**: `Storage<T>` with `List<T>` for dynamic inventory management
+- **Inheritance Constraints**: `where T : WarehouseItem` for type safety
+- **Polymorphic Operations**: Base class methods overridden in derived classes
+- **Collection Processing**: Generic lists for warehouse inventory operations
+
+##### 🔹 Key Code Highlights
+
+- `Storage<T>.AddItem(T item)`: Adds items to warehouse with type validation
+- `Storage<T>.DisplayAll()`: Shows all items with category-specific information
+- `ElectronicsItem.DisplayDetails()`: Shows warranty, specifications, and electronic properties
+- `FurnitureItem.DisplayDetails()`: Displays dimensions, material, and furniture-specific attributes
+
+#### 🔹 UniversityCourseManagement
+
+Developed a **university course management system** using generics for course enrollment, implementing inheritance for different course types.
+
+##### 🔹 System Features
+
+- **Generic Course Manager**: `CourseManager<T>` class handling course enrollments with type safety
+- **Course Hierarchy**: Base `CourseType` class with `AssignmentCourse` and `ExamCourse` derived classes
+- **Enrollment System**: Add courses, evaluate performance, and manage student records
+- **Type-Safe Operations**: Generic constraints ensuring proper course type handling
+
+##### 🔹 Technical Implementation
+
+- **Generic Course Management**: `CourseManager<T>` with `List<T>` for course collections
+- **Inheritance Constraints**: `where T : CourseType` ensuring valid course types
+- **Polymorphic Evaluation**: `EvaluateAll()` method calling type-specific evaluation methods
+- **Collection Operations**: Generic lists for course management and processing
+
+##### 🔹 Key Code Highlights
+
+- `CourseManager<T>.AddCourse(T course)`: Adds courses to university catalog
+- `CourseManager<T>.EvaluateAll()`: Processes all courses calling `Evaluate()` method
+- `AssignmentCourse.Evaluate()`: Grades based on assignment submissions and quality
+- `ExamCourse.Evaluate()`: Assesses based on examination performance and scores
+
+#### 🔹 Learning Outcomes
+
+- **Generic Programming Mastery**: Implemented type-safe, reusable code with constraints and inheritance
+- **Polymorphic Design**: Used virtual methods and interface constraints for flexible behavior
+- **Collection Management**: Leveraged `List<T>` for dynamic, type-safe data storage
+- **Inheritance Hierarchies**: Created base classes with specialized derived implementations
+- **Type Safety**: Applied generic constraints to prevent runtime errors
+- **Code Reusability**: Built generic classes and methods for multiple business scenarios
+- **Real-World Modeling**: Translated business requirements into generic, maintainable solutions
+- **Advanced OOP**: Combined generics with inheritance, polymorphism, and encapsulation
+- **Performance Optimization**: Used generics for compile-time type checking and efficiency
+- **System Design**: Architected complex systems with generic components and constraints
+
+## 📅 21 January 2026
+
+### 📊 RankSheetGenerator Student Performance Analysis System
+
+Developed a **comprehensive student rank sheet generation system** implementing merge sort algorithms for district-wise student ranking, demonstrating advanced sorting techniques and data analysis in educational assessment scenarios.
+
+#### 🔹 System Architecture
+
+**👨‍🎓 Student.cs** - Student Data Model
+
+- **Encapsulation**: Private fields for name, district, and marks with controlled access methods
+- **Data Integrity**: Secure student information storage and retrieval
+- **Clean Interface**: Getter methods for accessing student properties safely
+- **Professional Display**: Formatted string representation for student records
+
+**🎯 IRankService.cs** - Ranking Service Interface
+
+- **Service Contract**: Interface defining core ranking and sorting operations
+- **Method Standards**: Standardized approach for student data management and ranking
+- **Abstraction Layer**: Clean separation between interface and implementation logic
+
+**⚙️ RankUtilityImpl.cs** - Core Ranking Logic
+
+- **Array-Based Storage**: Efficient student record management using arrays
+- **Merge Sort Implementation**: Stable sorting algorithm for district-wise ranking
+- **District Grouping**: Students grouped by district before ranking within groups
+- **Performance Analysis**: Comprehensive ranking with marks-based ordering
+
+#### 🔹 Educational Features
+
+**📚 Student Management System**
+
+- **Record Addition**: Interactive student entry with name, district, and marks validation
+- **Data Validation**: Input sanitization preventing invalid student entries
+- **Comprehensive Storage**: Array-based storage for efficient student record management
+- **Scalable Design**: Support for unlimited student records through dynamic arrays
+
+**🔢 District-Wise Ranking**
+
+- **Grouping Logic**: Students organized by district for localized ranking
+- **Merge Sort Application**: Stable sorting within each district group
+- **Rank Assignment**: Sequential ranking based on marks within district boundaries
+- **Maintained Order**: District boundaries preserved during sorting process
+
+**📊 Performance Analysis**
+
+- **Rank Sheet Generation**: Complete ranking display with district and rank information
+- **Sorted Output**: Students displayed in rank order within their districts
+- **Comprehensive Results**: Full performance analysis with ranking visualization
+- **Educational Insights**: Clear representation of student performance across districts
+
+#### 🔹 User Interface System
+
+**📋 RankMenu.cs** - Interactive Ranking Interface
+
+- **Comprehensive Menu**: Three main options covering all ranking operations
+- **Student Management**: Add student records and generate rank sheets
+- **Display Controls**: View rank sheets and performance analysis
+- **Input Validation**: Robust error handling for user inputs
+
+**🚀 RankMain.cs** - Application Entry Point
+
+- **System Initialization**: Clean application startup with menu activation
+- **Service Integration**: Seamless coordination of all ranking components
+
+#### 🔹 Algorithm Implementation
+
+**🔀 Merge Sort Algorithm**
+
+- **Divide and Conquer**: Recursive approach dividing arrays into smaller subarrays
+- **Stable Sorting**: Maintains relative order of equal elements
+- **Efficient Merging**: Linear-time merge operation for combining sorted subarrays
+- **District Preservation**: Sorting applied within district boundaries only
+
+**📈 Ranking Logic**
+
+- **District Grouping**: Students collected by district before sorting
+- **Within-District Sorting**: Merge sort applied to each district group separately
+- **Rank Assignment**: Sequential numbering based on sorted order within districts
+- **Data Integrity**: Original student data preserved during ranking process
+
+#### 🔹 Educational Applications
+
+**🏫 Academic Assessment Systems**
+
+- **Student Ranking**: District-wise performance analysis and ranking
+- **Merit Lists**: Automated generation of rank sheets for academic evaluation
+- **Performance Tracking**: Comprehensive student performance visualization
+- **Administrative Tools**: Educational data management and analysis
+
+**📊 Data Analysis Applications**
+
+- **Sorting Algorithms**: Practical implementation of merge sort in real scenarios
+- **Group Processing**: District-based data organization and processing
+- **Performance Metrics**: Student ranking and performance evaluation
+- **Statistical Analysis**: Educational data analysis and insights generation
+
+**💼 Administrative Systems**
+
+- **Record Management**: Efficient student data storage and retrieval
+- **Report Generation**: Automated rank sheet creation and distribution
+- **Data Organization**: Systematic arrangement of educational records
+- **Assessment Tools**: Comprehensive student evaluation and ranking systems
+
+#### 🔹 Real-World Applications
+
+**🏛️ Educational Institutions**
+
+- **School Management**: Student performance tracking and ranking systems
+- **Board Examinations**: Rank sheet generation for competitive examinations
+- **Academic Records**: Comprehensive student achievement documentation
+- **Merit-Based Systems**: Automated ranking for scholarships and awards
+
+**📈 Performance Analysis**
+
+- **Algorithm Efficiency**: Merge sort performance in educational data processing
+- **Data Organization**: District-wise grouping and sorting methodologies
+- **Scalability**: System performance with large student populations
+- **Accuracy**: Precise ranking and performance evaluation
+
+**🔬 Research and Analytics**
+
+- **Educational Research**: Student performance pattern analysis
+- **Statistical Studies**: District-wise academic performance insights
+- **Data Mining**: Educational data analysis and trend identification
+- **Policy Development**: Evidence-based educational policy formulation
+
+#### 🔹 Learning Outcomes
+
+- **Algorithm Implementation**: Merge sort algorithm mastery for stable sorting
+- **Educational Systems**: Understanding student assessment and ranking requirements
+- **Data Organization**: Efficient grouping and sorting of educational data
+- **Performance Analysis**: Student ranking and evaluation methodologies
+- **Real-World Modeling**: Translating educational scenarios into software solutions
+- **Algorithm Selection**: Choosing appropriate sorting algorithms for specific requirements
+- **Data Integrity**: Maintaining accuracy in student record management
+- **System Design**: Building scalable solutions for educational assessment
+- **User Interface**: Creating intuitive interfaces for educational administrators
+- **Research Applications**: Applying algorithmic knowledge to educational research
