@@ -4322,3 +4322,622 @@ Developed a **comprehensive stream processing framework** with 10 individual pro
 - **Memory Management**: Understanding stream memory usage patterns
 - **Real-World Applications**: Practical implementation of stream concepts
 - **Best Practices**: Following industry best practices for stream operations
+
+### 📅 27 January 2026
+
+### 📋 EventTracker Audit Trail Management System
+
+Developed a **comprehensive audit trail tracking system** implementing attribute-based event logging and JSON serialization, demonstrating advanced reflection techniques for dynamic audit event discovery and reporting.
+
+#### 🔹 System Architecture
+
+**🏷️ AuditTrailAttribute.cs - Custom Audit Annotation**
+
+- **Method-Level Annotation**: Attribute applied to methods requiring audit tracking
+- **Action Naming**: Custom action names for semantic event description
+- **Metadata Storage**: Action information storage for runtime discovery
+- **Attribute Usage**: Restricting annotation to method targets only
+
+**📋 AuditEventInfo.cs - Audit Event Data Model**
+
+- **Encapsulation**: Private fields for audit event information
+- **Timestamp Tracking**: Recording event occurrence time
+- **Metadata Recording**: Storing class, method, and action information
+- **Serialization Support**: JSON serialization for audit report generation
+
+**👤 UserActions.cs - User Action Methods**
+
+- **Auditable Methods**: Methods marked with AuditTrailAttribute
+- **Business Logic**: Core user action implementations
+- **Semantic Actions**: Clear action naming for audit trails
+- **Action Tracking**: Recording all user interactions
+
+**🔍 IEventTracker.cs - Event Tracking Interface**
+
+- **Service Contract**: Interface defining audit tracking operations
+- **Method Standards**: Standardized approach for event discovery and reporting
+- **Abstraction Layer**: Clean separation of interface and implementation
+
+**🏢 EventTrackerUtilityImpl.cs - Core Audit Logic**
+
+- **Reflection Scanning**: Assembly-wide method scanning for audit attributes
+- **Attribute Discovery**: Runtime identification of annotated methods
+- **Audit Report Generation**: Text-based audit trail reporting
+- **JSON Serialization**: Converting audit events to JSON format
+- **Timestamp Recording**: Capturing event timing information
+
+#### 🔹 Audit Tracking Features
+
+**🔍 Dynamic Audit Scanning**
+
+- **Reflection-Based Discovery**: Runtime scanning of annotated methods
+- **Assembly Scanning**: Comprehensive method discovery across entire assembly
+- **Binding Flags**: Public, instance, and declared-only method filtering
+- **Attribute Extraction**: Custom attribute retrieval from methods
+
+**📋 Audit Report Generation**
+
+- **Text-Based Reports**: Formatted text reports with class and method details
+- **Action Information**: Recording semantic action names
+- **Organized Display**: Grouped reporting by class and method
+- **Visual Formatting**: Enhanced readability with separators and symbols
+
+**📝 JSON Serialization**
+
+- **Object Serialization**: Converting audit events to JSON format
+- **Formatted Output**: Indented JSON for human readability
+- **Data Persistence**: JSON format for long-term audit storage
+- **Structured Data**: Hierarchical event information representation
+
+**⏰ Timestamp Recording**
+
+- **Event Timing**: Recording exact event occurrence time
+- **Temporal Tracking**: Building audit trail timeline
+- **Forensic Analysis**: Time-based audit event analysis
+- **Event Sequencing**: Maintaining event order and timing
+
+#### 🔹 User Interface System
+
+**📋 EventTrackerMenu.cs - Audit Control Interface**
+
+- **Comprehensive Menu**: Audit scanning and reporting options
+- **Report Generation**: Generating and displaying audit trails
+- **Data Export**: JSON export capabilities for audit records
+- **User Interaction**: Interactive menu-driven interface
+
+**🚀 EventTrackerMain.cs - Application Entry Point**
+
+- **System Initialization**: Clean application startup
+- **Service Integration**: Seamless menu coordination
+
+#### 🔹 Reflection and Annotation Techniques
+
+**🔎 Assembly Reflection**
+
+- **Type Discovery**: Getting all types from executing assembly
+- **Method Enumeration**: Retrieving all methods from discovered types
+- **Binding Flags**: Filtering public, instance, and declared-only members
+- **Performance Optimization**: Efficient reflection-based discovery
+
+**🏷️ Attribute-Based Metadata**
+
+- **Custom Annotations**: Creating domain-specific attributes
+- **Attribute Targets**: Restricting attribute usage to methods
+- **Metadata Extraction**: Runtime retrieval of attribute information
+- **Semantic Meaning**: Business logic encoded in annotations
+
+**📋 Dynamic Reporting**
+
+- **Runtime Information Gathering**: Dynamic report generation
+- **Flexible Formatting**: Customizable report structure and content
+- **Multiple Formats**: Text and JSON output formats
+- **Extensibility**: Adding new reporting formats easily
+
+#### 🔹 Real-World Applications
+
+**🏢 Enterprise Audit Systems**
+
+- **Compliance Tracking**: Recording user actions for regulatory compliance
+- **Forensic Analysis**: Investigating system events and user actions
+- **Security Monitoring**: Detecting and logging suspicious activities
+- **Access Control**: Tracking data access and modifications
+
+**💼 Business Systems**
+
+- **User Activity Tracking**: Recording business operations and transactions
+- **Change Auditing**: Tracking modifications to critical data
+- **Action History**: Building comprehensive activity logs
+- **Accountability**: Establishing user responsibility for actions
+
+**🔐 Security and Compliance**
+
+- **HIPAA Compliance**: Healthcare data access auditing
+- **GDPR Compliance**: Personal data processing tracking
+- **SOX Compliance**: Financial system auditing
+- **Security Incident Response**: Investigating security breaches
+
+#### 🔹 Learning Outcomes
+
+- **Reflection Mastery**: Advanced reflection techniques for metadata discovery
+- **Attribute Design**: Creating custom attributes for semantic metadata
+- **Assembly Scanning**: Efficient assembly-wide type and method discovery
+- **Dynamic Reporting**: Building flexible reporting systems
+- **Audit Systems**: Understanding audit trail requirements and implementation
+- **Compliance**: Building systems for regulatory compliance
+- **Data Serialization**: JSON serialization for data exchange
+- **Temporal Tracking**: Time-based event tracking and analysis
+- **Security Systems**: Implementing comprehensive audit and monitoring
+- **Enterprise Development**: Building enterprise-grade audit systems
+
+### 🏥 HealthCheckPro API Documentation System
+
+Developed a **comprehensive API documentation and metadata scanning system** implementing attribute-based API classification and runtime API documentation generation, demonstrating advanced reflection techniques for REST API metadata analysis.
+
+#### 🔹 System Architecture
+
+**🏷️ ApiControllerAttribute.cs - API Controller Annotation**
+
+- **Class-Level Annotation**: Attribute applied to API controller classes
+- **Controller Marking**: Identifying classes as API controllers
+- **Metadata Tagging**: Marking classes for API metadata scanning
+- **Attribute Usage**: Restricting annotation to class targets only
+
+**🔓 PublicAPIAttribute.cs - Public API Annotation**
+
+- **Method-Level Annotation**: Marking methods as public APIs
+- **Access Control**: Distinguishing public accessible methods
+- **API Classification**: Semantic classification of API methods
+- **Documentation Support**: Enabling API documentation generation
+
+**🛡️ RequiresAuthAttribute.cs - Authentication Annotation**
+
+- **Method-Level Annotation**: Marking methods requiring authentication
+- **Security Classification**: Identifying protected API methods
+- **Access Control**: Enforcing authentication requirements
+- **API Security**: Building secure API metadata
+
+**📋 ApiMethodInfo.cs - API Method Information Model**
+
+- **Encapsulation**: Private fields for API method metadata
+- **Method Documentation**: Storing method name and description
+- **Access Information**: Recording access type (Public/Auth Required)
+- **Controller Mapping**: Linking methods to controllers
+- **Serialization Support**: Converting to JSON documentation
+
+**🔍 IHealthCheck.cs - API Health Check Interface**
+
+- **Service Contract**: Interface defining API metadata operations
+- **Method Standards**: Standardized approach for API scanning
+- **Abstraction Layer**: Clean separation of interface and implementation
+
+**⚕️ HealthCheckUtilityImpl.cs - Core API Analysis Logic**
+
+- **Reflection Scanning**: Assembly-wide controller and method scanning
+- **Attribute Discovery**: Runtime identification of API attributes
+- **API Metadata Extraction**: Gathering comprehensive API information
+- **Documentation Generation**: Creating API documentation automatically
+- **Access Control Analysis**: Classifying API methods by access type
+
+#### 🔹 API Documentation Features
+
+**🔍 API Metadata Scanning**
+
+- **Controller Discovery**: Finding all API controller classes
+- **Method Enumeration**: Retrieving all public methods from controllers
+- **Attribute Analysis**: Examining API-related attributes
+- **Access Classification**: Determining method access requirements
+
+**📋 API Report Generation**
+
+- **Controller Listing**: Organized report by controller class
+- **Method Documentation**: Detailed method information with access type
+- **Access Tags**: Visual indicators for public vs. authenticated methods
+- **Formatted Output**: Well-organized, human-readable reports
+
+**📚 API Documentation Generation**
+
+- **Structured Documentation**: Building API documentation from metadata
+- **Access Classification**: Recording access type for each method
+- **Collection Management**: Using List<ApiMethodInfo> for documentation
+- **Data Organization**: Structured API method information storage
+
+**🔐 Access Control Analysis**
+
+- **Authentication Detection**: Identifying methods requiring authentication
+- **Public API Filtering**: Finding publicly accessible methods
+- **Selective Scanning**: Only documenting API-related methods
+- **Security Classification**: Categorizing API security requirements
+
+#### 🔹 User Interface System
+
+**📋 HealthCheckMenu.cs - API Health Check Interface**
+
+- **Comprehensive Menu**: API scanning and documentation options
+- **Report Generation**: Generating and displaying API metadata reports
+- **Documentation Export**: Creating API documentation
+- **User Interaction**: Interactive menu-driven interface
+
+**🚀 HealthCheckMain.cs - Application Entry Point**
+
+- **System Initialization**: Clean application startup
+- **Service Integration**: Seamless menu coordination
+
+#### 🔹 Reflection and Annotation Techniques
+
+**🏢 Controller Discovery**
+
+- **Type Filtering**: Finding types with ApiControllerAttribute
+- **LINQ Filtering**: Efficient filtering of controller classes
+- **Assembly Scanning**: Discovering all controllers in assembly
+- **Selective Targeting**: Focusing on API controller classes
+
+**📋 Method Analysis**
+
+- **Public Method Enumeration**: Getting all public instance methods
+- **Attribute Checking**: Testing for API-related attributes
+- **Conditional Processing**: Different handling for public vs. auth APIs
+- **Semantic Classification**: Business logic encoded in annotations
+
+**📚 Documentation Building**
+
+- **Dynamic Information Gathering**: Building documentation at runtime
+- **Structured Output**: Creating well-organized documentation
+- **Multiple Formats**: Supporting different documentation formats
+- **Extensibility**: Easy addition of new documentation types
+
+#### 🔹 Real-World Applications
+
+**🌐 REST API Development**
+
+- **API Documentation**: Automatic API documentation generation
+- **Client Development**: Providing developers with API specifications
+- **API Versioning**: Managing multiple API versions
+- **API Standards**: Enforcing API design standards
+
+**🔐 API Security**
+
+- **Access Control**: Identifying protected endpoints
+- **Authentication Requirements**: Documenting authentication needs
+- **Authorization Policies**: Recording access restrictions
+- **Security Auditing**: Tracking API security configuration
+
+**📊 API Analytics**
+
+- **Endpoint Analysis**: Understanding API structure and capabilities
+- **Usage Patterns**: Analyzing API consumption patterns
+- **Performance Monitoring**: Tracking API performance metrics
+- **Health Monitoring**: Ensuring API availability and reliability
+
+**🛠️ API Gateway Integration**
+
+- **Dynamic Routing**: Configuring API gateway based on metadata
+- **Rate Limiting**: Applying different limits to different endpoints
+- **Load Balancing**: Distributing traffic across API instances
+- **Request Filtering**: Implementing security and validation rules
+
+#### 🔹 Learning Outcomes
+
+- **API Design Patterns**: Understanding modern REST API design
+- **Reflection Mastery**: Advanced reflection for API metadata discovery
+- **Attribute-Based Configuration**: Using attributes for API metadata
+- **Dynamic Documentation**: Generating documentation from code
+- **Security Classification**: Implementing access control systems
+- **Controller Pattern**: Understanding MVC controller architecture
+- **Metadata Management**: Managing and processing metadata
+- **API Standards**: Implementing API design standards
+- **Developer Experience**: Building tools for developers
+- **Enterprise APIs**: Designing enterprise-grade API systems
+
+### 🎓 C# Annotations and Reflection Framework
+
+Developed a **comprehensive annotations and reflection framework** showcasing advanced C# metadata and runtime type inspection, demonstrating both attribute-based metadata and reflection-based dynamic behavior.
+
+#### 🔹 Framework Architecture
+
+**📚 Annotation Framework**
+
+**🏷️ Custom Attributes (BasicLevel)**
+
+- **TodoAttribute**: Task assignment and priority tracking
+- **Metadata Storage**: Task description, assignment, and priority
+- **Reflection Discovery**: Runtime task information extraction
+- **Project Management**: Attribute-based task tracking
+
+**🔍 Reflection Framework**
+
+**🔎 Runtime Type Inspection (BasicLevel)**
+
+- **ClassInfo.cs**: Complete class structure analysis
+- **DynamicObject.cs**: Dynamic object creation and instantiation
+- **PrivateField.cs**: Accessing private fields through reflection
+- **InvokePrivateMethod.cs**: Dynamically invoking private methods
+
+**Intermediate Level Components**
+
+- **Advanced Attribute Processing**: Complex metadata handling
+- **Generic Reflection**: Type-generic reflection operations
+- **Performance Optimization**: Reflection caching and optimization
+
+**Advanced Level Components**
+
+- **Custom Object Mapping**: Dynamic property mapping
+- **Type Conversion**: Dynamic type conversion and casting
+- **Proxy Generation**: Dynamic proxy creation
+- **Expression Building**: Generating expressions at runtime
+
+#### 🔹 Key Techniques
+
+**🏷️ Attribute-Based Metadata**
+
+- **Custom Attribute Creation**: Defining domain-specific attributes
+- **Attribute Targets**: Specifying where attributes can be applied
+- **Metadata Extraction**: Retrieving attributes at runtime
+- **Semantic Meaning**: Business logic encoded in attributes
+
+**🔍 Reflection Operations**
+
+- **Type Discovery**: Getting type information at runtime
+- **Member Enumeration**: Discovering fields, methods, properties
+- **Binding Flags**: Controlling member access levels
+- **Dynamic Invocation**: Calling methods dynamically
+
+**🔐 Access Control**
+
+- **Public Member Access**: Accessing public fields and methods
+- **Private Member Access**: Using reflection to access private members
+- **Binding Flags Control**: Filtering members by access level
+- **Security Implications**: Understanding reflection security
+
+#### 🔹 Real-World Applications
+
+**🔧 Dependency Injection**
+
+- **Constructor Scanning**: Finding appropriate constructors
+- **Dependency Resolution**: Resolving type dependencies
+- **Dynamic Instantiation**: Creating instances dynamically
+- **IoC Containers**: Building inversion of control frameworks
+
+**📝 ORM Frameworks**
+
+- **Property Mapping**: Mapping object properties to database columns
+- **Type Conversion**: Converting between database and object types
+- **Metadata Extraction**: Building ORM metadata from types
+- **Dynamic Queries**: Building SQL queries dynamically
+
+**🧪 Testing Frameworks**
+
+- **Test Discovery**: Finding test methods automatically
+- **Setup/Teardown**: Invoking test lifecycle methods
+- **Assertion Building**: Creating dynamic assertions
+- **Mock Creation**: Generating mock objects dynamically
+
+**⚙️ Serialization Frameworks**
+
+- **Property Enumeration**: Getting all serializable properties
+- **Type Mapping**: Determining serialization types
+- **Custom Handlers**: Implementing type-specific serialization
+- **Format Support**: Supporting multiple serialization formats
+
+#### 🔹 Learning Outcomes
+
+- **Attribute Design**: Creating custom attributes for metadata
+- **Reflection Mastery**: Advanced reflection techniques
+- **Type Inspection**: Runtime type analysis and discovery
+- **Dynamic Invocation**: Calling code dynamically
+- **Access Control**: Understanding visibility and access levels
+- **Framework Design**: Building reflection-based frameworks
+- **Performance**: Understanding reflection performance implications
+- **Security**: Handling reflection security considerations
+- **Advanced Patterns**: Implementing reflection design patterns
+- **Enterprise Development**: Building enterprise-scale systems
+
+### 🔤 C# Regular Expressions and NUnit Testing Framework
+
+Developed a **comprehensive regex pattern matching and NUnit testing framework** with 15 regex validators and 7 NUnit test suites, demonstrating pattern validation and comprehensive unit testing practices.
+
+#### 🔹 Regular Expression Validators (15 Programs)
+
+**✉️ Email Validation**
+
+- **EmailExtractor.cs**: Extracting email addresses from text
+- **Pattern**: `\b[\w.-]+@[\w.-]+\.\w+\b`
+- **Use Case**: Email address identification and validation
+- **Match Groups**: Capturing complete email addresses
+
+**💳 Financial Validators**
+
+- **CreditCardValidator.cs**: Credit card number validation
+- **Pattern**: `^(4\d{15}|5\d{15})$`
+- **Algorithms**: Visa and Mastercard detection
+- **Security**: Pattern-based validation for payment processing
+
+**🔐 Credential Validators**
+
+- **UsernameValidator.cs**: Username format validation
+- **Pattern**: Custom patterns for username requirements
+- **Rules**: Enforcing username conventions
+- **Security**: Preventing invalid credential formats
+
+**🚗 Document Validators**
+
+- **LicensePlateValidator.cs**: License plate format validation
+- **IPAddressValidator.cs**: IPv4 address validation
+- **SSNValidator.cs**: Social security number validation
+- **Patterns**: Government and regulatory format validation
+
+**🎨 Format Validators**
+
+- **HexColorValidator.cs**: Hexadecimal color code validation
+- **DateExtractor.cs**: Extracting dates from text
+- **Pattern**: Date format pattern matching
+- **Use Case**: Calendar and scheduling applications
+
+**🔗 Content Extractors**
+
+- **LinkExtractor.cs**: Extracting URLs from text
+- **CurrencyExtractor.cs**: Extracting currency values
+- **LanguageExtractor.cs**: Language detection patterns
+- **CapitalWordExtractor.cs**: Finding capitalized words
+
+**🧹 Text Processing**
+
+- **BadWordCensor.cs**: Content filtering and censoring
+- **SpaceNormalizer.cs**: Normalizing whitespace
+- **RepeatingWords.cs**: Detecting repeated words
+- **Pattern**: Text cleaning and normalization
+
+#### 🔹 Regex Techniques
+
+**📝 Pattern Matching**
+
+- **Literal Characters**: Matching exact text sequences
+- **Character Classes**: Using `[...]` for character ranges
+- **Quantifiers**: `*`, `+`, `?`, `{n,m}` for repetition
+- **Anchors**: `^` and `$` for start/end matching
+
+**🔍 Pattern Extraction**
+
+- **Regex.Matches()**: Finding all pattern occurrences
+- **Match.Value**: Extracting matched text
+- **Match Groups**: Capturing subpatterns
+- **Case-Insensitive**: Optional case-insensitive matching
+
+**✓ Pattern Validation**
+
+- **Regex.IsMatch()**: Boolean validation testing
+- **Boundary Checking**: Using word boundaries `\b`
+- **Negative Patterns**: Excluding invalid formats
+- **Performance**: Efficient pattern matching
+
+**🔄 Pattern Replacement**
+
+- **Regex.Replace()**: Substituting pattern matches
+- **Transformation**: Converting matched patterns
+- **Text Cleaning**: Removing or replacing unwanted content
+- **Format Conversion**: Converting between formats
+
+#### 🔹 NUnit Testing Framework (7 Test Suites)
+
+**🧮 Calculator Tests**
+
+- **Basic Arithmetic**: Addition, subtraction, multiplication, division
+- **Edge Cases**: Zero handling, negative numbers
+- **Exception Testing**: Division by zero handling
+- **Test Organization**: Grouped test methods by operation
+
+**📁 File Handling Tests**
+
+- **File I/O Operations**: Creating, reading, writing files
+- **Error Handling**: File not found exceptions
+- **Resource Cleanup**: Proper file disposal
+- **Integration Testing**: Full file operation workflows
+
+**📚 List Manager Tests**
+
+- **Collection Operations**: Add, remove, clear operations
+- **Index Operations**: Accessing elements by index
+- **Search Operations**: Finding elements in lists
+- **Boundary Testing**: Empty list handling
+
+**⚙️ Parameterized Tests**
+
+- **TestCase Attributes**: Multiple test cases per method
+- **Data-Driven Testing**: Testing multiple inputs
+- **Comprehensive Coverage**: Testing various scenarios
+- **Efficiency**: Reducing code duplication in tests
+
+**🔧 Setup and Teardown**
+
+- **[SetUp]**: Test initialization
+- **[TearDown]**: Test cleanup
+- **Fixture Management**: Managing test resources
+- **State Management**: Ensuring clean test state
+
+**📝 String Utilities Tests**
+
+- **String Operations**: Manipulation and transformation
+- **Encoding**: Character and string encoding tests
+- **Validation**: Format and content validation
+- **Performance**: String operation performance testing
+
+**⏱️ Timeout Tests**
+
+- **[Timeout]**: Performance requirement testing
+- **Timeout Assertions**: Ensuring operations complete within time
+- **Performance Testing**: Detecting performance regressions
+- **Long-Running Operations**: Testing extended operations
+
+#### 🔹 NUnit Testing Features
+
+**✓ Assertion Methods**
+
+- **Assert.AreEqual()**: Testing value equality
+- **Assert.IsTrue/IsFalse**: Boolean assertions
+- **Assert.IsNull/NotNull**: Null checking
+- **Assert.Throws()**: Exception testing
+- **Assert.Contains()**: Collection membership testing
+
+**🏷️ Test Attributes**
+
+- **[Test]**: Marking test methods
+- **[TestFixture]**: Grouping related tests
+- **[SetUp/TearDown]**: Lifecycle management
+- **[TestCase]**: Parameterized test data
+- **[Timeout]**: Performance requirements
+
+**🔄 Test Organization**
+
+- **Test Classes**: Logical test grouping
+- **Setup/Teardown**: Test initialization and cleanup
+- **Parameterized Tests**: Data-driven testing
+- **Exception Testing**: Testing error conditions
+
+**📊 Test Execution**
+
+- **Console Execution**: Command-line test running
+- **Test Runners**: IDE integration for test execution
+- **Test Results**: Detailed pass/fail reporting
+- **Code Coverage**: Measuring test coverage
+
+#### 🔹 Real-World Applications
+
+**🔐 Data Validation**
+
+- **Input Validation**: Preventing invalid data entry
+- **Format Validation**: Ensuring correct data formats
+- **Content Filtering**: Removing unwanted content
+- **Security**: Preventing injection attacks
+
+**📧 Communication Systems**
+
+- **Email Validation**: Verifying email addresses
+- **Phone Number Parsing**: Extracting contact information
+- **URL Extraction**: Finding links in content
+- **Message Filtering**: Spam and profanity filtering
+
+**💼 Business Systems**
+
+- **Financial Processing**: Credit card validation
+- **License Verification**: Document format validation
+- **ID Validation**: Government ID format checking
+- **Record Processing**: Extracting structured data
+
+**🧪 Software Quality**
+
+- **Unit Testing**: Comprehensive code coverage
+- **Integration Testing**: Testing component interactions
+- **Performance Testing**: Verifying performance requirements
+- **Regression Testing**: Preventing code regressions
+
+#### 🔹 Learning Outcomes
+
+- **Regex Mastery**: Advanced regex pattern creation and matching
+- **Pattern Design**: Creating patterns for various validation scenarios
+- **Text Processing**: Extracting and transforming text data
+- **Performance Optimization**: Efficient pattern matching
+- **Unit Testing**: Comprehensive testing with NUnit
+- **Test Organization**: Structuring tests effectively
+- **Data Validation**: Building robust validation systems
+- **Error Handling**: Testing exception handling
+- **Quality Assurance**: Ensuring code quality through testing
+- **Enterprise Testing**: Building enterprise-scale testing systems
