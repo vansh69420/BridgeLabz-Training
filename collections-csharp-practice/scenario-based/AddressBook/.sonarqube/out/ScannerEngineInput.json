@@ -1,0 +1,96 @@
+{
+  "scannerProperties": [
+    {
+      "key": "sonar.scanner.app",
+      "value": "ScannerMSBuild"
+    },
+    {
+      "key": "sonar.scanner.appVersion",
+      "value": "11.0"
+    },
+    {
+      "key": "sonar.scanner.bootstrapStartTime",
+      "value": "1769668740000"
+    },
+    {
+      "key": "sonar.projectKey",
+      "value": "AddressBook"
+    },
+    {
+      "key": "sonar.working.directory",
+      "value": "/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/.sonarqube/out/.sonar"
+    },
+    {
+      "key": "sonar.projectBaseDir",
+      "value": "/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook"
+    },
+    {
+      "key": "sonar.pullrequest.cache.basepath",
+      "value": "/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook"
+    },
+    {
+      "key": "sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "sonar.modules",
+      "value": "EACE259A-C091-4971-8C6B-615E0AFD5B9D"
+    },
+    {
+      "key": "EACE259A-C091-4971-8C6B-615E0AFD5B9D.sonar.projectKey",
+      "value": "AddressBook:EACE259A-C091-4971-8C6B-615E0AFD5B9D"
+    },
+    {
+      "key": "EACE259A-C091-4971-8C6B-615E0AFD5B9D.sonar.projectName",
+      "value": "AddressBook"
+    },
+    {
+      "key": "EACE259A-C091-4971-8C6B-615E0AFD5B9D.sonar.projectBaseDir",
+      "value": "/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook"
+    },
+    {
+      "key": "EACE259A-C091-4971-8C6B-615E0AFD5B9D.sonar.working.directory",
+      "value": "/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/.sonarqube/out/.sonar/mod0"
+    },
+    {
+      "key": "EACE259A-C091-4971-8C6B-615E0AFD5B9D.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "EACE259A-C091-4971-8C6B-615E0AFD5B9D.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "EACE259A-C091-4971-8C6B-615E0AFD5B9D.sonar.sources",
+      "value": "/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/Addressbook.cs,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/AddressBookMain.cs,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/AddressBookMenu.cs,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/AddressBookUtilityImpl.cs,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/Contact.cs,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/IAddressBook.cs,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/Program.cs,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/UniversalLinkedList.cs,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/obj/Debug/net10.0/apphost,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/obj/AddressBook.csproj.nuget.dgspec.json,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/obj/project.assets.json,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/obj/Debug/net10.0/AddressBook.sourcelink.json,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/bin/Debug/net10.0/AddressBook.deps.json,/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/bin/Debug/net10.0/AddressBook.runtimeconfig.json"
+    },
+    {
+      "key": "EACE259A-C091-4971-8C6B-615E0AFD5B9D.sonar.cs.analyzer.projectOutPaths",
+      "value": "/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/.sonarqube/out/0"
+    },
+    {
+      "key": "EACE259A-C091-4971-8C6B-615E0AFD5B9D.sonar.cs.roslyn.reportFilePaths",
+      "value": "/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/.sonarqube/out/0/Issues.json"
+    },
+    {
+      "key": "EACE259A-C091-4971-8C6B-615E0AFD5B9D.sonar.cs.scanner.telemetry",
+      "value": "/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/.sonarqube/out/0/Telemetry.json"
+    },
+    {
+      "key": "sonar.login",
+      "value": "***"
+    },
+    {
+      "key": "sonar.host.url",
+      "value": "http://localhost:9000"
+    },
+    {
+      "key": "sonar.visualstudio.enable",
+      "value": "false"
+    }
+  ]
+}

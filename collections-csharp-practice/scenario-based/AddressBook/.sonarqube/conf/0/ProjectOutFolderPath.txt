@@ -1,0 +1,1 @@
+/Users/phoenix/Desktop/BridgeLabz-Training/collections-csharp-practice/scenario-based/AddressBook/.sonarqube/out/0
