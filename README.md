@@ -5174,3 +5174,183 @@ Developed a **comprehensive maritime fleet management system** implementing vess
 - **Output Formatting**: Presenting results in user-friendly format
 - **Fleet Management**: Building fleet management systems
 - **Maritime Systems**: Understanding maritime industry requirements
+
+### 📊 C# CSV Data Handling Comprehensive Framework
+
+Developed a **comprehensive CSV data handling framework** with three progressive difficulty levels (Basic, Intermediate, Advanced) demonstrating file I/O operations, data parsing, transformation, validation, and serialization techniques.
+
+#### 🔹 Framework Architecture
+
+**📁 Basic Level - Fundamental CSV Operations**
+
+**📖 Basic/Program.cs - Simple CSV Reading**
+
+- **File I/O**: Reading entire CSV file with File.ReadAllLines()
+- **Header Skipping**: Using LINQ Skip() to bypass header rows
+- **CSV Parsing**: Splitting lines by comma delimiter
+- **Data Display**: Formatted output of CSV records
+- **Record Counting**: Tracking total number of data records
+
+**Key Operations:**
+- Reading student records from CSV file
+- Parsing comma-separated values into fields
+- Displaying formatted student information
+- Calculating record count statistics
+
+**📝 Intermediate Level - Data Manipulation and Filtering**
+
+**👤 Intermediate/Employee.cs - Data Model**
+
+- **Encapsulation**: Public fields for employee data storage
+- **Employee Details**: Id, Name, Department, Salary properties
+- **Object Mapping**: Converting CSV rows to employee objects
+- **Data Structure**: Clean data representation model
+
+**🔄 Intermediate/Program.cs - CSV Transformation**
+
+- **Filtering Operations**: Finding records matching criteria
+- **Search Functionality**: Locating specific employees by name
+- **Data Updates**: Modifying and recalculating CSV values
+- **Sorting Operations**: Ordering records by salary
+- **File Writing**: Creating modified CSV output files
+- **LINQ Integration**: Using LINQ for efficient data processing
+
+**Key Operations:**
+- Filter students by academic performance
+- Search employees by name with case-insensitive matching
+- Update employee salaries with conditional increases
+- Sort employees by salary descending order
+- Write transformed data to new CSV files
+
+**⚙️ Advanced Level - Complex CSV Processing**
+
+**🎓 Advanced/Student.cs - Advanced Data Model**
+
+- **Encapsulation**: Public fields for student information
+- **Type Mapping**: Converting string data to appropriate types
+- **Object Construction**: Building objects from CSV rows
+- **Serialization Support**: JSON and CSV serialization
+
+**🔧 Advanced/Program.cs - Enterprise CSV Operations**
+
+- **Data Validation**: Regex-based email and phone validation
+- **CSV Merging**: Combining data from multiple CSV files
+- **Large File Processing**: StreamReader for memory-efficient reading
+- **JSON Conversion**: Converting JSON to CSV format
+- **Dictionary Operations**: Using dictionaries for efficient lookups
+- **Performance Optimization**: Processing large datasets efficiently
+
+**Key Operations:**
+- Validate CSV data using regular expressions
+- Merge CSV files using dictionary-based lookups
+- Process large CSV files without loading entirely
+- Convert JSON data to CSV format
+- Handle data transformation across formats
+
+#### 🔹 CSV Processing Techniques
+
+**📖 File Reading Methods**
+
+- **File.ReadAllLines()**: Loading entire file into memory
+- **StreamReader**: Line-by-line efficient reading
+- **Memory Management**: Choosing appropriate methods for file size
+- **Performance Optimization**: Efficient file I/O operations
+
+**✂️ String Parsing**
+
+- **Split() Method**: Parsing comma-separated values
+- **Array Indexing**: Accessing parsed field values
+- **Error Handling**: Managing parsing exceptions
+- **Data Type Conversion**: Converting strings to appropriate types
+
+**🔍 Data Filtering and Search**
+
+- **LINQ Where()**: Filtering records by conditions
+- **String Comparison**: Case-insensitive name matching
+- **Numeric Comparison**: Comparing numeric field values
+- **Collection Filtering**: Finding matching records
+
+**📝 Data Transformation**
+
+- **Field Mapping**: Creating objects from CSV data
+- **Conditional Updates**: Modifying values based on conditions
+- **Salary Calculations**: Computing new values from existing data
+- **Data Enrichment**: Adding computed fields
+
+**🔄 Sorting and Ordering**
+
+- **LINQ OrderBy/OrderByDescending**: Sorting records
+- **Multi-Level Sorting**: Complex sorting criteria
+- **Take()/Skip()**: Pagination and limiting results
+- **Top N Queries**: Finding highest/lowest value records
+
+**🔗 File Merging**
+
+- **Dictionary Lookups**: Efficient record joining
+- **Key-Value Mapping**: Combining data from multiple sources
+- **Data Integration**: Merging related datasets
+- **Output Generation**: Creating merged CSV files
+
+**✔️ Data Validation**
+
+- **Regex Patterns**: Email and phone number validation
+- **Format Checking**: Validating data formats
+- **Error Reporting**: Identifying invalid records
+- **Quality Assurance**: Ensuring data quality
+
+**🔄 Format Conversion**
+
+- **JSON to CSV**: Converting between formats
+- **JsonSerializer**: Deserializing JSON data
+- **CSV Generation**: Creating CSV from objects
+- **Data Interchange**: Supporting multiple data formats
+
+#### 🔹 Real-World Applications
+
+**📊 Business Data Processing**
+
+- **Employee Management**: Processing HR data from CSV files
+- **Payroll Systems**: Managing salary information and updates
+- **Attendance Tracking**: Recording and analyzing attendance data
+- **Performance Reports**: Generating performance reports from data
+
+**🏫 Educational Systems**
+
+- **Student Records**: Managing student academic information
+- **Grade Tracking**: Recording and analyzing student grades
+- **Class Management**: Organizing student data by class
+- **Performance Analysis**: Identifying high and low performers
+
+**💼 Data Analytics**
+
+- **Data Import**: Loading CSV data for analysis
+- **Data Cleaning**: Validating and correcting data
+- **Data Transformation**: Converting data for analysis
+- **Report Generation**: Creating summary reports
+
+**🔗 Data Integration**
+
+- **Multi-Source Integration**: Merging data from multiple files
+- **Format Conversion**: Converting between data formats
+- **Data Validation**: Ensuring data quality
+- **System Integration**: Connecting systems through data files
+
+**⚡ Large-Scale Data Processing**
+
+- **Big Data Handling**: Processing large CSV files efficiently
+- **Memory Optimization**: Using streaming for large files
+- **Performance Monitoring**: Tracking processing progress
+- **Scalable Solutions**: Building solutions for large datasets
+
+#### 🔹 Learning Outcomes
+
+- **CSV Fundamentals**: Understanding CSV file format and structure
+- **File I/O Operations**: Reading and writing files efficiently
+- **String Parsing**: Breaking down and processing CSV data
+- **Data Mapping**: Converting CSV data to objects
+- **LINQ Integration**: Using LINQ for data processing
+- **Sorting and Filtering**: Organizing and finding data
+- **Data Validation**: Ensuring data quality with validation
+- **Format Conversion**: Converting between CSV and other formats
+- **Performance Optimization**: Handling large files efficiently
+- **Real-World Applications**: Applying CSV processing to business problems
