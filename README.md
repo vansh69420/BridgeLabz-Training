@@ -5354,3 +5354,73 @@ Developed a **comprehensive CSV data handling framework** with three progressive
 - **Format Conversion**: Converting between CSV and other formats
 - **Performance Optimization**: Handling large files efficiently
 - **Real-World Applications**: Applying CSV processing to business problems
+
+## 📅 2 February 2026
+
+### 🧩 C# JSON Handling — IPL Censorship Analyzer
+
+Developed an **IPL match data censorship utility** demonstrating robust JSON and CSV parsing, JSON serialization with Newtonsoft.Json, and domain-specific data masking for privacy-preserving output.
+
+#### 🔹 System Architecture
+
+**📄 IplMatch.cs - Data Model**
+
+- **Structured Model**: Strongly-typed model for match data (match_id, team names, score, winner, player_of_match)
+- **Dictionary Usage**: `Dictionary<string,int>` for storing per-team scores
+- **Required Properties**: Ensures essential fields are present during deserialization
+
+**⚙️ JsonHandler.cs - JSON I/O Utilities**
+
+- **Serialization**: Uses `JsonConvert.SerializeObject()` with indentation for human-readable output
+- **Deserialization**: `JsonConvert.DeserializeObject<List<IplMatch>>()` for converting JSON to objects
+- **File Operations**: Read/Write file operations with `File.ReadAllText()` and `File.WriteAllText()`
+
+**📋 CsvHandler.cs - CSV Parsing & Generation**
+
+- **Line-by-Line Parsing**: `File.ReadAllLines()` with header skipping
+- **Row Mapping**: Split-by-comma mapping to `IplMatch` objects
+- **CSV Writing**: StreamWriter-based CSV generation with header and row formatting
+
+**🔒 CensorshipService.cs - Privacy Engine**
+
+- **Masking Logic**: `MaskTeamName()` replaces sensitive parts of team names
+- **Redaction**: Player names replaced with `REDACTED` and winners/team names masked
+- **Score Rewriting**: Rebuilds score dictionary with masked keys for consistent output
+- **Idempotent Operation**: Safe repeated application for pipeline processing
+
+**🚀 Program.cs - Orchestration**
+
+- **End-to-End Pipeline**: Read JSON/CSV → apply censorship → write censored outputs
+- **Format Parity**: Supports both JSON and CSV input with censored JSON/CSV outputs
+- **Automation Friendly**: Designed for integration in batch ETL workflows
+
+#### 🔹 Key Features
+
+- **Dual I/O Support**: Seamless processing of both JSON and CSV sources
+- **Human-Readable Output**: Indented JSON and well-formatted CSV for downstream users
+- **Privacy-First Design**: Masking and redaction to prevent leakage of sensitive info
+- **Service-Oriented**: Separation of concerns between I/O and censorship logic
+- **Simple Extensibility**: Add new fields or masking rules with minimal code changes
+
+#### 🔹 Data Structure & Performance
+
+- **List<IplMatch>**: Memory-friendly collection for moderate-sized datasets
+- **Dictionary<string,int>**: Efficient score lookups and consistent CSV output ordering
+- **File I/O**: Uses in-memory ReadAllLines/ReadAllText for small-to-medium files, StreamWriter for output
+- **Scalability Options**: Can be adapted to streaming for very large datasets
+
+#### 🔹 Real-World Applications
+
+- **Data Privacy**: Censoring personally identifiable or sensitive content in datasets
+- **ETL Pipelines**: Pre-processing data before analytics or public release
+- **Content Moderation**: Automated masking in content publishing workflows
+- **Data Interchange**: Preparing sanitized datasets for partners or public datasets
+
+#### 🔹 Learning Outcomes
+
+- **JSON Mastery**: Serialization/deserialization with Newtonsoft.Json
+- **CSV Handling**: Parsing, mapping, and writing CSV rows safely
+- **Service Decomposition**: Separating I/O from business (censorship) logic
+- **Data Masking Techniques**: Implementing domain-specific redaction strategies
+- **File I/O Patterns**: Choosing appropriate I/O strategies for dataset sizes
+- **Integration Design**: Building pipeline-friendly, composable utilities
