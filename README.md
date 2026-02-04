@@ -5478,3 +5478,54 @@ Implemented a **string transformation utility** that validates input, removes ev
 - **API Design**: Exposing a single static method as utility entry point
 - **Performance Awareness**: Recognizing and improving inefficient string operations
 - **CLI Tools**: Building user-friendly command-line utilities for quick usage
+
+### 🚨 FactoryRobotHazardAnalyzer Robot Safety Risk Auditor
+
+Implemented a **robot hazard analysis utility** that validates input, maps machinery states to risk factors, and computes a hazard risk score — demonstrating safety-first engineering with domain-specific exceptions and deterministic risk scoring.
+
+#### 🔹 System Architecture
+
+**🧮 RobotHazardAuditor.cs - Risk Calculator**
+
+- **Input Validation**: Validates arm precision in [0.0,1.0] and worker density in [1,20], throwing `RobotSafetyException` on violations
+- **Machine State Mapping**: Maps machinery states (`Worn`/`Faulty`/`Critical`) to numeric risk factors
+- **Risk Formula**: Computes hazard risk combining precision and worker density using weighted factors
+- **Deterministic Output**: Produces a numeric hazard risk score for operator decisioning
+
+**🧰 RobotSafetyException.cs - Domain Exception**
+
+- **Custom Exception**: Signals safety validation failures with clear, user-friendly messages
+- **Control Flow**: Used to abort processing when input constraints are violated
+
+**🔧 Program.cs - Operational Interface**
+
+- **CLI Inputs**: Reads arm precision, worker density and machinery state from console
+- **Error Handling**: Catches `RobotSafetyException` and general format errors, providing actionable feedback
+- **Result Display**: Outputs computed hazard risk to console for immediate interpretation
+
+#### 🔹 Key Features
+
+- **Safety Validation**: Strict input checks to prevent unsafe computations
+- **Configurable Risk Scale**: Machine-state-to-factor mapping enables tunable risk models
+- **Clear Error Messaging**: Domain-specific exceptions improve usability and debugging
+- **Lightweight**: Minimal dependencies and constant-time computation suitable for embedded checks
+
+#### 🔹 Algorithm & Complexity
+
+- **Time Complexity**: O(1) constant-time computation per evaluation
+- **Space Complexity**: O(1) constant space usage
+- **Robustness**: Explicit handling of invalid states and range violations
+
+#### 🔹 Real-World Applications
+
+- **Factory Safety Systems**: Real-time robot hazard scoring for assembly lines
+- **Operator Dashboards**: Feeding risk scores into monitoring dashboards
+- **Preventive Maintenance**: Early identification of machinery states that raise hazard profiles
+- **Training Tools**: Teaching safety engineering through simple, testable examples
+
+#### 🔹 Learning Outcomes
+
+- **Domain Validation**: Implementing strict validation and domain-specific exceptions
+- **Safety Engineering**: Translating hardware states into actionable risk metrics
+- **API Simplicity**: Designing a concise auditor interface for integration
+- **Error Handling Patterns**: Using exceptions for business-rule enforcement
