@@ -26,25 +26,21 @@ namespace TechVille
         public string Name
         {
             get { return name; }
-            set { name = value; }
         }
 
         public int Age
         {
             get { return age; }
-            set { age = value; }
         }
 
         public double Income
         {
             get { return income; }
-            set { income = value; }
         }
 
         public int ResidencyYears
         {
             get { return residencyYears; }
-            set { residencyYears = value; }
         }
 
         public double EligibilityScore
@@ -52,6 +48,7 @@ namespace TechVille
             get { return eligibilityScore; }
             set { eligibilityScore = value; }
         }
+
         public string ServicePackage
         {
             get { return servicePackage; }
@@ -59,11 +56,18 @@ namespace TechVille
         }
 
 
+
         // ToString() Method
         public override string ToString()
         {
-            return $"Name: {name}, Age: {age}, Income: {income}, Residency Years: {residencyYears}, Eligibility Score: {eligibilityScore}, Package: {servicePackage}";
+            return $"Name: {Name}\n" +
+                $"Age: {Age}\n" +
+                $"Income: {Income}\n" +
+                $"Residency Years: {ResidencyYears}\n" +
+                $"Eligibility Score: {EligibilityScore}\n" +
+                $"Service Package: {ServicePackage}";
         }
+
 
     }
 }
