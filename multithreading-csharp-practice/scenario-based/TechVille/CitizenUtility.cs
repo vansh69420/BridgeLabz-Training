@@ -36,6 +36,16 @@ namespace TechVille
             count++;
 
             Console.WriteLine("Citizen Registered Successfully.");
+
+            // Demonstrating Object Creation
+            Service healthcare = new HealthcareService();
+            Service education = new EducationService();
+
+            Console.WriteLine("\nAvailable Services for Citizen:");
+            healthcare.DisplayServiceDetails();
+            education.DisplayServiceDetails();
+
+            Console.WriteLine("\nTotal Citizens Registered: " + Citizen.GetTotalCitizens());
         }
 
         public void DisplayAll()

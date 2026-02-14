@@ -4,14 +4,16 @@ namespace TechVille
 {
     public class Citizen
     {
-        // Private fields (Data Hiding)
+        // Static variable (Class Variable)
+        private static int totalCitizens = 0;
+
+        // Private fields (Instance Variables)
         private string name;
         private int age;
         private double income;
         private int residencyYears;
         private double eligibilityScore;
         private string servicePackage;
-
 
         // Constructor
         public Citizen(string name, int age, double income, int residencyYears)
@@ -20,28 +22,21 @@ namespace TechVille
             this.age = age;
             this.income = income;
             this.residencyYears = residencyYears;
+
+            totalCitizens++; // Count object creation
         }
 
-        // Public Properties (Controlled Access)
-        public string Name
+        // Static Method
+        public static int GetTotalCitizens()
         {
-            get { return name; }
+            return totalCitizens;
         }
 
-        public int Age
-        {
-            get { return age; }
-        }
-
-        public double Income
-        {
-            get { return income; }
-        }
-
-        public int ResidencyYears
-        {
-            get { return residencyYears; }
-        }
+        // Public Properties
+        public string Name { get { return name; } }
+        public int Age { get { return age; } }
+        public double Income { get { return income; } }
+        public int ResidencyYears { get { return residencyYears; } }
 
         public double EligibilityScore
         {
@@ -55,19 +50,14 @@ namespace TechVille
             set { servicePackage = value; }
         }
 
-
-
-        // ToString() Method
         public override string ToString()
         {
             return $"Name: {Name}\n" +
-                $"Age: {Age}\n" +
-                $"Income: {Income}\n" +
-                $"Residency Years: {ResidencyYears}\n" +
-                $"Eligibility Score: {EligibilityScore}\n" +
-                $"Service Package: {ServicePackage}";
+                   $"Age: {Age}\n" +
+                   $"Income: {Income}\n" +
+                   $"Residency Years: {ResidencyYears}\n" +
+                   $"Eligibility Score: {EligibilityScore}\n" +
+                   $"Service Package: {ServicePackage}";
         }
-
-
     }
 }
