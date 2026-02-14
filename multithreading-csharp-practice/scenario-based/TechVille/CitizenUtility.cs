@@ -22,9 +22,11 @@ namespace TechVille
 
             Citizen citizen = RegisterCitizen();
 
-            if (!ValidateCitizen(citizen))
+            string errorMessage;
+
+            if (!ValidateCitizen(citizen, out errorMessage))
             {
-                Console.WriteLine("Invalid Data.");
+                Console.WriteLine(errorMessage);
                 return;
             }
 
@@ -54,24 +56,16 @@ namespace TechVille
         public void SearchCitizen()
         {
             Console.Write("Enter Name to Search: ");
-            string searchName = Console.ReadLine();
+            string name = Console.ReadLine();
 
-            bool found = false;
+            Citizen citizen = FindCitizen(name);
 
-            for (int i = 0; i < count; i++)
-            {
-                if (citizens[i].Name.ToLower() == searchName.ToLower())
-                {
-                    Console.WriteLine("Citizen Found:");
-                    Console.WriteLine(citizens[i].ToString());
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found)
+            if (citizen == null)
                 Console.WriteLine("Citizen not found.");
+            else
+                Console.WriteLine(citizen.ToString());
         }
+
 
         // ----------------- Private Logic Methods -----------------
 
@@ -92,14 +86,21 @@ namespace TechVille
             return new Citizen(name, age, income, residencyYears);
         }
 
-        private bool ValidateCitizen(Citizen citizen)
+        private bool ValidateCitizen(Citizen citizen, out string errorMessage)
         {
             if (citizen.Age < 18)
+            {
+                errorMessage = "Citizen must be 18+.";
                 return false;
+            }
 
             if (citizen.ResidencyYears < 1)
+            {
+                errorMessage = "Residency must be at least 1 year.";
                 return false;
+            }
 
+            errorMessage = "";
             return true;
         }
 
@@ -111,8 +112,19 @@ namespace TechVille
             score += citizen.ResidencyYears * 2;
             score += citizen.Income / 10000;
 
+            ApplyIncomeBonus(ref score, citizen.Income);
+
             citizen.EligibilityScore = score;
 
+            AssignServicePackage(score, citizen);
+        }
+        private void ApplyIncomeBonus(ref double score, double income)
+        {
+            if (income > 100000)
+                score += 10;
+        }
+        private void AssignServicePackage(double score, Citizen citizen)
+        {
             if (score < 30)
                 citizen.ServicePackage = "Basic";
             else if (score <= 50)
@@ -122,5 +134,21 @@ namespace TechVille
             else
                 citizen.ServicePackage = "Platinum";
         }
+        private void AssignServicePackage(Citizen citizen, string packageName)
+        {
+            citizen.ServicePackage = packageName;
+        }
+
+        private Citizen FindCitizen(string name)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (citizens[i].Name.ToLower() == name.ToLower())
+                    return citizens[i];
+            }
+
+            return null;
+        }
+
     }
 }
