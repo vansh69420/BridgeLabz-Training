@@ -4,64 +4,76 @@ namespace TechVille
 {
     public class CitizenUtility : ICitizenService
     {
-        public void StartFamilyRegistration()
+        private Citizen[] citizens;
+        private int count = 0;
+
+        public CitizenUtility()
         {
-            while (true)
+            citizens = new Citizen[10];
+        }
+
+        public void AddCitizen()
+        {
+            if (count >= citizens.Length)
             {
-                Console.WriteLine("\n1. Register Family Member");
-                Console.WriteLine("2. Exit");
-                Console.Write("Enter choice: ");
+                Console.WriteLine("Storage Full.");
+                return;
+            }
 
-                int choice = int.Parse(Console.ReadLine());
+            Citizen citizen = RegisterCitizen();
 
-                if (choice == 2)
-                    break;   // break usage
+            if (!ValidateCitizen(citizen))
+            {
+                Console.WriteLine("Invalid Data.");
+                return;
+            }
 
-                Citizen citizen = RegisterCitizen();
+            CalculateEligibility(citizen);
 
-                if (!ValidateCitizen(citizen))
-                {
-                    Console.WriteLine("Invalid Data. Skipping...");
-                    continue;   // continue usage
-                }
+            citizens[count] = citizen;
+            count++;
 
-                CalculateEligibility(citizen);
+            Console.WriteLine("Citizen Registered Successfully.");
+        }
 
-                Console.WriteLine("Override Service Package? (yes/no)");
-                string overrideChoice = Console.ReadLine();
+        public void DisplayAll()
+        {
+            if (count == 0)
+            {
+                Console.WriteLine("No records found.");
+                return;
+            }
 
-                if (overrideChoice.ToLower() == "yes")
-                {
-                    Console.WriteLine("1. Basic");
-                    Console.WriteLine("2. Silver");
-                    Console.WriteLine("3. Gold");
-                    Console.WriteLine("4. Platinum");
-
-                    int packageChoice = int.Parse(Console.ReadLine());
-
-                    switch (packageChoice)   // switch usage
-                    {
-                        case 1:
-                            citizen.ServicePackage = "Basic";
-                            break;
-                        case 2:
-                            citizen.ServicePackage = "Silver";
-                            break;
-                        case 3:
-                            citizen.ServicePackage = "Gold";
-                            break;
-                        case 4:
-                            citizen.ServicePackage = "Platinum";
-                            break;
-                        default:
-                            Console.WriteLine("Invalid selection.");
-                            break;
-                    }
-                }
-
-                DisplayCitizen(citizen);
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine("\n--- Citizen " + (i + 1) + " ---");
+                Console.WriteLine(citizens[i].ToString());
             }
         }
+
+        public void SearchCitizen()
+        {
+            Console.Write("Enter Name to Search: ");
+            string searchName = Console.ReadLine();
+
+            bool found = false;
+
+            for (int i = 0; i < count; i++)
+            {
+                if (citizens[i].Name.ToLower() == searchName.ToLower())
+                {
+                    Console.WriteLine("Citizen Found:");
+                    Console.WriteLine(citizens[i].ToString());
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+                Console.WriteLine("Citizen not found.");
+        }
+
+        // ----------------- Private Logic Methods -----------------
 
         private Citizen RegisterCitizen()
         {
@@ -83,16 +95,10 @@ namespace TechVille
         private bool ValidateCitizen(Citizen citizen)
         {
             if (citizen.Age < 18)
-            {
-                Console.WriteLine("Citizen must be 18+.");
                 return false;
-            }
 
             if (citizen.ResidencyYears < 1)
-            {
-                Console.WriteLine("Residency must be at least 1 year.");
                 return false;
-            }
 
             return true;
         }
@@ -107,14 +113,6 @@ namespace TechVille
 
             citizen.EligibilityScore = score;
 
-            AssignServicePackage(citizen);
-        }
-
-        private void AssignServicePackage(Citizen citizen)
-        {
-            double score = citizen.EligibilityScore;
-
-            // Nested if-else
             if (score < 30)
                 citizen.ServicePackage = "Basic";
             else if (score <= 50)
@@ -123,17 +121,6 @@ namespace TechVille
                 citizen.ServicePackage = "Gold";
             else
                 citizen.ServicePackage = "Platinum";
-        }
-
-        private void DisplayCitizen(Citizen citizen)
-        {
-            string status = citizen.EligibilityScore > 50 ?
-                            "Premium Eligible" :
-                            "Standard Eligible";   // ternary
-
-            Console.WriteLine("\n--- Citizen Details ---");
-            Console.WriteLine(citizen.ToString());
-            Console.WriteLine("Status: " + status);
         }
     }
 }

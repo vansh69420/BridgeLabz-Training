@@ -2,6 +2,8 @@ namespace TechVille
 {
     public interface ICitizenService
     {
-        void StartFamilyRegistration();
+        void AddCitizen();
+        void DisplayAll();
+        void SearchCitizen();
     }
 }
