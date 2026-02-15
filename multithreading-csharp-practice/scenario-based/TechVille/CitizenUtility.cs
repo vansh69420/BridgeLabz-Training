@@ -16,6 +16,14 @@ public class CitizenUtility : ICitizenService
     private Dictionary<string, List<string>> roadNetwork;
     #endregion
 
+    #region Module 14 - Sorting & Searching
+    private List<Citizen> GetCitizenList()
+    {
+        return new List<Citizen>(citizenMap.Values);
+    }
+    #endregion
+
+
     public CitizenUtility()
     {
         citizenMap = new Dictionary<int, Citizen>();
@@ -27,11 +35,11 @@ public class CitizenUtility : ICitizenService
     // Module 10 - Citizen Management
     // ===============================
 
-    public void AddCitizen(int id, string name, string city)
+    public void AddCitizen(int id, string name, string city, int age, double income)
     {
         if (!citizenMap.ContainsKey(id))
         {
-            citizenMap[id] = new Citizen(id, name, city);
+            citizenMap[id] = new Citizen(id, name, city, age, income);
             Console.WriteLine("Citizen added successfully.");
         }
         else
@@ -179,4 +187,188 @@ public class CitizenUtility : ICitizenService
 
         Console.WriteLine("No path found.");
     }
+
+    public void BubbleSortByAge()
+    {
+        var list = GetCitizenList();
+
+        for (int i = 0; i < list.Count - 1; i++)
+        {
+            for (int j = 0; j < list.Count - i - 1; j++)
+            {
+                if (list[j].GetAge() > list[j + 1].GetAge())
+                {
+                    var temp = list[j];
+                    list[j] = list[j + 1];
+                    list[j + 1] = temp;
+                }
+            }
+        }
+
+        PrintList(list);
+    }
+    public void InsertionSortByAge()
+    {
+        var list = GetCitizenList();
+
+        for (int i = 1; i < list.Count; i++)
+        {
+            var key = list[i];
+            int j = i - 1;
+
+            while (j >= 0 && list[j].GetAge() > key.GetAge())
+            {
+                list[j + 1] = list[j];
+                j--;
+            }
+
+            list[j + 1] = key;
+        }
+
+        PrintList(list);
+    }
+    public void MergeSortByIncome()
+    {
+        var list = GetCitizenList();
+        list = MergeSort(list);
+        PrintList(list);
+    }
+
+    private List<Citizen> MergeSort(List<Citizen> list)
+    {
+        if (list.Count <= 1)
+            return list;
+
+        int mid = list.Count / 2;
+
+        var left = MergeSort(list.GetRange(0, mid));
+        var right = MergeSort(list.GetRange(mid, list.Count - mid));
+
+        return Merge(left, right);
+    }
+
+    private List<Citizen> Merge(List<Citizen> left, List<Citizen> right)
+    {
+        List<Citizen> result = new List<Citizen>();
+
+        while (left.Count > 0 && right.Count > 0)
+        {
+            if (left[0].GetIncome() < right[0].GetIncome())
+            {
+                result.Add(left[0]);
+                left.RemoveAt(0);
+            }
+            else
+            {
+                result.Add(right[0]);
+                right.RemoveAt(0);
+            }
+        }
+
+        result.AddRange(left);
+        result.AddRange(right);
+
+        return result;
+    }
+
+    public void QuickSortByAge()
+    {
+        var list = GetCitizenList();
+        QuickSort(list, 0, list.Count - 1);
+        PrintList(list);
+    }
+
+    private void QuickSort(List<Citizen> list, int low, int high)
+    {
+        if (low < high)
+        {
+            int pi = Partition(list, low, high);
+            QuickSort(list, low, pi - 1);
+            QuickSort(list, pi + 1, high);
+        }
+    }
+
+    private int Partition(List<Citizen> list, int low, int high)
+    {
+        int pivot = list[high].GetAge();
+        int i = low - 1;
+
+        for (int j = low; j < high; j++)
+        {
+            if (list[j].GetAge() < pivot)
+            {
+                i++;
+                var temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+            }
+        }
+
+        var swap = list[i + 1];
+        list[i + 1] = list[high];
+        list[high] = swap;
+
+        return i + 1;
+    }
+
+    public void LinearSearchByName(string name)
+    {
+        foreach (var citizen in citizenMap.Values)
+        {
+            if (citizen.GetName().Equals(name, StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("Found: " + citizen);
+                return;
+            }
+        }
+
+        Console.WriteLine("Citizen not found.");
+    }
+    public void BinarySearchById(int id)
+    {
+        var list = GetCitizenList();
+        list.Sort((a, b) => a.GetId().CompareTo(b.GetId()));
+
+        int left = 0, right = list.Count - 1;
+
+        while (left <= right)
+        {
+            int mid = (left + right) / 2;
+
+            if (list[mid].GetId() == id)
+            {
+                Console.WriteLine("Found: " + list[mid]);
+                return;
+            }
+            else if (list[mid].GetId() < id)
+                left = mid + 1;
+            else
+                right = mid - 1;
+        }
+
+        Console.WriteLine("Citizen not found.");
+    }
+
+    public void CompareSortingPerformance(int size)
+    {
+        List<int> data = new List<int>();
+        Random rand = new Random();
+
+        for (int i = 0; i < size; i++)
+            data.Add(rand.Next(1, 10000));
+
+        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+        data.Sort();
+        stopwatch.Stop();
+
+        Console.WriteLine($"Built-in Sort Time: {stopwatch.ElapsedMilliseconds} ms");
+    }
+    private void PrintList(List<Citizen> list)
+    {
+        foreach (var citizen in list)
+        {
+            Console.WriteLine(citizen);
+        }
+    }
+
 }
