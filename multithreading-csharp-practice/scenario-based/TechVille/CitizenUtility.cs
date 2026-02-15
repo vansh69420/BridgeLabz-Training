@@ -4,22 +4,15 @@ namespace TechVille
 {
     public class CitizenUtility : ICitizenService
     {
-        private Citizen[] citizens;
-        private int count = 0;
+        private DoublyLinkedCitizenList citizenList = new DoublyLinkedCitizenList();
+        private SinglyLinkedCitizenQueue serviceQueue = new SinglyLinkedCitizenQueue();
+        private CircularCitizenList circularList = new CircularCitizenList();
+        private HealthcareService healthcareService = new HealthcareService();
+        private EducationService educationService = new EducationService();
 
-        public CitizenUtility()
-        {
-            citizens = new Citizen[10];
-        }
 
         public void AddCitizen()
         {
-            if (count >= citizens.Length)
-            {
-                Console.WriteLine("Storage Full.");
-                return;
-            }
-
             Citizen citizen = RegisterCitizen();
 
             string errorMessage;
@@ -32,43 +25,46 @@ namespace TechVille
 
             CalculateEligibility(citizen);
 
-            citizens[count] = citizen;
-            count++;
+            citizenList.Insert(citizen);
+            serviceQueue.Enqueue(citizen);
+            circularList.Insert(citizen);
 
             Console.WriteLine("Citizen Registered Successfully.");
 
-            // Demonstrating Object Creation
-            Service healthcare = new HealthcareService();
-            Service education = new EducationService();
+            // Assign service based on eligibility
+            if (citizen.ServicePackage == "Gold" || citizen.ServicePackage == "Platinum")
+            {
+                healthcareService.AssignCitizen(citizen);
+            }
+            else
+            {
+                educationService.AssignCitizen(citizen);
+            }
 
-            Console.WriteLine("\nAvailable Services for Citizen:");
-            healthcare.DisplayServiceDetails();
-            education.DisplayServiceDetails();
-
-            Console.WriteLine("\nTotal Citizens Registered: " + Citizen.GetTotalCitizens());
         }
+
+        public void ShowHealthcareCitizens()
+        {
+            healthcareService.ShowAssignedCitizens();
+        }
+
+        public void ShowEducationCitizens()
+        {
+            educationService.ShowAssignedCitizens();
+        }
+
 
         public void DisplayAll()
         {
-            if (count == 0)
-            {
-                Console.WriteLine("No records found.");
-                return;
-            }
-
-            for (int i = 0; i < count; i++)
-            {
-                Console.WriteLine("\n--- Citizen " + (i + 1) + " ---");
-                Console.WriteLine(citizens[i].ToString());
-            }
+            citizenList.TraverseForward();
         }
 
         public void SearchCitizen()
         {
-            Console.Write("Enter Name to Search: ");
+            Console.Write("Enter Name: ");
             string name = Console.ReadLine();
 
-            Citizen citizen = FindCitizen(name);
+            Citizen citizen = citizenList.Find(name);
 
             if (citizen == null)
                 Console.WriteLine("Citizen not found.");
@@ -76,8 +72,38 @@ namespace TechVille
                 Console.WriteLine(citizen.ToString());
         }
 
+        public void DeleteCitizen()
+        {
+            Console.Write("Enter Name to Delete: ");
+            string name = Console.ReadLine();
 
-        // ----------------- Private Logic Methods -----------------
+            citizenList.Delete(name);
+        }
+
+        public void ShowServiceQueue()
+        {
+            serviceQueue.Display();
+        }
+
+        public void ProcessNextCitizen()
+        {
+            serviceQueue.Dequeue();
+        }
+
+        public void NavigateForward()
+        {
+            citizenList.TraverseForward();
+        }
+
+        public void NavigateBackward()
+        {
+            citizenList.TraverseBackward();
+        }
+
+        public void ShowRoundRobin()
+        {
+            circularList.Display();
+        }
 
         private Citizen RegisterCitizen()
         {
@@ -122,19 +148,8 @@ namespace TechVille
             score += citizen.ResidencyYears * 2;
             score += citizen.Income / 10000;
 
-            ApplyIncomeBonus(ref score, citizen.Income);
-
             citizen.EligibilityScore = score;
 
-            AssignServicePackage(score, citizen);
-        }
-        private void ApplyIncomeBonus(ref double score, double income)
-        {
-            if (income > 100000)
-                score += 10;
-        }
-        private void AssignServicePackage(double score, Citizen citizen)
-        {
             if (score < 30)
                 citizen.ServicePackage = "Basic";
             else if (score <= 50)
@@ -144,21 +159,5 @@ namespace TechVille
             else
                 citizen.ServicePackage = "Platinum";
         }
-        private void AssignServicePackage(Citizen citizen, string packageName)
-        {
-            citizen.ServicePackage = packageName;
-        }
-
-        private Citizen FindCitizen(string name)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                if (citizens[i].Name.ToLower() == name.ToLower())
-                    return citizens[i];
-            }
-
-            return null;
-        }
-
     }
 }
