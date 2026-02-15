@@ -4,7 +4,8 @@ namespace TechVille
 {
     public class CircularCitizenList
     {
-        private CitizenNode head;
+        private CitizenNode? head;
+
 
         public void Insert(Citizen citizen)
         {

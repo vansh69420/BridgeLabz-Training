@@ -4,7 +4,8 @@ namespace TechVille
 {
     public class SinglyLinkedCitizenQueue
     {
-        private CitizenNode head;
+        private CitizenNode? head;
+
 
         public void Enqueue(Citizen citizen)
         {
@@ -23,17 +24,20 @@ namespace TechVille
             temp.Next = newNode;
         }
 
-        public void Dequeue()
+        public Citizen? Dequeue()
         {
             if (head == null)
             {
                 Console.WriteLine("Queue is empty.");
-                return;
+                return null;
             }
 
-            Console.WriteLine("Processing: " + head.Data.Name);
+            Citizen removedCitizen = head.Data;
             head = head.Next;
+
+            return removedCitizen;
         }
+
 
         public void Display()
         {

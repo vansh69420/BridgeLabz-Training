@@ -4,45 +4,157 @@ namespace TechVille
 {
     public class CitizenUtility : ICitizenService
     {
+        // ===== Module 10 Structures =====
         private DoublyLinkedCitizenList citizenList = new DoublyLinkedCitizenList();
-        private SinglyLinkedCitizenQueue serviceQueue = new SinglyLinkedCitizenQueue();
+        private SinglyLinkedCitizenQueue linkedQueue = new SinglyLinkedCitizenQueue();
         private CircularCitizenList circularList = new CircularCitizenList();
+
+        // ===== Module 11 Structures =====
+        private ArrayQueue arrayQueue = new ArrayQueue(10);
+        private CircularArrayQueue circularQueue = new CircularArrayQueue(5);
+        private PriorityQueue priorityQueue = new PriorityQueue();
+        private CitizenStack undoStack = new CitizenStack(10);
+
+        // ===== Services =====
         private HealthcareService healthcareService = new HealthcareService();
         private EducationService educationService = new EducationService();
 
-
+        // ===============================
+        // Add Citizen
+        // ===============================
         public void AddCitizen()
         {
-            Citizen citizen = RegisterCitizen();
+            Console.Write("Enter Name: ");
+            string name = Console.ReadLine() ?? "";
 
-            string errorMessage;
+            Console.Write("Enter Age: ");
+            int age = int.Parse(Console.ReadLine() ?? "0");
 
-            if (!ValidateCitizen(citizen, out errorMessage))
-            {
-                Console.WriteLine(errorMessage);
-                return;
-            }
+            Console.Write("Enter Monthly Income: ");
+            double income = double.Parse(Console.ReadLine() ?? "0");
 
-            CalculateEligibility(citizen);
+            Console.Write("Enter Residency Years: ");
+            int residencyYears = int.Parse(Console.ReadLine() ?? "0");
+
+            Citizen citizen = new Citizen(name, age, income, residencyYears);
 
             citizenList.Insert(citizen);
-            serviceQueue.Enqueue(citizen);
+            linkedQueue.Enqueue(citizen);
             circularList.Insert(citizen);
 
-            Console.WriteLine("Citizen Registered Successfully.");
+            arrayQueue.Enqueue(citizen);
+            circularQueue.Enqueue(citizen);
 
-            // Assign service based on eligibility
-            if (citizen.ServicePackage == "Gold" || citizen.ServicePackage == "Platinum")
-            {
+            // Service logic (example)
+            if (income > 50000)
                 healthcareService.AssignCitizen(citizen);
+            else
+                educationService.AssignCitizen(citizen);
+
+            Console.WriteLine("Citizen Added Successfully.");
+        }
+
+
+        // ===============================
+        // Display Citizens (DLL)
+        // ===============================
+        public void ShowAllCitizens()
+        {
+            citizenList.TraverseForward();
+        }
+
+        public void ShowReverseCitizens()
+        {
+            citizenList.TraverseBackward();
+        }
+
+        // ===============================
+        // Queue Operations
+        // ===============================
+        public void ProcessLinkedQueue()
+        {
+            Citizen served = linkedQueue.Dequeue();
+            if (served != null)
+                Console.WriteLine("Served (LinkedQueue): " + served.Name);
+        }
+
+        public void ProcessArrayQueue()
+        {
+            Citizen served = arrayQueue.Dequeue();
+            if (served != null)
+                Console.WriteLine("Served (ArrayQueue): " + served.Name);
+        }
+
+        public void ProcessCircularQueue()
+        {
+            Citizen served = circularQueue.Dequeue();
+            if (served != null)
+                Console.WriteLine("Served (CircularQueue): " + served.Name);
+        }
+
+        // ===============================
+        // Priority Queue (Emergency)
+        // ===============================
+        public void AddEmergency()
+        {
+            Console.Write("Enter Citizen Name: ");
+            string name = Console.ReadLine() ?? "";
+
+            Console.Write("Enter Priority (1-10): ");
+            int priority = int.Parse(Console.ReadLine() ?? "0");
+
+            // Dummy values for required constructor parameters
+            Citizen citizen = new Citizen(name, 0, 0, 0);
+
+            priorityQueue.Enqueue(citizen, priority);
+
+            Console.WriteLine("Emergency Added.");
+        }
+
+
+        public void ProcessEmergency()
+        {
+            Citizen served = priorityQueue.Dequeue();
+            if (served != null)
+                Console.WriteLine("Emergency Served: " + served.Name);
+        }
+
+        // ===============================
+        // Stack Undo Example
+        // ===============================
+        public void EditCitizen()
+        {
+            Console.Write("Enter name to edit: ");
+            string name = Console.ReadLine();
+
+            Citizen found = citizenList.Search(name);
+
+            if (found != null)
+            {
+                undoStack.Push(found);
+
+                Console.Write("Enter new age: ");
+                found.Age = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Citizen Updated.");
             }
             else
             {
-                educationService.AssignCitizen(citizen);
+                Console.WriteLine("Citizen not found.");
             }
-
         }
 
+        public void UndoEdit()
+        {
+            Citizen previous = undoStack.Pop();
+
+            if (previous != null)
+                Console.WriteLine("Undo performed for: " + previous.Name);
+        }
+
+        // ===============================
+        // Services
+        // ===============================
         public void ShowHealthcareCitizens()
         {
             healthcareService.ShowAssignedCitizens();
@@ -51,113 +163,6 @@ namespace TechVille
         public void ShowEducationCitizens()
         {
             educationService.ShowAssignedCitizens();
-        }
-
-
-        public void DisplayAll()
-        {
-            citizenList.TraverseForward();
-        }
-
-        public void SearchCitizen()
-        {
-            Console.Write("Enter Name: ");
-            string name = Console.ReadLine();
-
-            Citizen citizen = citizenList.Find(name);
-
-            if (citizen == null)
-                Console.WriteLine("Citizen not found.");
-            else
-                Console.WriteLine(citizen.ToString());
-        }
-
-        public void DeleteCitizen()
-        {
-            Console.Write("Enter Name to Delete: ");
-            string name = Console.ReadLine();
-
-            citizenList.Delete(name);
-        }
-
-        public void ShowServiceQueue()
-        {
-            serviceQueue.Display();
-        }
-
-        public void ProcessNextCitizen()
-        {
-            serviceQueue.Dequeue();
-        }
-
-        public void NavigateForward()
-        {
-            citizenList.TraverseForward();
-        }
-
-        public void NavigateBackward()
-        {
-            citizenList.TraverseBackward();
-        }
-
-        public void ShowRoundRobin()
-        {
-            circularList.Display();
-        }
-
-        private Citizen RegisterCitizen()
-        {
-            Console.Write("Enter Name: ");
-            string name = Console.ReadLine();
-
-            Console.Write("Enter Age: ");
-            int age = int.Parse(Console.ReadLine());
-
-            Console.Write("Enter Income: ");
-            double income = double.Parse(Console.ReadLine());
-
-            Console.Write("Enter Residency Years: ");
-            int residencyYears = int.Parse(Console.ReadLine());
-
-            return new Citizen(name, age, income, residencyYears);
-        }
-
-        private bool ValidateCitizen(Citizen citizen, out string errorMessage)
-        {
-            if (citizen.Age < 18)
-            {
-                errorMessage = "Citizen must be 18+.";
-                return false;
-            }
-
-            if (citizen.ResidencyYears < 1)
-            {
-                errorMessage = "Residency must be at least 1 year.";
-                return false;
-            }
-
-            errorMessage = "";
-            return true;
-        }
-
-        private void CalculateEligibility(Citizen citizen)
-        {
-            double score = 0;
-
-            score += citizen.Age * 0.5;
-            score += citizen.ResidencyYears * 2;
-            score += citizen.Income / 10000;
-
-            citizen.EligibilityScore = score;
-
-            if (score < 30)
-                citizen.ServicePackage = "Basic";
-            else if (score <= 50)
-                citizen.ServicePackage = "Silver";
-            else if (score <= 75)
-                citizen.ServicePackage = "Gold";
-            else
-                citizen.ServicePackage = "Platinum";
         }
     }
 }

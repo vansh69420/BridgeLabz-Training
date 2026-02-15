@@ -4,7 +4,8 @@ namespace TechVille
 {
     public class DoublyLinkedCitizenList
     {
-        private CitizenNode head;
+        private CitizenNode? head;
+
 
         public void Insert(Citizen citizen)
         {
@@ -92,5 +93,20 @@ namespace TechVille
                 temp = temp.Previous;
             }
         }
+        public Citizen Search(string name)
+        {
+            CitizenNode temp = head;
+
+            while (temp != null)
+            {
+                if (temp.Data.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+                    return temp.Data;
+
+                temp = temp.Next;
+            }
+
+            return null;
+        }
+
     }
 }

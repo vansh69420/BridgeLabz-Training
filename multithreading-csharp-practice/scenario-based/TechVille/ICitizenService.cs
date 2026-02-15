@@ -3,17 +3,20 @@ namespace TechVille
     public interface ICitizenService
     {
         void AddCitizen();
-        void DisplayAll();
-        void SearchCitizen();
-        void DeleteCitizen();
+        void ShowAllCitizens();
+        void ShowReverseCitizens();
 
-        void ShowServiceQueue();
-        void ProcessNextCitizen();
-        void NavigateForward();
-        void NavigateBackward();
-        void ShowRoundRobin();
+        void ProcessLinkedQueue();
+        void ProcessArrayQueue();
+        void ProcessCircularQueue();
+
+        void AddEmergency();
+        void ProcessEmergency();
+
+        void EditCitizen();
+        void UndoEdit();
+
         void ShowHealthcareCitizens();
         void ShowEducationCitizens();
-
     }
 }

@@ -9,7 +9,8 @@ namespace TechVille
         private double income;
         private int residencyYears;
         private double eligibilityScore;
-        private string servicePackage;
+        private string? servicePackage;
+
 
         public Citizen(string name, int age, double income, int residencyYears)
         {
@@ -19,10 +20,12 @@ namespace TechVille
             this.residencyYears = residencyYears;
         }
 
-        public string Name { get { return name; } }
-        public int Age { get { return age; } }
-        public double Income { get { return income; } }
-        public int ResidencyYears { get { return residencyYears; } }
+        public string Name { get; set; } = "";
+
+        public double Income { get; set; }
+        public int ResidencyYears { get; set; }
+
+        public int Age { get; set; }
 
         public double EligibilityScore
         {
