@@ -326,27 +326,10 @@ public class CitizenUtility : ICitizenService
     }
     public void BinarySearchById(int id)
     {
-        var list = GetCitizenList();
-        list.Sort((a, b) => a.GetId().CompareTo(b.GetId()));
-
-        int left = 0, right = list.Count - 1;
-
-        while (left <= right)
-        {
-            int mid = (left + right) / 2;
-
-            if (list[mid].GetId() == id)
-            {
-                Console.WriteLine("Found: " + list[mid]);
-                return;
-            }
-            else if (list[mid].GetId() < id)
-                left = mid + 1;
-            else
-                right = mid - 1;
-        }
-
-        Console.WriteLine("Citizen not found.");
+        if (citizenMap.TryGetValue(id, out Citizen? citizen))
+            Console.WriteLine("Found: " + citizen);
+        else
+            Console.WriteLine("Citizen not found.");
     }
 
     public void CompareSortingPerformance(int size)
@@ -369,6 +352,35 @@ public class CitizenUtility : ICitizenService
         {
             Console.WriteLine(citizen);
         }
+    }
+
+    public void BenchmarkSearch(int iterations)
+    {
+        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+
+        for (int i = 0; i < iterations; i++)
+        {
+            citizenMap.ContainsKey(i);
+        }
+
+        stopwatch.Stop();
+
+        Console.WriteLine($"Search Time: {stopwatch.ElapsedMilliseconds} ms");
+    }
+
+    public void BenchmarkSorting(int size)
+    {
+        Random rand = new Random();
+        List<int> data = new List<int>();
+
+        for (int i = 0; i < size; i++)
+            data.Add(rand.Next());
+
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+        data.Sort();
+        watch.Stop();
+
+        Console.WriteLine($"Built-in Sort Time: {watch.ElapsedMilliseconds} ms");
     }
 
 }

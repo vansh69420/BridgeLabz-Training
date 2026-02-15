@@ -44,6 +44,11 @@ public class CitizenMenu
             Console.WriteLine("\n--- Module 14: Performance ---");
             Console.WriteLine("16. Compare Sorting Performance");
 
+            Console.WriteLine("\n--- Module 15: Performance Benchmarking ---");
+            Console.WriteLine("17. Benchmark Citizen Search");
+            Console.WriteLine("18. Benchmark Sorting");
+
+
             Console.WriteLine("\n0. Exit");
 
             Console.Write("\nEnter choice: ");
@@ -113,6 +118,14 @@ public class CitizenMenu
 
                 case 16:
                     ComparePerformanceMenu();
+                    break;
+
+                case 17:
+                    BenchmarkSearchMenu();
+                    break;
+
+                case 18:
+                    BenchmarkSortingMenu();
                     break;
 
                 case 0:
@@ -225,4 +238,18 @@ public class CitizenMenu
         int size = Convert.ToInt32(Console.ReadLine());
         citizenSystem.CompareSortingPerformance(size);
     }
+
+    private void BenchmarkSearchMenu()
+    {
+        Console.Write("Enter number of iterations: ");
+        int iterations = Convert.ToInt32(Console.ReadLine());
+        citizenSystem.BenchmarkSearch(iterations);
+    }
+    private void BenchmarkSortingMenu()
+    {
+        Console.Write("Enter dataset size: ");
+        int size = Convert.ToInt32(Console.ReadLine());
+        citizenSystem.BenchmarkSorting(size);
+    }
+
 }

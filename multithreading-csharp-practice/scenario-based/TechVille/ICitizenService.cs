@@ -27,4 +27,9 @@ public interface ICitizenService
 
     void CompareSortingPerformance(int size);
 
+    // Module 15 - Performance
+    void BenchmarkSearch(int iterations);
+    void BenchmarkSorting(int size);
+
+
 }
