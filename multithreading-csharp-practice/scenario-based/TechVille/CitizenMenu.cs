@@ -2,254 +2,158 @@ using System;
 
 public class CitizenMenu
 {
-    private ICitizenService citizenSystem = new CitizenUtility();
+    private ICitizenService system = new CitizenUtility();
 
     public void Start()
     {
-        int choice;
-
-        do
+        while (true)
         {
-            Console.WriteLine("\n=====================================");
-            Console.WriteLine("      CITY MANAGEMENT SYSTEM");
-            Console.WriteLine("=====================================");
-
-            Console.WriteLine("\n--- Module 10: Citizen Management ---");
+            Console.WriteLine("\n=== TechVille System ===");
             Console.WriteLine("1. Add Citizen");
-            Console.WriteLine("2. Search Citizen");
+            Console.WriteLine("2. View Citizens");
+            Console.WriteLine("3. Search Citizen");
+            Console.WriteLine("4. Remove Citizen");
+            Console.WriteLine("5. Sort Citizens");
+            Console.WriteLine("6. Benchmark Search");
+            Console.WriteLine("7. Benchmark Sorting");
+            Console.WriteLine("8. Add Complaint");
+            Console.WriteLine("9. Process Complaint");
+            Console.WriteLine("10. Add Service Request");
+            Console.WriteLine("11. Process Service Request");
+            Console.WriteLine("12. Check Duplicate Voter");
+            Console.WriteLine("13. Add Emergency Service");
+            Console.WriteLine("14. Process Emergency Service");
+            Console.WriteLine("15. Visit Page");
+            Console.WriteLine("16. Go Back");
+            Console.WriteLine("17. Go Forward");
+            Console.WriteLine("17. Go Forward");
+            Console.WriteLine("19. View Zone");
+            Console.WriteLine("0. Exit");
 
-            Console.WriteLine("\n--- Module 11: Service Management ---");
-            Console.WriteLine("3. Assign Service");
-            Console.WriteLine("4. Show Popular Services");
-
-            Console.WriteLine("\n--- Module 13: Organization (Tree) ---");
-            Console.WriteLine("5. Create Organization Root");
-            Console.WriteLine("6. Add Department");
-            Console.WriteLine("7. Show Organization (PreOrder)");
-
-            Console.WriteLine("\n--- Module 13: Road Network (Graph) ---");
-            Console.WriteLine("8. Add Road");
-            Console.WriteLine("9. Find Shortest Path (BFS)");
-
-            Console.WriteLine("\n--- Module 14: Sorting ---");
-            Console.WriteLine("10. Bubble Sort by Age (Small Dataset)");
-            Console.WriteLine("11. Insertion Sort by Age (Nearly Sorted)");
-            Console.WriteLine("12. Merge Sort by Income (Large Dataset)");
-            Console.WriteLine("13. Quick Sort by Age (General Purpose)");
-
-            Console.WriteLine("\n--- Module 14: Searching ---");
-            Console.WriteLine("14. Linear Search by Name");
-            Console.WriteLine("15. Binary Search by ID");
-
-            Console.WriteLine("\n--- Module 14: Performance ---");
-            Console.WriteLine("16. Compare Sorting Performance");
-
-            Console.WriteLine("\n--- Module 15: Performance Benchmarking ---");
-            Console.WriteLine("17. Benchmark Citizen Search");
-            Console.WriteLine("18. Benchmark Sorting");
-
-
-            Console.WriteLine("\n0. Exit");
-
-            Console.Write("\nEnter choice: ");
-            choice = Convert.ToInt32(Console.ReadLine());
+            int choice = Convert.ToInt32(Console.ReadLine());
 
             switch (choice)
             {
                 case 1:
                     AddCitizenMenu();
                     break;
-
                 case 2:
-                    SearchCitizenMenu();
+                    system.ViewCitizens();
                     break;
-
                 case 3:
-                    AssignServiceMenu();
-                    break;
-
+                    {
+                        Console.Write("Enter ID: ");
+                        int id = Convert.ToInt32(Console.ReadLine());
+                        var citizen = system.SearchCitizen(id);
+                        Console.WriteLine(citizen != null ? citizen.ToString() : "Not Found");
+                        break;
+                    }
                 case 4:
-                    citizenSystem.ShowPopularServices();
+                    Console.Write("Enter ID: ");
+                    system.RemoveCitizen(Convert.ToInt32(Console.ReadLine()));
                     break;
-
                 case 5:
-                    CreateRootMenu();
+                    system.SortCitizens();
                     break;
-
                 case 6:
-                    AddDepartmentMenu();
+                    system.BenchmarkSearch(1000000);
                     break;
-
                 case 7:
-                    citizenSystem.ShowOrganization();
+                    system.BenchmarkSorting(100000);
                     break;
-
                 case 8:
-                    AddRoadMenu();
+                    Console.Write("Complaint ID: ");
+                    int cid = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Description: ");
+                    string desc = Console.ReadLine();
+                    system.AddComplaint(new Complaint(cid, desc));
                     break;
 
                 case 9:
-                    ShortestPathMenu();
+                    system.ProcessComplaint();
                     break;
 
                 case 10:
-                    citizenSystem.BubbleSortByAge();
+                    Console.Write("Service ID: ");
+                    int sid = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Service Name: ");
+                    string sname = Console.ReadLine();
+                    system.AddServiceRequest(new Service(sid, sname));
                     break;
 
                 case 11:
-                    citizenSystem.InsertionSortByAge();
+                    system.ProcessServiceRequest();
                     break;
 
                 case 12:
-                    citizenSystem.MergeSortByIncome();
+                    Console.Write("Enter Voter ID: ");
+                    int vid = Convert.ToInt32(Console.ReadLine());
+                    system.CheckDuplicateVoter(vid);
                     break;
-
                 case 13:
-                    citizenSystem.QuickSortByAge();
+                    Console.Write("Service ID: ");
+                    int esid = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Name: ");
+                    string esname = Console.ReadLine();
+                    Console.Write("Priority (lower = higher): ");
+                    int pr = Convert.ToInt32(Console.ReadLine());
+                    system.AddEmergencyService(new Service(esid, esname), pr);
                     break;
 
                 case 14:
-                    LinearSearchMenu();
+                    system.ProcessEmergencyService();
                     break;
 
                 case 15:
-                    BinarySearchMenu();
+                    Console.Write("Enter page name: ");
+                    system.VisitPage(Console.ReadLine());
                     break;
 
                 case 16:
-                    ComparePerformanceMenu();
+                    system.GoBack();
                     break;
 
                 case 17:
-                    BenchmarkSearchMenu();
+                    system.GoForward();
                     break;
 
                 case 18:
-                    BenchmarkSortingMenu();
+                    {
+                    Console.Write("Zone: ");
+                    string zone = Console.ReadLine();
+                    Console.Write("Citizen ID: ");
+                    int zid = Convert.ToInt32(Console.ReadLine());
+                    var citizen = system.SearchCitizen(zid);
+                    if (citizen != null)
+                        system.AddCitizenToZone(zone, citizen);
+                    break;
+                    }
+                case 19:
+                    Console.Write("Zone: ");
+                    system.ViewZone(Console.ReadLine());
                     break;
 
                 case 0:
-                    Console.WriteLine("Exiting system...");
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid choice.");
-                    break;
+                    return;
             }
-
-        } while (choice != 0);
+        }
     }
 
     private void AddCitizenMenu()
     {
-        Console.Write("Enter ID: ");
+        Console.Write("ID: ");
         int id = Convert.ToInt32(Console.ReadLine());
 
-        Console.Write("Enter Name: ");
+        Console.Write("Name: ");
         string name = Console.ReadLine();
 
-        Console.Write("Enter City: ");
-        string city = Console.ReadLine();
-
-        Console.Write("Enter Age: ");
+        Console.Write("Age: ");
         int age = Convert.ToInt32(Console.ReadLine());
 
-        Console.Write("Enter Income: ");
+        Console.Write("Income: ");
         double income = Convert.ToDouble(Console.ReadLine());
 
-        citizenSystem.AddCitizen(id, name, city, age, income); // assuming updated constructor handled internally
-    }
-
-    private void SearchCitizenMenu()
-    {
-        Console.Write("Enter ID to search: ");
-        int id = Convert.ToInt32(Console.ReadLine());
-        citizenSystem.SearchCitizen(id);
-    }
-
-    private void AssignServiceMenu()
-    {
-        Console.Write("Enter Citizen ID: ");
-        int id = Convert.ToInt32(Console.ReadLine());
-
-        Console.Write("Enter Service Name: ");
-        string service = Console.ReadLine();
-
-        citizenSystem.AssignService(id, service);
-    }
-
-    private void CreateRootMenu()
-    {
-        Console.Write("Enter Organization Root Name: ");
-        string root = Console.ReadLine();
-        citizenSystem.CreateOrganizationRoot(root);
-    }
-
-    private void AddDepartmentMenu()
-    {
-        Console.Write("Enter Parent Department Name: ");
-        string parent = Console.ReadLine();
-
-        Console.Write("Enter New Department Name: ");
-        string child = Console.ReadLine();
-
-        citizenSystem.AddDepartment(parent, child);
-    }
-
-    private void AddRoadMenu()
-    {
-        Console.Write("Enter Starting Location: ");
-        string from = Console.ReadLine();
-
-        Console.Write("Enter Destination Location: ");
-        string to = Console.ReadLine();
-
-        citizenSystem.AddRoad(from, to);
-    }
-
-    private void ShortestPathMenu()
-    {
-        Console.Write("Enter Start Location: ");
-        string start = Console.ReadLine();
-
-        Console.Write("Enter End Location: ");
-        string end = Console.ReadLine();
-
-        citizenSystem.FindShortestPath(start, end);
-    }
-
-    private void LinearSearchMenu()
-    {
-        Console.Write("Enter Name to Search: ");
-        string name = Console.ReadLine();
-        citizenSystem.LinearSearchByName(name);
-    }
-
-    private void BinarySearchMenu()
-    {
-        Console.Write("Enter ID to Search: ");
-        int id = Convert.ToInt32(Console.ReadLine());
-        citizenSystem.BinarySearchById(id);
-    }
-
-    private void ComparePerformanceMenu()
-    {
-        Console.Write("Enter Dataset Size: ");
-        int size = Convert.ToInt32(Console.ReadLine());
-        citizenSystem.CompareSortingPerformance(size);
-    }
-
-    private void BenchmarkSearchMenu()
-    {
-        Console.Write("Enter number of iterations: ");
-        int iterations = Convert.ToInt32(Console.ReadLine());
-        citizenSystem.BenchmarkSearch(iterations);
-    }
-    private void BenchmarkSortingMenu()
-    {
-        Console.Write("Enter dataset size: ");
-        int size = Convert.ToInt32(Console.ReadLine());
-        citizenSystem.BenchmarkSorting(size);
+        system.AddCitizen(new Citizen(id, name, age, income));
     }
 
 }

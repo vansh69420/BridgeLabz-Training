@@ -1,0 +1,51 @@
+using System;
+
+public class Citizen : IComparable<Citizen>
+{
+    private int id;
+    private string name;
+    private int age;
+    private double income;
+
+    public int Id
+    {
+        get { return id; }
+        set { id = value; }
+    }
+
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
+
+    public int Age
+    {
+        get { return age; }
+        set { age = value; }
+    }
+
+    public double Income
+    {
+        get { return income; }
+        set { income = value; }
+    }
+
+    public Citizen(int id, string name, int age, double income)
+    {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.income = income;
+    }
+
+    public override string ToString()
+    {
+        return $"ID: {id}, Name: {name}, Age: {age}, Income: {income}";
+    }
+
+    public int CompareTo(Citizen other)
+    {
+        return this.id.CompareTo(other.id);
+    }
+}
