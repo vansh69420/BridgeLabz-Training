@@ -5,7 +5,7 @@ namespace TechVille
         static void Main(string[] args)
         {
             CitizenMenu menu = new CitizenMenu();
-            menu.Show();
+            menu.Start();
         }
     }
 }

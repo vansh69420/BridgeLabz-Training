@@ -1,168 +1,96 @@
 using System;
+using System.Collections.Generic;
 
-namespace TechVille
+public class CitizenUtility : ICitizenService
 {
-    public class CitizenUtility : ICitizenService
+    // Primary HashMap
+    private Dictionary<string, LinkedList<Citizen>> citizenMap;
+
+    // Frequency counter
+    private Dictionary<string, int> serviceFrequency;
+
+    public CitizenUtility()
     {
-        // ===== Module 10 Structures =====
-        private DoublyLinkedCitizenList citizenList = new DoublyLinkedCitizenList();
-        private SinglyLinkedCitizenQueue linkedQueue = new SinglyLinkedCitizenQueue();
-        private CircularCitizenList circularList = new CircularCitizenList();
+        citizenMap = new Dictionary<string, LinkedList<Citizen>>();
+        serviceFrequency = new Dictionary<string, int>();
+    }
 
-        // ===== Module 11 Structures =====
-        private ArrayQueue arrayQueue = new ArrayQueue(10);
-        private CircularArrayQueue circularQueue = new CircularArrayQueue(5);
-        private PriorityQueue priorityQueue = new PriorityQueue();
-        private CitizenStack undoStack = new CitizenStack(10);
+    // Add Citizen (Collision handled by chaining)
+    public void AddCitizen(Citizen citizen)
+    {
+        string id = citizen.GetCitizenId();
 
-        // ===== Services =====
-        private HealthcareService healthcareService = new HealthcareService();
-        private EducationService educationService = new EducationService();
-
-        // ===============================
-        // Add Citizen
-        // ===============================
-        public void AddCitizen()
+        if (!citizenMap.ContainsKey(id))
         {
-            Console.Write("Enter Name: ");
-            string name = Console.ReadLine() ?? "";
-
-            Console.Write("Enter Age: ");
-            int age = int.Parse(Console.ReadLine() ?? "0");
-
-            Console.Write("Enter Monthly Income: ");
-            double income = double.Parse(Console.ReadLine() ?? "0");
-
-            Console.Write("Enter Residency Years: ");
-            int residencyYears = int.Parse(Console.ReadLine() ?? "0");
-
-            Citizen citizen = new Citizen(name, age, income, residencyYears);
-
-            citizenList.Insert(citizen);
-            linkedQueue.Enqueue(citizen);
-            circularList.Insert(citizen);
-
-            arrayQueue.Enqueue(citizen);
-            circularQueue.Enqueue(citizen);
-
-            // Service logic (example)
-            if (income > 50000)
-                healthcareService.AssignCitizen(citizen);
-            else
-                educationService.AssignCitizen(citizen);
-
-            Console.WriteLine("Citizen Added Successfully.");
+            citizenMap[id] = new LinkedList<Citizen>();
         }
 
+        citizenMap[id].AddLast(citizen);
 
-        // ===============================
-        // Display Citizens (DLL)
-        // ===============================
-        public void ShowAllCitizens()
+        Console.WriteLine("Citizen added successfully.");
+    }
+
+    // O(1) Lookup
+    public Citizen SearchCitizen(string citizenId)
+    {
+        if (citizenMap.ContainsKey(citizenId))
         {
-            citizenList.TraverseForward();
-        }
-
-        public void ShowReverseCitizens()
-        {
-            citizenList.TraverseBackward();
-        }
-
-        // ===============================
-        // Queue Operations
-        // ===============================
-        public void ProcessLinkedQueue()
-        {
-            Citizen served = linkedQueue.Dequeue();
-            if (served != null)
-                Console.WriteLine("Served (LinkedQueue): " + served.Name);
-        }
-
-        public void ProcessArrayQueue()
-        {
-            Citizen served = arrayQueue.Dequeue();
-            if (served != null)
-                Console.WriteLine("Served (ArrayQueue): " + served.Name);
-        }
-
-        public void ProcessCircularQueue()
-        {
-            Citizen served = circularQueue.Dequeue();
-            if (served != null)
-                Console.WriteLine("Served (CircularQueue): " + served.Name);
-        }
-
-        // ===============================
-        // Priority Queue (Emergency)
-        // ===============================
-        public void AddEmergency()
-        {
-            Console.Write("Enter Citizen Name: ");
-            string name = Console.ReadLine() ?? "";
-
-            Console.Write("Enter Priority (1-10): ");
-            int priority = int.Parse(Console.ReadLine() ?? "0");
-
-            // Dummy values for required constructor parameters
-            Citizen citizen = new Citizen(name, 0, 0, 0);
-
-            priorityQueue.Enqueue(citizen, priority);
-
-            Console.WriteLine("Emergency Added.");
-        }
-
-
-        public void ProcessEmergency()
-        {
-            Citizen served = priorityQueue.Dequeue();
-            if (served != null)
-                Console.WriteLine("Emergency Served: " + served.Name);
-        }
-
-        // ===============================
-        // Stack Undo Example
-        // ===============================
-        public void EditCitizen()
-        {
-            Console.Write("Enter name to edit: ");
-            string name = Console.ReadLine();
-
-            Citizen found = citizenList.Search(name);
-
-            if (found != null)
+            foreach (var citizen in citizenMap[citizenId])
             {
-                undoStack.Push(found);
-
-                Console.Write("Enter new age: ");
-                found.Age = int.Parse(Console.ReadLine());
-
-                Console.WriteLine("Citizen Updated.");
-            }
-            else
-            {
-                Console.WriteLine("Citizen not found.");
+                return citizen;
             }
         }
 
-        public void UndoEdit()
-        {
-            Citizen previous = undoStack.Pop();
+        return null;
+    }
 
-            if (previous != null)
-                Console.WriteLine("Undo performed for: " + previous.Name);
+    // Assign Service
+    public void AssignService(string citizenId, string serviceName)
+    {
+        Citizen citizen = SearchCitizen(citizenId);
+
+        if (citizen == null)
+        {
+            Console.WriteLine("Citizen not found.");
+            return;
         }
 
-        // ===============================
-        // Services
-        // ===============================
-        public void ShowHealthcareCitizens()
+        citizen.AddService(serviceName);
+
+        if (!serviceFrequency.ContainsKey(serviceName))
+            serviceFrequency[serviceName] = 0;
+
+        serviceFrequency[serviceName]++;
+
+        Console.WriteLine("Service assigned successfully.");
+    }
+
+    public void ShowCitizenHistory(string citizenId)
+    {
+        Citizen citizen = SearchCitizen(citizenId);
+
+        if (citizen == null)
         {
-            healthcareService.ShowAssignedCitizens();
+            Console.WriteLine("Citizen not found.");
+            return;
         }
 
-        public void ShowEducationCitizens()
+        Console.WriteLine("\n" + citizen.ToString());
+        Console.WriteLine("Service History:");
+
+        foreach (var service in citizen.GetServiceHistory())
         {
-            educationService.ShowAssignedCitizens();
+            Console.WriteLine("- " + service);
+        }
+    }
+
+    public void ShowServiceFrequency()
+    {
+        Console.WriteLine("\nService Usage Report:");
+
+        foreach (var service in serviceFrequency)
+        {
+            Console.WriteLine(service.Key + " : " + service.Value);
         }
     }
 }

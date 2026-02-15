@@ -1,47 +1,68 @@
-using System;
+using System.Collections.Generic;
 
-namespace TechVille
+public class Citizen
 {
-    public class Citizen
+    private string citizenId;
+    private string name;
+    private int age;
+
+    // LinkedList for service history
+    private LinkedList<string> serviceHistory;
+
+    public Citizen(string citizenId, string name, int age)
     {
-        private string name;
-        private int age;
-        private double income;
-        private int residencyYears;
-        private double eligibilityScore;
-        private string? servicePackage;
+        this.citizenId = citizenId;
+        this.name = name;
+        this.age = age;
+        this.serviceHistory = new LinkedList<string>();
+    }
 
+    // Getters & Setters
+    public string GetCitizenId()
+    {
+        return citizenId;
+    }
 
-        public Citizen(string name, int age, double income, int residencyYears)
-        {
-            this.name = name;
-            this.age = age;
-            this.income = income;
-            this.residencyYears = residencyYears;
-        }
+    public void SetCitizenId(string citizenId)
+    {
+        this.citizenId = citizenId;
+    }
 
-        public string Name { get; set; } = "";
+    public string GetName()
+    {
+        return name;
+    }
 
-        public double Income { get; set; }
-        public int ResidencyYears { get; set; }
+    public void SetName(string name)
+    {
+        this.name = name;
+    }
 
-        public int Age { get; set; }
+    public int GetAge()
+    {
+        return age;
+    }
 
-        public double EligibilityScore
-        {
-            get { return eligibilityScore; }
-            set { eligibilityScore = value; }
-        }
+    public void SetAge(int age)
+    {
+        this.age = age;
+    }
 
-        public string ServicePackage
-        {
-            get { return servicePackage; }
-            set { servicePackage = value; }
-        }
+    public LinkedList<string> GetServiceHistory()
+    {
+        return serviceHistory;
+    }
 
-        public override string ToString()
-        {
-            return $"Name: {Name}\nAge: {Age}\nIncome: {Income}\nResidency Years: {ResidencyYears}\nEligibility Score: {EligibilityScore}\nService Package: {ServicePackage}";
-        }
+    public void AddService(string serviceName)
+    {
+        serviceHistory.AddLast(serviceName);
+    }
+
+    public override string ToString()
+    {
+        return "Citizen ID: " + citizenId +
+               "\nName: " + name +
+               "\nAge: " + age +
+               "\nTotal Services: " + serviceHistory.Count;
     }
 }

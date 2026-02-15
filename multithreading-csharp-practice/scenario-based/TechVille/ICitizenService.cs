@@ -1,22 +1,8 @@
-namespace TechVille
+public interface ICitizenService
 {
-    public interface ICitizenService
-    {
-        void AddCitizen();
-        void ShowAllCitizens();
-        void ShowReverseCitizens();
-
-        void ProcessLinkedQueue();
-        void ProcessArrayQueue();
-        void ProcessCircularQueue();
-
-        void AddEmergency();
-        void ProcessEmergency();
-
-        void EditCitizen();
-        void UndoEdit();
-
-        void ShowHealthcareCitizens();
-        void ShowEducationCitizens();
-    }
+    void AddCitizen(Citizen citizen);
+    Citizen SearchCitizen(string citizenId);
+    void AssignService(string citizenId, string serviceName);
+    void ShowCitizenHistory(string citizenId);
+    void ShowServiceFrequency();
 }
