@@ -26,8 +26,10 @@ public class CitizenMenu
             Console.WriteLine("15. Visit Page");
             Console.WriteLine("16. Go Back");
             Console.WriteLine("17. Go Forward");
-            Console.WriteLine("17. Go Forward");
+            Console.WriteLine("18. Add Citizen to the Zone.");
             Console.WriteLine("19. View Zone");
+            Console.WriteLine("20. Backup Citizens");
+            Console.WriteLine("21. Generate Report");
             Console.WriteLine("0. Exit");
 
             int choice = Convert.ToInt32(Console.ReadLine());
@@ -132,6 +134,15 @@ public class CitizenMenu
                     Console.Write("Zone: ");
                     system.ViewZone(Console.ReadLine());
                     break;
+                case 20:
+                    {
+                        system.BackupCitizens();
+                        break;
+                    }
+                case 21:
+                    system.GenerateReport();
+                    break;
+
 
                 case 0:
                     return;

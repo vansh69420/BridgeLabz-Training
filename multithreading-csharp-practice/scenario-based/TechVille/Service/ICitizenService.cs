@@ -29,6 +29,7 @@ public interface ICitizenService
 
     void AddCitizenToZone(string zone, Citizen citizen);
     void ViewZone(string zone);
-
+    void BackupCitizens();
+    void GenerateReport();
 
 }

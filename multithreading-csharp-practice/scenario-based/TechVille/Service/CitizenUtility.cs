@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 public class CitizenUtility : ICitizenService
 {
@@ -13,16 +14,22 @@ public class CitizenUtility : ICitizenService
     private NavigationHistory navigationHistory = new NavigationHistory();
     private ZoneRegistry zoneRegistry = new ZoneRegistry();
 
+    private LogManager logManager = new LogManager();
+    private RegistrationWriter registrationWriter = new RegistrationWriter();
+    private ProfileBackup backup = new ProfileBackup();
+    private ReportGenerator reportGenerator = new ReportGenerator();
+
+
 
     // ===== Basic Citizen Operations =====
 
     public void AddCitizen(Citizen citizen)
     {
-        registry.AddCitizen(citizen);     // ArrayList
-        lookup.Add(citizen);              // Dictionary
-        voterRegistry.AddVoter(citizen.Id); // HashSet
+        registry.AddCitizen(citizen);
+        lookup.Add(citizen);
 
-        Console.WriteLine("Citizen added to system.");
+        registrationWriter.WriteRegistration(citizen);
+        logManager.Log("Citizen added: " + citizen.Id);
     }
 
     public void ViewCitizens()
@@ -170,5 +177,28 @@ public class CitizenUtility : ICitizenService
             Console.WriteLine("Zone not found.");
     }
 
+    public void BackupCitizens()
+    {
+        backup.Save(registry.GetAll());
+        Console.WriteLine("Backup completed.");
+    }
+    public void GenerateReport()
+    {
+        Console.WriteLine("Generating report...");
+
+        var citizens = registry.GetAll(); 
+
+        using (StreamWriter writer = new StreamWriter("CitizenReport.txt"))
+        {
+            foreach (var citizen in citizens)
+            {
+                writer.WriteLine(citizen.ToString());
+            }
+        }
+
+        Console.WriteLine("Report generated successfully.");
+    }
+
+    
 
 }

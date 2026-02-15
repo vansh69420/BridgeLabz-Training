@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 
 public class Citizen : IComparable<Citizen>
 {
@@ -6,6 +7,9 @@ public class Citizen : IComparable<Citizen>
     private string name;
     private int age;
     private double income;
+
+    [JsonIgnore]
+    private string password;
 
     public int Id
     {
@@ -30,6 +34,9 @@ public class Citizen : IComparable<Citizen>
         get { return income; }
         set { income = value; }
     }
+
+    // REQUIRED for JSON deserialization
+    public Citizen() { }
 
     public Citizen(int id, string name, int age, double income)
     {
