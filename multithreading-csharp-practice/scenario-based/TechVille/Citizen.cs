@@ -2,67 +2,31 @@ using System.Collections.Generic;
 
 public class Citizen
 {
-    private string citizenId;
+    private int id;
     private string name;
-    private int age;
+    private string city;
+    private List<string> services;
 
-    // LinkedList for service history
-    private LinkedList<string> serviceHistory;
-
-    public Citizen(string citizenId, string name, int age)
+    public Citizen(int id, string name, string city)
     {
-        this.citizenId = citizenId;
+        this.id = id;
         this.name = name;
-        this.age = age;
-        this.serviceHistory = new LinkedList<string>();
+        this.city = city;
+        services = new List<string>();
     }
 
-    // Getters & Setters
-    public string GetCitizenId()
-    {
-        return citizenId;
-    }
+    public int GetId() => id;
+    public string GetName() => name;
+    public string GetCity() => city;
+    public List<string> GetServices() => services;
 
-    public void SetCitizenId(string citizenId)
+    public void AddService(string service)
     {
-        this.citizenId = citizenId;
-    }
-
-    public string GetName()
-    {
-        return name;
-    }
-
-    public void SetName(string name)
-    {
-        this.name = name;
-    }
-
-    public int GetAge()
-    {
-        return age;
-    }
-
-    public void SetAge(int age)
-    {
-        this.age = age;
-    }
-
-    public LinkedList<string> GetServiceHistory()
-    {
-        return serviceHistory;
-    }
-
-    public void AddService(string serviceName)
-    {
-        serviceHistory.AddLast(serviceName);
+        services.Add(service);
     }
 
     public override string ToString()
     {
-        return "Citizen ID: " + citizenId +
-               "\nName: " + name +
-               "\nAge: " + age +
-               "\nTotal Services: " + serviceHistory.Count;
+        return $"ID: {id}, Name: {name}, City: {city}";
     }
 }

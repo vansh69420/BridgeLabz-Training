@@ -3,94 +3,180 @@ using System.Collections.Generic;
 
 public class CitizenUtility : ICitizenService
 {
-    // Primary HashMap
-    private Dictionary<string, LinkedList<Citizen>> citizenMap;
+    #region Module 10 - Citizen Management
+    private Dictionary<int, Citizen> citizenMap;
+    #endregion
 
-    // Frequency counter
+    #region Module 11 - Service Tracking
     private Dictionary<string, int> serviceFrequency;
+    #endregion
+
+    #region Module 13 - Infrastructure
+    private InfrastructureNode orgRoot;
+    private Dictionary<string, List<string>> roadNetwork;
+    #endregion
 
     public CitizenUtility()
     {
-        citizenMap = new Dictionary<string, LinkedList<Citizen>>();
+        citizenMap = new Dictionary<int, Citizen>();
         serviceFrequency = new Dictionary<string, int>();
+        roadNetwork = new Dictionary<string, List<string>>();
     }
 
-    // Add Citizen (Collision handled by chaining)
-    public void AddCitizen(Citizen citizen)
-    {
-        string id = citizen.GetCitizenId();
+    // ===============================
+    // Module 10 - Citizen Management
+    // ===============================
 
+    public void AddCitizen(int id, string name, string city)
+    {
         if (!citizenMap.ContainsKey(id))
         {
-            citizenMap[id] = new LinkedList<Citizen>();
+            citizenMap[id] = new Citizen(id, name, city);
+            Console.WriteLine("Citizen added successfully.");
         }
-
-        citizenMap[id].AddLast(citizen);
-
-        Console.WriteLine("Citizen added successfully.");
+        else
+            Console.WriteLine("Citizen ID already exists.");
     }
 
-    // O(1) Lookup
-    public Citizen SearchCitizen(string citizenId)
+    public void SearchCitizen(int id)
     {
-        if (citizenMap.ContainsKey(citizenId))
+        if (citizenMap.ContainsKey(id))
+            Console.WriteLine(citizenMap[id]);
+        else
+            Console.WriteLine("Citizen not found.");
+    }
+
+    // ===============================
+    // Module 11 - Services
+    // ===============================
+
+    public void AssignService(int id, string service)
+    {
+        if (!citizenMap.ContainsKey(id))
         {
-            foreach (var citizen in citizenMap[citizenId])
-            {
-                return citizen;
-            }
+            Console.WriteLine("Citizen not found.");
+            return;
+        }
+
+        citizenMap[id].AddService(service);
+
+        if (!serviceFrequency.ContainsKey(service))
+            serviceFrequency[service] = 0;
+
+        serviceFrequency[service]++;
+
+        Console.WriteLine("Service assigned.");
+    }
+
+    public void ShowPopularServices()
+    {
+        foreach (var item in serviceFrequency)
+            Console.WriteLine($"{item.Key} - Used {item.Value} times");
+    }
+
+    // ===============================
+    // Module 13 - Organization Tree
+    // ===============================
+
+    public void CreateOrganizationRoot(string name)
+    {
+        orgRoot = new InfrastructureNode(name);
+        Console.WriteLine("Organization root created.");
+    }
+
+    public void AddDepartment(string parent, string child)
+    {
+        InfrastructureNode parentNode = FindNode(orgRoot, parent);
+
+        if (parentNode == null)
+        {
+            Console.WriteLine("Parent not found.");
+            return;
+        }
+
+        parentNode.AddChild(new InfrastructureNode(child));
+        Console.WriteLine("Department added.");
+    }
+
+    public void ShowOrganization()
+    {
+        PreOrder(orgRoot);
+    }
+
+    private void PreOrder(InfrastructureNode node)
+    {
+        if (node == null) return;
+
+        Console.WriteLine(node.GetName());
+
+        foreach (var child in node.GetChildren())
+            PreOrder(child);
+    }
+
+    private InfrastructureNode FindNode(InfrastructureNode node, string name)
+    {
+        if (node == null) return null;
+
+        if (node.GetName().Equals(name))
+            return node;
+
+        foreach (var child in node.GetChildren())
+        {
+            InfrastructureNode found = FindNode(child, name);
+            if (found != null)
+                return found;
         }
 
         return null;
     }
 
-    // Assign Service
-    public void AssignService(string citizenId, string serviceName)
+    // ===============================
+    // Module 13 - Road Graph (BFS)
+    // ===============================
+
+    public void AddRoad(string from, string to)
     {
-        Citizen citizen = SearchCitizen(citizenId);
+        if (!roadNetwork.ContainsKey(from))
+            roadNetwork[from] = new List<string>();
 
-        if (citizen == null)
-        {
-            Console.WriteLine("Citizen not found.");
-            return;
-        }
+        if (!roadNetwork.ContainsKey(to))
+            roadNetwork[to] = new List<string>();
 
-        citizen.AddService(serviceName);
+        roadNetwork[from].Add(to);
+        roadNetwork[to].Add(from);
 
-        if (!serviceFrequency.ContainsKey(serviceName))
-            serviceFrequency[serviceName] = 0;
-
-        serviceFrequency[serviceName]++;
-
-        Console.WriteLine("Service assigned successfully.");
+        Console.WriteLine("Road added.");
     }
 
-    public void ShowCitizenHistory(string citizenId)
+    public void FindShortestPath(string start, string end)
     {
-        Citizen citizen = SearchCitizen(citizenId);
+        Queue<string> queue = new Queue<string>();
+        HashSet<string> visited = new HashSet<string>();
 
-        if (citizen == null)
+        queue.Enqueue(start);
+        visited.Add(start);
+
+        while (queue.Count > 0)
         {
-            Console.WriteLine("Citizen not found.");
-            return;
+            string current = queue.Dequeue();
+            Console.WriteLine("Visited: " + current);
+
+            if (current == end)
+            {
+                Console.WriteLine("Destination reached.");
+                return;
+            }
+
+            foreach (var neighbor in roadNetwork[current])
+            {
+                if (!visited.Contains(neighbor))
+                {
+                    visited.Add(neighbor);
+                    queue.Enqueue(neighbor);
+                }
+            }
         }
 
-        Console.WriteLine("\n" + citizen.ToString());
-        Console.WriteLine("Service History:");
-
-        foreach (var service in citizen.GetServiceHistory())
-        {
-            Console.WriteLine("- " + service);
-        }
-    }
-
-    public void ShowServiceFrequency()
-    {
-        Console.WriteLine("\nService Usage Report:");
-
-        foreach (var service in serviceFrequency)
-        {
-            Console.WriteLine(service.Key + " : " + service.Value);
-        }
+        Console.WriteLine("No path found.");
     }
 }

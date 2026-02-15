@@ -6,73 +6,112 @@ public class CitizenMenu
 
     public void Start()
     {
-        while (true)
+        int choice;
+
+        do
         {
-            Console.WriteLine("\n--- Citizen Hybrid System ---");
+            Console.WriteLine("\n===============================");
+            Console.WriteLine("      CITY MANAGEMENT SYSTEM");
+            Console.WriteLine("===============================");
+
+            Console.WriteLine("\n--- Citizen Management ---");
             Console.WriteLine("1. Add Citizen");
             Console.WriteLine("2. Search Citizen");
-            Console.WriteLine("3. Assign Service");
-            Console.WriteLine("4. View Citizen History");
-            Console.WriteLine("5. Show Popular Services");
-            Console.WriteLine("6. Exit");
 
-            Console.Write("Enter Choice: ");
-            int choice = int.Parse(Console.ReadLine());
+            Console.WriteLine("\n--- Service Management ---");
+            Console.WriteLine("3. Assign Service");
+            Console.WriteLine("4. Show Popular Services");
+
+            Console.WriteLine("\n--- Organization Management (Tree) ---");
+            Console.WriteLine("5. Create Organization Root");
+            Console.WriteLine("6. Add Department");
+            Console.WriteLine("7. Show Organization (PreOrder)");
+
+            Console.WriteLine("\n--- Road Network (Graph) ---");
+            Console.WriteLine("8. Add Road");
+            Console.WriteLine("9. Find Shortest Path (BFS)");
+
+            Console.WriteLine("\n0. Exit");
+
+            Console.Write("\nEnter choice: ");
+            choice = Convert.ToInt32(Console.ReadLine());
 
             switch (choice)
             {
                 case 1:
-                    AddCitizenUI();
+                    AddCitizenMenu();
                     break;
+
                 case 2:
-                    SearchCitizenUI();
+                    SearchCitizenMenu();
                     break;
+
                 case 3:
-                    AssignServiceUI();
+                    AssignServiceMenu();
                     break;
+
                 case 4:
-                    ViewHistoryUI();
+                    citizenSystem.ShowPopularServices();
                     break;
+
                 case 5:
-                    citizenSystem.ShowServiceFrequency();
+                    CreateRootMenu();
                     break;
+
                 case 6:
-                    return;
+                    AddDepartmentMenu();
+                    break;
+
+                case 7:
+                    citizenSystem.ShowOrganization();
+                    break;
+
+                case 8:
+                    AddRoadMenu();
+                    break;
+
+                case 9:
+                    ShortestPathMenu();
+                    break;
+
+                case 0:
+                    Console.WriteLine("Exiting system...");
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid choice.");
+                    break;
             }
-        }
+
+        } while (choice != 0);
     }
 
-    private void AddCitizenUI()
+    private void AddCitizenMenu()
     {
         Console.Write("Enter ID: ");
-        string id = Console.ReadLine();
+        int id = Convert.ToInt32(Console.ReadLine());
 
         Console.Write("Enter Name: ");
         string name = Console.ReadLine();
 
-        Console.Write("Enter Age: ");
-        int age = int.Parse(Console.ReadLine());
+        Console.Write("Enter City: ");
+        string city = Console.ReadLine();
 
-        citizenSystem.AddCitizen(new Citizen(id, name, age));
+        citizenSystem.AddCitizen(id, name, city);
     }
 
-    private void SearchCitizenUI()
+    private void SearchCitizenMenu()
     {
-        Console.Write("Enter ID: ");
-        string id = Console.ReadLine();
+        Console.Write("Enter ID to search: ");
+        int id = Convert.ToInt32(Console.ReadLine());
 
-        Citizen citizen = citizenSystem.SearchCitizen(id);
-
-        if (citizen != null)
-            Console.WriteLine("\n" + citizen.ToString());
-        else
-            Console.WriteLine("Citizen not found.");
+        citizenSystem.SearchCitizen(id);
     }
 
-    private void AssignServiceUI()
+    private void AssignServiceMenu()
     {
         Console.Write("Enter Citizen ID: ");
-        string id = Console.ReadLine();
+        int id = Convert.ToInt32(Console.ReadLine());
 
         Console.Write("Enter Service Name: ");
         string service = Console.ReadLine();
@@ -80,11 +119,44 @@ public class CitizenMenu
         citizenSystem.AssignService(id, service);
     }
 
-    private void ViewHistoryUI()
+    private void CreateRootMenu()
     {
-        Console.Write("Enter Citizen ID: ");
-        string id = Console.ReadLine();
+        Console.Write("Enter Organization Root Name: ");
+        string root = Console.ReadLine();
 
-        citizenSystem.ShowCitizenHistory(id);
+        citizenSystem.CreateOrganizationRoot(root);
+    }
+
+    private void AddDepartmentMenu()
+    {
+        Console.Write("Enter Parent Department Name: ");
+        string parent = Console.ReadLine();
+
+        Console.Write("Enter New Department Name: ");
+        string child = Console.ReadLine();
+
+        citizenSystem.AddDepartment(parent, child);
+    }
+
+    private void AddRoadMenu()
+    {
+        Console.Write("Enter Starting Location: ");
+        string from = Console.ReadLine();
+
+        Console.Write("Enter Destination Location: ");
+        string to = Console.ReadLine();
+
+        citizenSystem.AddRoad(from, to);
+    }
+
+    private void ShortestPathMenu()
+    {
+        Console.Write("Enter Start Location: ");
+        string start = Console.ReadLine();
+
+        Console.Write("Enter End Location: ");
+        string end = Console.ReadLine();
+
+        citizenSystem.FindShortestPath(start, end);
     }
 }
