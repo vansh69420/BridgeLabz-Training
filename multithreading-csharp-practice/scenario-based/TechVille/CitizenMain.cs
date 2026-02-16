@@ -2,7 +2,7 @@ namespace TechVille
 {
     class CitizenMain
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             CitizenMenu menu = new CitizenMenu();
             menu.Start();

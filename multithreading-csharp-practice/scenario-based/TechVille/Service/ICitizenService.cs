@@ -31,5 +31,6 @@ public interface ICitizenService
     void ViewZone(string zone);
     void BackupCitizens();
     void GenerateReport();
-
+    void LoadServices();
+    Task ProcessCitizensAsync();
 }

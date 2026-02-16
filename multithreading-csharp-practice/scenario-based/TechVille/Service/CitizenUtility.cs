@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 public class CitizenUtility : ICitizenService
 {
@@ -18,6 +20,8 @@ public class CitizenUtility : ICitizenService
     private RegistrationWriter registrationWriter = new RegistrationWriter();
     private ProfileBackup backup = new ProfileBackup();
     private ReportGenerator reportGenerator = new ReportGenerator();
+    private ServiceBackup serviceBackup = new ServiceBackup();
+
 
 
 
@@ -25,12 +29,33 @@ public class CitizenUtility : ICitizenService
 
     public void AddCitizen(Citizen citizen)
     {
-        registry.AddCitizen(citizen);
-        lookup.Add(citizen);
+        try
+        {
+            if (citizen.Age < 18)
+                throw new UnderageException("Citizen must be 18+.");
 
-        registrationWriter.WriteRegistration(citizen);
-        logManager.Log("Citizen added: " + citizen.Id);
+            if (lookup.Get(citizen.Id) != null)
+                throw new DuplicateCitizenException("Citizen ID already exists.");
+
+            if (!CitizenValidator.ValidateEmail(citizen.Email))
+                throw new ArgumentException("Invalid Email Format.");
+
+            if (!CitizenValidator.ValidatePhone(citizen.Phone))
+                throw new ArgumentException("Invalid Phone Format.");
+
+            registry.AddCitizen(citizen);
+            lookup.Add(citizen);
+
+            Console.WriteLine("Citizen added successfully.");
+        }
+        catch (Exception ex)
+        {
+            ExceptionLogger.Log(ex);
+            Console.WriteLine("Error: " + ex.Message);
+        }
     }
+
+
 
     public void ViewCitizens()
     {
@@ -40,8 +65,23 @@ public class CitizenUtility : ICitizenService
 
     public Citizen SearchCitizen(int id)
     {
-        return lookup.Get(id);
+        try
+        {
+            var citizen = lookup.Get(id);
+
+            if (citizen == null)
+                throw new NullReferenceException("Citizen not found.");
+
+            return citizen;
+        }
+        catch (Exception ex)
+        {
+            ExceptionLogger.Log(ex);
+            Console.WriteLine(ex.Message);
+            return null;
+        }
     }
+
 
     public void RemoveCitizen(int id)
     {
@@ -83,9 +123,21 @@ public class CitizenUtility : ICitizenService
 
     public void AddServiceRequest(Service service)
     {
-        serviceQueue.Enqueue(service);
-        Console.WriteLine("Service request added.");
+        try
+        {
+            if (service == null)
+                throw new ArgumentNullException("Service cannot be null.");
+
+            serviceQueue.Enqueue(service);
+            Console.WriteLine("Service request added.");
+        }
+        catch (Exception ex)
+        {
+            ExceptionLogger.Log(ex);
+            Console.WriteLine("Service error: " + ex.Message);
+        }
     }
+
 
     public void ProcessServiceRequest()
     {
@@ -199,6 +251,42 @@ public class CitizenUtility : ICitizenService
         Console.WriteLine("Report generated successfully.");
     }
 
-    
+    public void LoadServices()
+    {
+        try
+        {
+            var services = serviceBackup.Load();
 
+            foreach (var service in services)
+                serviceQueue.Enqueue(service);
+
+            Console.WriteLine("Services loaded successfully.");
+        }
+        catch (Exception ex)
+        {
+            ExceptionLogger.Log(ex);
+            Console.WriteLine("Failed to load services.");
+        }
+    }
+    public async Task ProcessCitizensAsync()
+    {
+        var citizens = registry.GetAll();
+
+        Console.WriteLine("Starting async parallel processing...\n");
+
+        await Task.Run(() =>
+        {
+            Parallel.ForEach(citizens, citizen =>
+            {
+                int threadId = Thread.CurrentThread.ManagedThreadId;
+
+                Console.WriteLine($"Thread {threadId} processing Citizen ID: {citizen.Id}");
+
+                // Simulate work
+                Thread.Sleep(500);
+            });
+        });
+
+        Console.WriteLine("\nProcessing completed.");
+    }
 }

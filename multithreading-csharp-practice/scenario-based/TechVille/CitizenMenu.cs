@@ -4,7 +4,7 @@ public class CitizenMenu
 {
     private ICitizenService system = new CitizenUtility();
 
-    public void Start()
+    public async Task Start()
     {
         while (true)
         {
@@ -30,6 +30,8 @@ public class CitizenMenu
             Console.WriteLine("19. View Zone");
             Console.WriteLine("20. Backup Citizens");
             Console.WriteLine("21. Generate Report");
+            Console.WriteLine("22. Load Services");
+            Console.WriteLine("23. Process Citizens (Async + Parallel)");
             Console.WriteLine("0. Exit");
 
             int choice = Convert.ToInt32(Console.ReadLine());
@@ -142,6 +144,12 @@ public class CitizenMenu
                 case 21:
                     system.GenerateReport();
                     break;
+                case 22:
+                    system.LoadServices();
+                    break;
+                case 23:
+                    await system.ProcessCitizensAsync();
+                    break;
 
 
                 case 0:
@@ -164,7 +172,14 @@ public class CitizenMenu
         Console.Write("Income: ");
         double income = Convert.ToDouble(Console.ReadLine());
 
-        system.AddCitizen(new Citizen(id, name, age, income));
+        Console.Write("Email: ");
+        string email = Console.ReadLine();
+
+        Console.Write("Phone: ");
+        string phone = Console.ReadLine();
+
+
+        system.AddCitizen(new Citizen(id, name, age, income, email, phone));
     }
 
 }

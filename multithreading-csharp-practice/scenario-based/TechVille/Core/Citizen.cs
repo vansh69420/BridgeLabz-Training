@@ -7,6 +7,8 @@ public class Citizen : IComparable<Citizen>
     private string name;
     private int age;
     private double income;
+    private string email;
+    private string phone;
 
     [JsonIgnore]
     private string password;
@@ -35,20 +37,41 @@ public class Citizen : IComparable<Citizen>
         set { income = value; }
     }
 
+    public string Email
+    {
+        get { return email; }
+        set { email = value; }
+    }
+
+    public string Phone
+    {
+        get { return phone; }
+        set { phone = value; }
+    }
+
+    [JsonIgnore]
+    public string Password
+    {
+        get { return password; }
+        set { password = value; }
+    }
+
     // REQUIRED for JSON deserialization
     public Citizen() { }
 
-    public Citizen(int id, string name, int age, double income)
+    public Citizen(int id, string name, int age, double income, string email, string phone)
     {
         this.id = id;
         this.name = name;
         this.age = age;
         this.income = income;
+        this.email = email;
+        this.phone = phone;
     }
 
     public override string ToString()
     {
-        return $"ID: {id}, Name: {name}, Age: {age}, Income: {income}";
+        return $"ID: {id}, Name: {name}, Age: {age}, Income: {income}, Email: {email}, Phone: {phone}";
     }
 
     public int CompareTo(Citizen other)
