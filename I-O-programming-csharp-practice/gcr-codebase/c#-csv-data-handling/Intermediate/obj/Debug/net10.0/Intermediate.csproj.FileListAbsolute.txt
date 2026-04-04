@@ -1,0 +1,15 @@
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/bin/Debug/net10.0/Intermediate
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/bin/Debug/net10.0/Intermediate.deps.json
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/bin/Debug/net10.0/Intermediate.runtimeconfig.json
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/bin/Debug/net10.0/Intermediate.dll
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/bin/Debug/net10.0/Intermediate.pdb
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/obj/Debug/net10.0/Intermediate.GeneratedMSBuildEditorConfig.editorconfig
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/obj/Debug/net10.0/Intermediate.AssemblyInfoInputs.cache
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/obj/Debug/net10.0/Intermediate.AssemblyInfo.cs
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/obj/Debug/net10.0/Intermediate.csproj.CoreCompileInputs.cache
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/obj/Debug/net10.0/Intermediate.sourcelink.json
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/obj/Debug/net10.0/Intermediate.dll
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/obj/Debug/net10.0/refint/Intermediate.dll
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/obj/Debug/net10.0/Intermediate.pdb
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/obj/Debug/net10.0/Intermediate.genruntimeconfig.cache
+/Users/phoenix/Desktop/BridgeLabz-Training/I-O-programming-csharp-practice/gcr-codebase/c#-csv-data-handling/Intermediate/obj/Debug/net10.0/ref/Intermediate.dll
