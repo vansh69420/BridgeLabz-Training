@@ -1,0 +1,15 @@
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/bin/Debug/net10.0/Day 5
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/bin/Debug/net10.0/Day 5.deps.json
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/bin/Debug/net10.0/Day 5.runtimeconfig.json
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/bin/Debug/net10.0/Day 5.dll
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/bin/Debug/net10.0/Day 5.pdb
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/obj/Debug/net10.0/Day 5.GeneratedMSBuildEditorConfig.editorconfig
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/obj/Debug/net10.0/Day 5.AssemblyInfoInputs.cache
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/obj/Debug/net10.0/Day 5.AssemblyInfo.cs
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/obj/Debug/net10.0/Day 5.csproj.CoreCompileInputs.cache
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/obj/Debug/net10.0/Day 5.sourcelink.json
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/obj/Debug/net10.0/Day 5.dll
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/obj/Debug/net10.0/refint/Day 5.dll
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/obj/Debug/net10.0/Day 5.pdb
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/obj/Debug/net10.0/Day 5.genruntimeconfig.cache
+/Users/phoenix/Desktop/BridgeLabz-Training/Refresher-Training/Day 5/obj/Debug/net10.0/ref/Day 5.dll
